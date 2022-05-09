@@ -20,7 +20,7 @@ public class Hand {
     }
 
     public void setP1Hand() {
-        p1Hand = new ArrayList<Card>();
+
         p1Hand = CreateHand();
     }
 
