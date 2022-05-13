@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="590.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team3.cs210finalprojectteam3.SceneController">
+   <children>
+      <ImageView fitHeight="423.0" fitWidth="613.0" layoutX="-1.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://static.wikia.nocookie.net/starwars/images/0/01/EM081C3.jpg/revision/latest?cb=20160112231929" />
+         </image>
+      </ImageView>
+      <Label layoutX="41.0" layoutY="42.0" text="WELCOME TO PAZAAK" textFill="WHITE">
+         <font>
+            <Font name="Apple Symbols" size="64.0" />
+         </font>
+      </Label>
+      <Button layoutX="45.0" layoutY="344.0" mnemonicParsing="false" onAction="#SwitchtoInstructionsScene" prefHeight="26.0" prefWidth="232.0" text="Instructions">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="12.0" />
+         </font></Button>
+      <Button layoutX="340.0" layoutY="344.0" mnemonicParsing="false" onAction="#SwitchtoGameScene" prefHeight="26.0" prefWidth="232.0" text="Play Game">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="12.0" />
+         </font></Button>
+      <Text fill="WHITE" layoutX="45.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Devs: Adnan Al Joubi, Prince Maduekwe, Kory Stennett " wrappingWidth="335.6767578125" />
+   </children>
+</AnchorPane>
