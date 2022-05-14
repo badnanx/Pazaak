@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team3.cs210finalprojectteam3.SceneController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutY="260.0" prefHeight="58.0" prefWidth="200.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" GridPane.columnIndex="3">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+               </children>
+            </GridPane>
+            <Label layoutX="71.0" layoutY="14.0" text="Player 1">
+               <font>
+                  <Font name="Apple SD Gothic Neo Regular" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="topRight" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="61.0" onMouseClicked="#cardColorChange" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Label layoutX="62.0" layoutY="252.0" text="Player 1 Hand" />
+            <Button layoutX="26.0" layoutY="362.0" mnemonicParsing="false" onAction="#playerOneEndGame" text="End" />
+            <Button layoutX="73.0" layoutY="361.0" mnemonicParsing="false" text="Stand" />
+            <Button layoutX="133.0" layoutY="361.0" mnemonicParsing="false" text="Forfeit" />
+            <Button fx:id="flipBotton" layoutX="73.0" layoutY="325.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Filp" />
+            <Circle fx:id="playerOneTurnIndicator" fill="#ff232e" layoutX="145.0" layoutY="26.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label />
+            <Label layoutX="69.0" layoutY="13.0" text="Player 2">
+               <font>
+                  <Font name="Apple SD Gothic Neo Regular" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Label layoutX="60.0" layoutY="251.0" text="Player 2 Hand" />
+            <Button layoutX="24.0" layoutY="361.0" mnemonicParsing="false" onAction="#playerTwoEndGame" text="End" />
+            <Button layoutX="71.0" layoutY="360.0" mnemonicParsing="false" text="Stand" />
+            <Button layoutX="131.0" layoutY="360.0" mnemonicParsing="false" text="Forfeit" />
+            <Button layoutX="71.0" layoutY="324.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Flip" />
+            <Circle fx:id="playerTwoTurnIndicator" fill="#ff232e" layoutX="53.0" layoutY="24.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+            <GridPane layoutX="-4.0" layoutY="260.0" prefHeight="58.0" prefWidth="200.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" GridPane.columnIndex="3">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="55.0" layoutX="4.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="190.0" />
+            <Line endY="-7.0" layoutX="99.0" layoutY="13.0" startY="46.0" strokeWidth="2.0" />
+            <Button layoutX="60.0" layoutY="360.0" mnemonicParsing="false" onAction="#SwitchtoWelcomeScene" text="Back Home" />
+            <Text layoutX="41.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="133.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
