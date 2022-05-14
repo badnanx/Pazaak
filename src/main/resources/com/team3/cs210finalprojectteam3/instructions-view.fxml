@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team3.cs210finalprojectteam3.SceneController">
+   <children>
+      <TextArea layoutX="14.0" layoutY="26.0" prefHeight="332.0" prefWidth="574.0" text="1) Each player draws 4 random cards from their side deck to form their HAND. &#10;     These cards are available to the player for all the sets of the match. &#10;     Each hand card can only be played once per match.&#10;&#10;2) The first player draws a card from the main deck and plays it face up to begin their turn.&#10;&#10;3) After drawing a card, a player has the option of playing one of the cards from their hand. &#10;     Playing a card from the hand is optional.&#10;&#10;4) Only one hand card can be played each turn.&#10;      REMEMBER: A player's 4 card hand must last through all sets of the match.&#10;&#10;5) The player now has the option to STAND or to END TURN. &#10;     A player who stands cannot draw again or play any more cards from their hand during the set. &#10;     When one player stands, the opponent can continue to take turns until they either stand or bust.&#10;&#10;6) If a player chooses to end turn they will automatically draw another card at the beginning of their next &#10;      turn. After one player chooses to stand or end turn, the opponent draws a card to begin their next turn.&#10;&#10;7) Players continue to alternate turns until both players choose to stand, or until one player ends a turn &#10;      with a total greater than 20 (a 'bust'). REMEMBER: You only lose if you are over 20 at the end of &#10;      your turn. A player can draw a card from the main deck that puts them over 20, then play a negative &#10;      card from the 'hand' that brings the total back under 20.&#10;&#10;8) In the case of a tie, another set must be played. No new cards from the side deck are drawn.&#10;&#10;9) A player can never have more than nine cards in play during one set. (This includes cards from the &#10;     hand as well as cards dealt from the deck.) Once you have nine cards in play you automatically stand.&#10;&#10;10) A +/- card played from the side deck must be declared as a positive or negative when played. &#10;       Once played it cannot be changed. &#10;&#10;11) Gold cards have special rules associated with them. With some you can alter their number &#10;       before you play them. Others can break a tie, change cards in play, or double the value of &#10;       the last card played.&#10;&#10;12) The first player to win 3 sets wins the match and the wager." />
+      <Label layoutX="269.0" layoutY="6.0" text="Instructions" textFill="WHITE">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="273.0" layoutY="368.0" mnemonicParsing="false" onAction="#SwitchtoWelcomeScene" text="Back" />
+   </children>
+</AnchorPane>
