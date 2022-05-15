@@ -1,14 +1,17 @@
 package com.team3.cs210finalprojectteam3;
 
+import javafx.collections.ObservableArray;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -16,14 +19,132 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.net.URL;
+import java.util.*;
 
-public class SceneController {
+public class SceneController implements Initializable{
 
-    private Stage mStage;
-    private Scene mScene;
-    private Parent mRoot;
+    public Hand p1Hand = new Hand();
+    public Hand p2Hand = new Hand();
+    public Stage mStage;
+    public Scene mScene;
+    public Parent mRoot;
+    /**
+     * Hand panes
+     */
+    @FXML
+    private StackPane p1HandCardOne;
+    @FXML
+    public StackPane p1HandCardTwo;
+    @FXML
+    private StackPane p1HandCardThree;
+    @FXML
+    private StackPane p1HandCardFour;
+    @FXML
+    private StackPane p2HandCardOne;
+    @FXML
+    private StackPane p2HandCardTwo;
+    @FXML
+    private StackPane p2HandCardThree;
+    @FXML
+    private StackPane p2HandCardFour;
+    /**
+     * Hand Rectangles
+     */
+    @FXML
+    private Rectangle p1RectOne;
+    @FXML
+    private Rectangle p1RectTwo;
+    @FXML
+    private Rectangle p1RectThree;
+    @FXML
+    private Rectangle p1RectFour;
+    @FXML
+    private Rectangle p2RectOne;
+    @FXML
+    private Rectangle p2RectTwo;
+    @FXML
+    private Rectangle p2RectThree;
+    @FXML
+    private Rectangle p2RectFour;
+    /**
+     * Hand Text
+     */
+    public static Text p1TextOneStatic;
+    public static Text p2TextOneStatic;
+    public static Text p1TextTwoStatic;
+    public static Text p2TextTwoStatic;
+    public static Text p1TextThreeStatic;
+    public static Text p2TextThreeStatic;
+    public static Text p1TextFourStatic;
+    public static Text p2TextFourStatic;
+    @FXML
+    public Text p1TextOne;
+    @FXML
+    public Text p1TextTwo;
+    @FXML
+    public Text p1TextThree;
+    @FXML
+    public Text p1TextFour;
+    @FXML
+    public Text p2TextOne;
+    @FXML
+    public Text p2TextTwo;
+    @FXML
+    public Text p2TextThree;
+    @FXML
+    public Text p2TextFour;
+    /**
+     * Hand buttons setup, for playing each card individually
+     */
+
+
+    public List<Card> p1HandCards;
+
+    public List<Card> p2HandCards;
+
+
+    /**
+     * Special method that allows for things to happen at the very start of the application
+     * @param url
+     * @param resourceBundle
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initialize();
+    }
+    public void initialize(){
+
+        // We have to create static references to these texts in order to make them appear properly at runtime
+        p1TextOneStatic = p1TextOne;
+        p2TextOneStatic = p2TextOne;
+        p1TextTwoStatic = p1TextTwo;
+        p2TextTwoStatic = p2TextTwo;
+        p1TextThreeStatic = p1TextThree;
+        p2TextThreeStatic = p2TextThree;
+        p1TextFourStatic = p1TextFour;
+        p2TextFourStatic = p2TextFour;
+    }
+
+    /**
+    private StackPane createHandCardPane(Card card, Text textToSet, Rectangle rectToSet){
+        textToSet = card.text;
+        rectToSet = card.rectangle;
+        StackPane pane = createCardPane(textToSet, rectToSet);
+        return pane;
+    }
+    /**
+     * This only gets used by CreateHand method in order to fill the StackPane with the card UI elements
+     * @param text, rect
+     * @return StackPane
+
+    private StackPane createCardPane(Text text, Rectangle rect){
+        StackPane cardPane = new StackPane();
+        cardPane.getChildren().addAll(text,rect);
+        return cardPane;
+    }*/
+
+
 
     @FXML
     private TextField playerOneScore;
@@ -84,22 +205,7 @@ public class SceneController {
 
     }
 
-    public void SwitchtoInstructionsScene(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("instructions-view.fxml"));
-        mStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        mScene = new Scene(root);
-        mStage.setScene(mScene);
-        mStage.show();
-    }
 
-    public void SwitchtoGameScene(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("game-view.fxml"));
-        mStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        mScene = new Scene(root);
-        mStage.setScene(mScene);
-        mStage.show();
-
-    }
 
     @FXML
     public void buttonTest(){
@@ -203,9 +309,6 @@ public class SceneController {
 
 
     }
-
-
-
 
 
 

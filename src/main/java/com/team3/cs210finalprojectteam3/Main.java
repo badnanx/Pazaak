@@ -8,8 +8,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+
+    SceneController controller;
     @Override
     public void start(Stage stage) throws IOException {
+        //controller = new SceneController();
+        //controller.initialize();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("welcome-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Pazaak");
