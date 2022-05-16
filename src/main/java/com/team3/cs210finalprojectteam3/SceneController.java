@@ -51,22 +51,48 @@ public class SceneController implements Initializable{
     /**
      * Hand Rectangles
      */
+
+//----------------------------------------------------------
+
+    public static Rectangle p1RectOneStatic;
+
+    public static Rectangle p1RectTwoStatic;
+
+    public static Rectangle p1RectThreeStatic;
+
+    public static Rectangle p1RectFourStatic;
+
+    public static Rectangle p2RectOneStatic;
+
+    public static Rectangle p2RectTwoStatic;
+
+    public static Rectangle p2RectThreeStatic;
+
+    public static Rectangle p2RectFourStatic;
+
+
+   //...
+
+
     @FXML
-    private Rectangle p1RectOne;
+    public Rectangle p1RectOne;
     @FXML
-    private Rectangle p1RectTwo;
+    public Rectangle p1RectTwo;
     @FXML
-    private Rectangle p1RectThree;
+    public Rectangle p1RectThree;
     @FXML
-    private Rectangle p1RectFour;
+    public Rectangle p1RectFour;
     @FXML
-    private Rectangle p2RectOne;
+    public Rectangle p2RectOne;
     @FXML
-    private Rectangle p2RectTwo;
+    public Rectangle p2RectTwo;
     @FXML
-    private Rectangle p2RectThree;
+    public Rectangle p2RectThree;
     @FXML
-    private Rectangle p2RectFour;
+    public Rectangle p2RectFour;
+
+//----------------------------------------------------------
+
     /**
      * Hand Text
      */
@@ -124,6 +150,18 @@ public class SceneController implements Initializable{
         p2TextThreeStatic = p2TextThree;
         p1TextFourStatic = p1TextFour;
         p2TextFourStatic = p2TextFour;
+
+        //change color at runtime
+
+        p1RectOneStatic = p1RectOne;
+        p1RectTwoStatic = p1RectTwo;
+        p1RectThreeStatic = p1RectThree;
+        p1RectFourStatic = p1RectFour;
+        p2RectOneStatic = p2RectOne;
+        p2RectTwoStatic = p2RectTwo;
+        p2RectThreeStatic = p2RectThree;
+        p2RectFourStatic = p2RectFour;
+
     }
 
     /**
@@ -176,23 +214,10 @@ public class SceneController implements Initializable{
     private Rectangle topRight;
 
 
-
-
-
-
    @FXML
     public void cardColorChange(){
         topRight.setFill(Color.YELLOW);
     }
-
-
-
-
-
-
-
-
-
 
 
     public void SwitchtoWelcomeScene(ActionEvent actionEvent) throws IOException {
@@ -221,14 +246,6 @@ public class SceneController implements Initializable{
         timer();
 
     }
-
-
-
-
-
-
-
-
 
 
     public void timer(){
@@ -309,6 +326,159 @@ public class SceneController implements Initializable{
 
 
     }
+
+
+    /**
+     * The method below gets the value attached to each card in the players
+     * hand and parses it to an Integer. After parsing, it checks the value
+     * against a conditional statement and acts (changes color) an assigned
+     * rectangle.
+     *
+     * The print statements are kind of safety measures. It lets us know if
+     * the code itself is working (or not).
+     */
+
+
+    public void handCardColorChange(){
+
+
+
+        int a = Integer.parseInt(p1TextOne.getText());
+        int b = Integer.parseInt(p1TextTwo.getText());
+        int c = Integer.parseInt(p1TextThree.getText());
+        int d = Integer.parseInt(p1TextFour.getText());
+        int e = Integer.parseInt(p2TextOne.getText());
+        int f = Integer.parseInt(p2TextTwo.getText());
+        int g = Integer.parseInt(p2TextThree.getText());
+        int h = Integer.parseInt(p2TextFour.getText());
+
+
+       // List<Integer> val = Arrays.asList(a,b,c,d,e,f,g,h);
+       // System.out.println(val);
+
+
+
+
+        //A--------------------------------------------
+        if(a < 0){
+            System.out.println("P1, Card 1: " + a);
+            p1RectOneStatic.setFill(Color.RED);
+
+        } else {
+            System.out.println("P1, Card 1: " + a);
+            p1RectOneStatic.setFill(Color.GREEN);
+
+        }
+
+        //B--------------------------------------------
+        if(b < 0){
+            System.out.println("P1, Card 2: " + b);
+            p1RectTwoStatic.setFill(Color.RED);
+
+        } else {
+            System.out.println("P1, Card 2: " + b);
+            p1RectTwoStatic.setFill(Color.GREEN);
+
+        }
+
+
+        //C--------------------------------------------
+        if(c < 0){
+            System.out.println("P1, Card 3: " + c);
+            p1RectThreeStatic.setFill(Color.RED);
+
+
+        } else {
+            System.out.println("P1, Card 3: " + c);
+            p1RectThreeStatic.setFill(Color.GREEN);
+
+        }
+
+
+
+
+        //D--------------------------------------------
+        if(d < 0){
+            System.out.println("P1, Card 4: " + d);
+            p1RectFourStatic.setFill(Color.RED);
+
+
+        } else {
+            System.out.println("P1, Card 4: " + d);
+            p1RectFourStatic.setFill(Color.GREEN);
+
+
+        }
+
+        //E--------------------------------------------
+        if(e < 0){
+            System.out.println("P2, Card 1: " + e);
+            p2RectOneStatic.setFill(Color.RED);
+
+
+        } else {
+            System.out.println("P2, Card 1: " + e);
+            p2RectOneStatic.setFill(Color.GREEN);
+
+
+        }
+
+        //F--------------------------------------------
+        if(f < 0){
+            System.out.println("P2, Card 2: " + f);
+            p2RectTwoStatic.setFill(Color.RED);
+
+
+        } else {
+            System.out.println("P2, Card 2: " + f);
+            p2RectTwoStatic.setFill(Color.GREEN);
+
+
+        }
+
+        //G--------------------------------------------
+        if(g < 0){
+            System.out.println("P2, Card 3: " + g);
+            p2RectThreeStatic.setFill(Color.RED);
+
+
+        } else {
+            System.out.println("P2, Card 3: " + g);
+            p2RectThreeStatic.setFill(Color.GREEN);
+
+
+        }
+
+        //H--------------------------------------------
+        if(h < 0){
+            System.out.println("P2, Card 4: " + h);
+            p2RectFourStatic.setFill(Color.RED);
+
+
+        } else {
+            System.out.println("P2, Card 4: " + h);
+            p2RectFourStatic.setFill(Color.GREEN);
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

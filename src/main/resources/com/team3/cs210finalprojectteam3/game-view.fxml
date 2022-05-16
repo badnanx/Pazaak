@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,13 +8,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team3.cs210finalprojectteam3.SceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team3.cs210finalprojectteam3.SceneController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -35,11 +30,7 @@
                 <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </GridPane.margin>
-                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" GridPane.columnIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" top="10.0" />
@@ -59,7 +50,7 @@
                      <children>
                         <StackPane id="P1Card1" fx:id="p1HandCardOne2" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
-                              <Rectangle fx:id="p1RectOne2" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
+                              <Rectangle fx:id="p1RectThree" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                               <Text fx:id="p1TextThree" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
@@ -68,7 +59,7 @@
                      <children>
                         <StackPane id="P1Card1" fx:id="p1HandCardOne1" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
-                              <Rectangle fx:id="p1RectOne1" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
+                              <Rectangle fx:id="p1RectTwo" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                               <Text fx:id="p1TextTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
@@ -77,7 +68,7 @@
                      <children>
                         <StackPane id="P1Card1" fx:id="p1HandCardOne21" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
-                              <Rectangle fx:id="p1RectOne21" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
+                              <Rectangle fx:id="p1RectFour" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                               <Text fx:id="p1TextFour" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
@@ -98,11 +89,11 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Label layoutX="62.0" layoutY="238.0" prefHeight="17.0" prefWidth="74.0" text="Player 1 Hand" />
+            <Label layoutX="62.0" layoutY="238.0" prefHeight="17.0" prefWidth="90.0" text="Player 1 Hand" />
             <Button layoutX="26.0" layoutY="362.0" mnemonicParsing="false" onAction="#playerOneEndGame" text="End" />
             <Button layoutX="73.0" layoutY="361.0" mnemonicParsing="false" text="Stand" />
             <Button layoutX="133.0" layoutY="361.0" mnemonicParsing="false" text="Forfeit" />
-            <Button fx:id="flipBotton" layoutX="73.0" layoutY="325.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Filp" />
+            <Button fx:id="flipBotton" layoutX="73.0" layoutY="325.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Flip" />
             <Circle fx:id="playerOneTurnIndicator" fill="#ff232e" layoutX="145.0" layoutY="26.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </AnchorPane>
@@ -150,7 +141,7 @@
                   </Rectangle>
                   <StackPane id="P1Card1" fx:id="p1HandCardOne1" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                      <children>
-                        <Rectangle fx:id="p1RectOne1" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
+                        <Rectangle fx:id="p2RectOne" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p2TextOne" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </StackPane>
@@ -158,7 +149,7 @@
                      <children>
                         <StackPane id="P1Card1" fx:id="p1HandCardOne21" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
-                              <Rectangle fx:id="p1RectOne21" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
+                              <Rectangle fx:id="p2RectThree" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                               <Text fx:id="p2TextThree" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
@@ -168,7 +159,7 @@
                      <children>
                         <StackPane id="P1Card1" fx:id="p1HandCardOne11" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
-                              <Rectangle fx:id="p1RectOne11" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
+                              <Rectangle fx:id="p2RectTwo" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                               <Text fx:id="p2TextTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
@@ -178,7 +169,7 @@
                      <children>
                         <StackPane id="P1Card1" fx:id="p1HandCardOne211" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
-                              <Rectangle fx:id="p1RectOne211" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
+                              <Rectangle fx:id="p2RectFour" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                               <Text fx:id="p2TextFour" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
