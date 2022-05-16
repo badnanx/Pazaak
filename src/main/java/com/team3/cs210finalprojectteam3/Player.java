@@ -26,5 +26,4 @@ public class Player {
     }
 
     // need getters/setters
-    // need to make into singleton depending on group consensus
 }
