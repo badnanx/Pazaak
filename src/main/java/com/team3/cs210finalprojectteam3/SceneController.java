@@ -1,6 +1,5 @@
 package com.team3.cs210finalprojectteam3;
 
-import javafx.collections.ObservableArray;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +22,7 @@ import java.net.URL;
 import java.util.*;
 
 public class SceneController implements Initializable{
+private GameLogic game;
 
     public Hand p1Hand = new Hand();
     public Hand p2Hand = new Hand();
@@ -140,6 +140,9 @@ public class SceneController implements Initializable{
         initialize();
     }
     public void initialize(){
+// create instance of game logic
+    //
+        game = new GameLogic();
 
         // We have to create static references to these texts in order to make them appear properly at runtime
         p1TextOneStatic = p1TextOne;
@@ -241,7 +244,8 @@ public class SceneController implements Initializable{
     }
 
     @FXML
-    public void playerOneEndGame(){
+    public void playerOneEndTurn(){
+       game.endTurn(1);
         playerTwoTurnLight();
         timer();
 
@@ -297,7 +301,8 @@ public class SceneController implements Initializable{
     }
 
     @FXML
-    public void playerTwoEndGame(){
+    public void playerTwoEndTurn(){
+       game.endTurn(2);
         playerOneTurnLight();
         timer();
 
