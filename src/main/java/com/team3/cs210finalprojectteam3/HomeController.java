@@ -1,19 +1,22 @@
 package com.team3.cs210finalprojectteam3;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class HomeController extends SceneController {
-
 
 
     public void SwitchtoInstructionsScene(ActionEvent actionEvent) throws IOException {
@@ -31,16 +34,19 @@ public class HomeController extends SceneController {
 
         mStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         mScene = new Scene(root);
-        mStage.setScene(mScene);
 
+        mStage.setScene(mScene);
         CreateGameEnvironment();
-        handCardColorChange();
 
         mStage.show();
+
+
+
 
     }
 
     private void CreateGameEnvironment(){
+
         p1HandCards = p1Hand.hand;
         p2HandCards = p2Hand.hand;
 
@@ -63,11 +69,6 @@ public class HomeController extends SceneController {
         p2TextThreeStatic.setText(p2TextThree.getText());
         p2TextFourStatic.setText(p2TextFour.getText());
 
-
-
     }
-
-
-
 
 }
