@@ -265,6 +265,21 @@ private GameLogic game;
     }
 
     @FXML
+    public void p1Stand(){
+        playerOneTurnIndicator.setFill(Color.YELLOW);
+        System.out.println("DEBUG: Player 1 has stood.");
+        // idea: make player 1's buttons/actions disabled upon stand
+
+    }
+
+    @FXML
+    public void p2Stand(){
+        playerTwoTurnIndicator.setFill(Color.YELLOW);
+        System.out.println("DEBUG: Player 2 has stood.");
+        // idea: make player 2's buttons/actions disabled upon stand
+    }
+
+    @FXML
     public void playerOneEndTurn(){
        game.endTurn(1);
 
@@ -312,6 +327,13 @@ private GameLogic game;
         game.endTurn(2);
         playerTwoTurnIndicator.setFill(Color.RED);
         playerOneTurnIndicator.setFill(Color.GREEN);
+
+        /**
+         * Note: code will need some rework once 'Stand'
+         *          functionality is implemented.
+         *          Player indicator should turn and stay yellow if they 'Stand'
+         */
+
         // playerOneTurnLight();
         // timer();
 

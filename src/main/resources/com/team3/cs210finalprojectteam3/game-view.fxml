@@ -91,7 +91,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Label layoutX="62.0" layoutY="238.0" prefHeight="17.0" prefWidth="90.0" text="Player 1 Hand" />
             <Button layoutX="26.0" layoutY="362.0" mnemonicParsing="false" onAction="#playerOneEndTurn" text="End" />
-            <Button layoutX="73.0" layoutY="361.0" mnemonicParsing="false" text="Stand" />
+            <Button layoutX="73.0" layoutY="361.0" mnemonicParsing="false" onAction="#p1Stand" text="Stand" />
             <Button layoutX="133.0" layoutY="361.0" mnemonicParsing="false" text="Forfeit" />
             <Button fx:id="flipBotton" layoutX="73.0" layoutY="325.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Flip" />
             <Circle fx:id="playerOneTurnIndicator" fill="#ff232e" layoutX="145.0" layoutY="26.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
@@ -118,7 +118,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Label layoutX="62.0" layoutY="238.0" text="Player 2 Hand" />
             <Button layoutX="24.0" layoutY="361.0" mnemonicParsing="false" onAction="#playerTwoEndTurn" text="End" />
-            <Button layoutX="71.0" layoutY="360.0" mnemonicParsing="false" text="Stand" />
+            <Button layoutX="71.0" layoutY="360.0" mnemonicParsing="false" onAction="#p2Stand" text="Stand" />
             <Button layoutX="131.0" layoutY="360.0" mnemonicParsing="false" text="Forfeit" />
             <Button layoutX="71.0" layoutY="324.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Flip" />
             <Circle fx:id="playerTwoTurnIndicator" fill="#ff232e" layoutX="53.0" layoutY="24.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
