@@ -247,7 +247,7 @@ private GameLogic game;
     public void playerOneEndTurn(){
        game.endTurn(1);
         playerTwoTurnLight();
-        timer();
+       // timer();
 
     }
 
@@ -304,7 +304,7 @@ private GameLogic game;
     public void playerTwoEndTurn(){
        game.endTurn(2);
         playerOneTurnLight();
-        timer();
+       // timer();
 
     }
 
