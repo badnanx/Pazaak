@@ -48,9 +48,7 @@ public class GameLogic {
     }
 
 
-    /**
-     * Code below is incomplete. Edits to Player class also required.
-     */
+
 
     public void compareScores(int p1Score, int p2Score)
     {
