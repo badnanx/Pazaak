@@ -268,14 +268,15 @@ private GameLogic game;
     public void playerOneEndTurn(){
        game.endTurn(1);
 
+
         playerOneTurnIndicator.setFill(Color.RED);
         playerTwoTurnIndicator.setFill(Color.GREEN);
 
-        // Note: code will need some rework once 'Stand'
-        // functionality is implemented.
-        // Player indicator should turn and stay yellow if they 'Stand'
-
-
+        /**
+         * Note: code will need some rework once 'Stand'
+         *          functionality is implemented.
+         *          Player indicator should turn and stay yellow if they 'Stand'
+         */
 
        // playerTwoTurnLight();
        // timer();

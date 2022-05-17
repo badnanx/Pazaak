@@ -2,16 +2,15 @@ package com.team3.cs210finalprojectteam3;
 
 public class Player {
 
-    private int score;
-    private int roundsWon;
+    public int score;
+    public int roundsWon;
 
-    private boolean hasStood;
-
-    private boolean hasEndedTurn;
-    private boolean wonRound;
-    private boolean wonMatch;
-    private boolean busted;
-    private boolean playedHandCard;
+    public boolean hasStood;
+    public boolean hasEndedTurn;
+    public boolean wonRound;
+    public boolean wonMatch;
+    public boolean busted;
+    public boolean playedHandCard;
 
     public Player()
     {
