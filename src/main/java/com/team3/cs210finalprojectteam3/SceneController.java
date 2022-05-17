@@ -233,7 +233,28 @@ private GameLogic game;
 
     }
 
-
+//    public void timer(){
+//        Timer timer = new Timer();
+//        visualTimer = new Label();
+//
+//        timer.scheduleAtFixedRate(new TimerTask() {
+//            int i = 10;
+//
+//            @Override
+//            public void run() {
+//                visualTimer.setText(String.valueOf(i));
+//                i--;
+//
+//                if(i < 0){
+//                    timer.cancel();
+//                    //timerUpdate.setText("Next Player");
+//                    System.out.println("10!");
+//                }
+//
+//            }
+//
+//        }, 1000, 1000);
+//    }
 
     @FXML
     public void buttonTest(){
@@ -246,91 +267,82 @@ private GameLogic game;
     @FXML
     public void playerOneEndTurn(){
        game.endTurn(1);
-        playerTwoTurnLight();
+
+        playerOneTurnIndicator.setFill(Color.RED);
+        playerTwoTurnIndicator.setFill(Color.GREEN);
+
+        // Note: code will need some rework once 'Stand'
+        // functionality is implemented.
+        // Player indicator should turn and stay yellow if they 'Stand'
+
+
+
+       // playerTwoTurnLight();
        // timer();
 
     }
 
-
-    public void timer(){
-        Timer timer = new Timer();
-        visualTimer = new Label();
-
-        timer.scheduleAtFixedRate(new TimerTask() {
-            int i = 10;
-
-            @Override
-            public void run() {
-                visualTimer.setText(String.valueOf(i));
-                i--;
-
-                if(i < 0){
-                    timer.cancel();
-                    //timerUpdate.setText("Next Player");
-                    System.out.println("10!");
-                }
-
-            }
-
-        }, 1000, 1000);
-    }
-
-
-    public void playerTwoTurnLight(){
-        playerTwoTurnIndicator.setFill(Color.GREEN);
-
-       Timer lightTimer = new Timer();
-        lightTimer.scheduleAtFixedRate(new TimerTask() {
-            int i = 10;
-
-            @Override
-            public void run() {
-                i--;
-
-                if(i < 0){
-                    lightTimer.cancel();
-                    playerTwoTurnIndicator.setFill(Color.RED);
-
-                }
-
-            }
-
-        }, 1000, 1000);
-
-
-    }
+//    public void playerOneTurnLight(){
+//        playerOneTurnIndicator.setFill(Color.GREEN);
+//
+//        Timer lightTimer = new Timer();
+//        lightTimer.scheduleAtFixedRate(new TimerTask() {
+//            int i = 10;
+//
+//            @Override
+//            public void run() {
+//                i--;
+//
+//                if(i < 0){
+//                    lightTimer.cancel();
+//                    playerOneTurnIndicator.setFill(Color.RED);
+//
+//                }
+//
+//            }
+//
+//        }, 1000, 1000);
+//
+//
+//    }
 
     @FXML
     public void playerTwoEndTurn(){
-       game.endTurn(2);
-        playerOneTurnLight();
-       // timer();
-
-    }
-
-    public void playerOneTurnLight(){
+        game.endTurn(2);
+        playerTwoTurnIndicator.setFill(Color.RED);
         playerOneTurnIndicator.setFill(Color.GREEN);
-
-        Timer lightTimer = new Timer();
-        lightTimer.scheduleAtFixedRate(new TimerTask() {
-            int i = 10;
-
-            @Override
-            public void run() {
-                i--;
-
-                if(i < 0){
-                    lightTimer.cancel();
-                    playerOneTurnIndicator.setFill(Color.RED);
-
-                }
-
-            }
-
-        }, 1000, 1000);
-
+        // playerOneTurnLight();
+        // timer();
 
     }
+
+//    public void playerTwoTurnLight(){
+//        playerTwoTurnIndicator.setFill(Color.GREEN);
+//
+//       Timer lightTimer = new Timer();
+//        lightTimer.scheduleAtFixedRate(new TimerTask() {
+//            int i = 10;
+//
+//            @Override
+//            public void run() {
+//                i--;
+//
+//                if(i < 0){
+//                    lightTimer.cancel();
+//                    playerTwoTurnIndicator.setFill(Color.RED);
+//
+//                }
+//
+//            }
+//
+//        }, 1000, 1000);
+//
+//
+//    }
+
+
+
+
 
 
     /**
