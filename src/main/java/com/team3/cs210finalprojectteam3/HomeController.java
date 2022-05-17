@@ -37,7 +37,7 @@ public class HomeController extends SceneController {
 
         mStage.setScene(mScene);
         CreateGameEnvironment();
-
+        handCardColorChange();
         mStage.show();
 
 
@@ -68,6 +68,7 @@ public class HomeController extends SceneController {
         p2TextTwoStatic.setText(p2TextTwo.getText());
         p2TextThreeStatic.setText(p2TextThree.getText());
         p2TextFourStatic.setText(p2TextFour.getText());
+
 
     }
 
