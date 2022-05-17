@@ -2,13 +2,14 @@ package com.team3.cs210finalprojectteam3;
 
 public class Player {
 
+
     public int score;
     public int roundsWon;
 
     public boolean hasStood;
     public boolean hasEndedTurn;
     public boolean wonRound;
-    public boolean wonMatch;
+    public boolean wonGame; // necessary?
     public boolean busted;
     public boolean playedHandCard;
 
@@ -19,7 +20,7 @@ public class Player {
         hasStood = false;
         hasEndedTurn = false;
         wonRound = false;
-        wonMatch = false;
+        wonGame = false;
         busted = false;
         playedHandCard = false;
     }

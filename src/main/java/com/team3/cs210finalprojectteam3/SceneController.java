@@ -266,26 +266,54 @@ private GameLogic game;
 
     @FXML
     public void p1Stand(){
+        game.p1.hasStood = true;
         playerOneTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 1 has stood.");
-        // idea: make player 1's buttons/actions disabled upon stand
 
+        if(game.p2.hasStood == true){
+            System.out.println("Both players have stood.");
+            game.compareScores(game.p1.score, game.p2.score);
+        } else{
+            playerTwoTurnIndicator.setFill(Color.GREEN);
+            game.turnTracker(1);
+        }
+        // idea: make player 1's buttons/actions disabled upon stand
     }
 
     @FXML
     public void p2Stand(){
+        game.p2.hasStood = true;
         playerTwoTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 2 has stood.");
+
+        if(game.p1.hasStood == true){
+            System.out.println("Both players have stood.");
+            game.compareScores(game.p1.score, game.p2.score);
+        } else{
+            playerOneTurnIndicator.setFill(Color.GREEN);
+            game.turnTracker(2);
+        }
         // idea: make player 2's buttons/actions disabled upon stand
     }
 
     @FXML
     public void playerOneEndTurn(){
-       game.endTurn(1);
+      // game.turnTracker(1);
+
+       if(game.p2.hasStood == true) {
+
+           game.turnTracker(2);
+           playerOneTurnIndicator.setFill(Color.GREEN);
+           // some sort of 'continue play' loop would be good here
+       } else{
+           game.turnTracker(1);
+           playerOneTurnIndicator.setFill(Color.RED);
+           playerTwoTurnIndicator.setFill(Color.GREEN);
+           // some kind of gameplay loop would be good here
+           // idea: player one's buttons should be disabled if it's not their turn
+       }
 
 
-        playerOneTurnIndicator.setFill(Color.RED);
-        playerTwoTurnIndicator.setFill(Color.GREEN);
 
         /**
          * Note: code will need some rework once 'Stand'
@@ -324,9 +352,20 @@ private GameLogic game;
 
     @FXML
     public void playerTwoEndTurn(){
-        game.endTurn(2);
-        playerTwoTurnIndicator.setFill(Color.RED);
-        playerOneTurnIndicator.setFill(Color.GREEN);
+        //game.turnTracker(2);
+
+        if(game.p1.hasStood == true) {
+            game.turnTracker(1);
+            playerTwoTurnIndicator.setFill(Color.GREEN);
+            // some sort of 'continue play' loop would be good here
+        } else{
+
+            game.turnTracker(2);
+            playerTwoTurnIndicator.setFill(Color.RED);
+            playerOneTurnIndicator.setFill(Color.GREEN);
+            // some kind of gameplay loop would be good here
+            // idea: player one's buttons should be disabled if it's not their turn
+        }
 
         /**
          * Note: code will need some rework once 'Stand'
