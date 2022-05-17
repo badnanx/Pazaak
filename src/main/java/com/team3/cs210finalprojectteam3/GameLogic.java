@@ -44,13 +44,7 @@ public class GameLogic {
     // checks for bust
     public boolean checkForBust(int score)
     {
-        if (score > BUST_LIMIT)
-        {
-            // System.out.println("DEBUG: Player busts.");
-            return true;
-        }
-        else
-            return false;
+        return score > BUST_LIMIT;
     }
 
 

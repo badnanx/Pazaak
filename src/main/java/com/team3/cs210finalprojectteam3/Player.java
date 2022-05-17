@@ -10,7 +10,7 @@ public class Player {
     public boolean hasEndedTurn;
     public boolean wonRound;
     public boolean wonGame; // necessary?
-    public boolean busted;
+    public boolean busted; // needed?
     public boolean playedHandCard;
 
     public Player()

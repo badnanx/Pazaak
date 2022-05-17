@@ -269,6 +269,12 @@ private GameLogic game;
         game.p1.hasStood = true;
         playerOneTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 1 has stood.");
+        if(game.checkForBust(game.p1.score) == true){
+            System.out.println("Player 1 has gone bust! Player 2 wins the round!");
+            game.p2.roundsWon++;
+            game.endOfRound = true;
+            game.compareRounds();
+        }
 
         if(game.p2.hasStood == true){
             System.out.println("Both players have stood.");
@@ -285,6 +291,12 @@ private GameLogic game;
         game.p2.hasStood = true;
         playerTwoTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 2 has stood.");
+        if(game.checkForBust(game.p2.score) == true){
+            System.out.println("Player 2 has gone bust! Player 1 wins the round!");
+            game.p1.roundsWon++;
+            game.endOfRound = true;
+            game.compareRounds();
+        }
 
         if(game.p1.hasStood == true){
             System.out.println("Both players have stood.");
@@ -298,7 +310,12 @@ private GameLogic game;
 
     @FXML
     public void playerOneEndTurn(){
-      // game.turnTracker(1);
+        if(game.checkForBust(game.p1.score) == true){
+            System.out.println("Player 1 has gone bust! Player 2 wins the round!");
+            game.p2.roundsWon++;
+            game.endOfRound = true;
+            game.compareRounds();
+        }
 
        if(game.p2.hasStood == true) {
 
@@ -352,7 +369,12 @@ private GameLogic game;
 
     @FXML
     public void playerTwoEndTurn(){
-        //game.turnTracker(2);
+        if(game.checkForBust(game.p2.score) == true){
+            System.out.println("Player 2 has gone bust! Player 1 wins the round!");
+            game.p1.roundsWon++;
+            game.endOfRound = true;
+            game.compareRounds();
+        }
 
         if(game.p1.hasStood == true) {
             game.turnTracker(1);
