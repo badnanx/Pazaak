@@ -264,6 +264,17 @@ private GameLogic game;
         playerTwoScore.setText("20");
     }
 
+    @FXML public void p1ForfeitGame(){
+        System.out.println("Player 1 forfeits the game.");
+        game.gameOver = true;
+
+    }
+
+    @FXML public void p2ForfeitGame(){
+        System.out.println("Player 2 forfeits the game.");
+        game.gameOver = true;
+    }
+
     @FXML
     public void p1Stand(){
         game.p1.hasStood = true;
@@ -272,6 +283,7 @@ private GameLogic game;
         if(game.checkForBust(game.p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
             game.p2.roundsWon++;
+            game.p2.wonRound = true;
             game.endOfRound = true;
             game.compareRounds();
         }
@@ -294,6 +306,7 @@ private GameLogic game;
         if(game.checkForBust(game.p2.score) == true){
             System.out.println("Player 2 has gone bust! Player 1 wins the round!");
             game.p1.roundsWon++;
+            game.p1.wonRound = true;
             game.endOfRound = true;
             game.compareRounds();
         }
@@ -313,6 +326,7 @@ private GameLogic game;
         if(game.checkForBust(game.p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
             game.p2.roundsWon++;
+            game.p2.wonRound = true;
             game.endOfRound = true;
             game.compareRounds();
         }
@@ -330,13 +344,6 @@ private GameLogic game;
            // idea: player one's buttons should be disabled if it's not their turn
        }
 
-
-
-        /**
-         * Note: code will need some rework once 'Stand'
-         *          functionality is implemented.
-         *          Player indicator should turn and stay yellow if they 'Stand'
-         */
 
        // playerTwoTurnLight();
        // timer();
@@ -372,6 +379,7 @@ private GameLogic game;
         if(game.checkForBust(game.p2.score) == true){
             System.out.println("Player 2 has gone bust! Player 1 wins the round!");
             game.p1.roundsWon++;
+            game.p1.wonRound = true;
             game.endOfRound = true;
             game.compareRounds();
         }
@@ -389,11 +397,7 @@ private GameLogic game;
             // idea: player one's buttons should be disabled if it's not their turn
         }
 
-        /**
-         * Note: code will need some rework once 'Stand'
-         *          functionality is implemented.
-         *          Player indicator should turn and stay yellow if they 'Stand'
-         */
+
 
         // playerOneTurnLight();
         // timer();
