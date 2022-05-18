@@ -32,12 +32,12 @@ public class GameLogic {
         if(currentPlayer == 1)
         {
             whoseTurnIsIt = 2;
-            System.out.println("DEBUG: Currently player 2's turn.");
+            System.out.println("DEBUG: Currently player " + whoseTurnIsIt + "'s turn.");
         }
         else
         {
             whoseTurnIsIt = 1;
-            System.out.println("DEBUG: Currently player 1's turn.");
+            System.out.println("DEBUG: Currently player " + whoseTurnIsIt + "'s turn.");
         }
     }
 
