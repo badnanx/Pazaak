@@ -22,7 +22,7 @@ import java.net.URL;
 import java.util.*;
 
 public class SceneController implements Initializable{
-private GameLogic game;
+    // removed GameLogic initializer because it is a Singleton and doesn't get initialized
 
     public Hand p1Hand = new Hand();
     public Hand p2Hand = new Hand();
@@ -120,11 +120,20 @@ private GameLogic game;
     public Text p2TextThree;
     @FXML
     public Text p2TextFour;
+
     /**
-     * Hand buttons setup, for playing each card individually
+     * Player Score UI Setup
      */
+    @FXML
+    private Text playerOneScoreText;
+    @FXML
+    private Text playerTwoScoreText;
+    public static Text playerOneScoreTextStatic;
+    public static Text playerTwoScoreTextStatic;
 
-
+    /**
+     * Player Hand containers
+     */
     public List<Card> p1HandCards;
 
     public List<Card> p2HandCards;
@@ -140,9 +149,7 @@ private GameLogic game;
         initialize();
     }
     public void initialize(){
-// create instance of game logic
-    //
-        game = new GameLogic();
+        //GameLogic is a Singleton and doesn't get initialized until it is used for the first time
 
         // We have to create static references to these texts in order to make them appear properly at runtime
         p1TextOneStatic = p1TextOne;
@@ -165,40 +172,24 @@ private GameLogic game;
         p2RectThreeStatic = p2RectThree;
         p2RectFourStatic = p2RectFour;
 
+        //assigning static variables to Score text UI to change at runtime
+        playerOneScoreTextStatic = playerOneScoreText;
+        playerTwoScoreTextStatic = playerTwoScoreText;
+
     }
 
+
     /**
-    private StackPane createHandCardPane(Card card, Text textToSet, Rectangle rectToSet){
-        textToSet = card.text;
-        rectToSet = card.rectangle;
-        StackPane pane = createCardPane(textToSet, rectToSet);
-        return pane;
-    }
-    /**
-     * This only gets used by CreateHand method in order to fill the StackPane with the card UI elements
-     * @param text, rect
-     * @return StackPane
+     * Using Texts instead of textfields for the score so they can't be changed by the player
+     */
+    //@FXML
+    //private TextField playerOneScore;
 
-    private StackPane createCardPane(Text text, Rectangle rect){
-        StackPane cardPane = new StackPane();
-        cardPane.getChildren().addAll(text,rect);
-        return cardPane;
-    }*/
-
-
-
-    @FXML
-    private TextField playerOneScore;
-
-    @FXML
-    private TextField playerTwoScore;
+    //@FXML
+    //private TextField playerTwoScore;
 
     private TextField gameTimer;
     private TextField timerUpdate;
-
-    @FXML
-    private Button flipBotton;
-
 
     @FXML
     private Label visualTimer;
@@ -217,10 +208,14 @@ private GameLogic game;
     private Rectangle topRight;
 
 
+    /**
+     * This method was for testing purposes
+     */
+    /*
    @FXML
     public void cardColorChange(){
         topRight.setFill(Color.YELLOW);
-    }
+    }*/
 
 
     public void SwitchtoWelcomeScene(ActionEvent actionEvent) throws IOException {
@@ -256,88 +251,94 @@ private GameLogic game;
 //        }, 1000, 1000);
 //    }
 
+    /**
+     * This method for testing purposes only
+     */
+    /*
     @FXML
     public void buttonTest(){
         System.out.println("worked");
 
         playerOneScore.setText("3");
         playerTwoScore.setText("20");
-    }
+    }*/
 
     @FXML public void p1ForfeitGame(){
         System.out.println("Player 1 forfeits the game.");
-        game.gameOver = true;
+        GameLogic.getInstance().gameOver = true;
 
     }
 
     @FXML public void p2ForfeitGame(){
         System.out.println("Player 2 forfeits the game.");
-        game.gameOver = true;
+        GameLogic.getInstance().gameOver = true;
     }
 
     @FXML
     public void p1Stand(){
-        game.p1.hasStood = true;
+        GameLogic.getInstance().p1.hasStood = true;
         playerOneTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 1 has stood.");
-        if(game.checkForBust(game.p1.score) == true){
+        if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
-            game.p2.roundsWon++;
-            game.p2.wonRound = true;
-            game.endOfRound = true;
-            game.compareRounds();
+            GameLogic.getInstance().p2.roundsWon++;
+            GameLogic.getInstance().p2.wonRound = true;
+            GameLogic.getInstance().endOfRound = true;
+            GameLogic.getInstance().compareRounds();
         }
 
-        if(game.p2.hasStood == true){
+        if(GameLogic.getInstance().p2.hasStood == true){
             System.out.println("Both players have stood.");
-            game.compareScores(game.p1.score, game.p2.score);
+            GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
         } else{
             playerTwoTurnIndicator.setFill(Color.GREEN);
-            game.turnTracker(1);
+            GameLogic.getInstance().turnTracker(1);
         }
         // idea: make player 1's buttons/actions disabled upon stand
+        // this is a good idea, look for a way to implement it, I believe that buttons have a function or something
+        // that can disable the functionality temporarily
     }
 
     @FXML
     public void p2Stand(){
-        game.p2.hasStood = true;
+        GameLogic.getInstance().p2.hasStood = true;
         playerTwoTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 2 has stood.");
-        if(game.checkForBust(game.p2.score) == true){
+        if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p2.score) == true){
             System.out.println("Player 2 has gone bust! Player 1 wins the round!");
-            game.p1.roundsWon++;
-            game.p1.wonRound = true;
-            game.endOfRound = true;
-            game.compareRounds();
+            GameLogic.getInstance().p1.roundsWon++;
+            GameLogic.getInstance().p1.wonRound = true;
+            GameLogic.getInstance().endOfRound = true;
+            GameLogic.getInstance().compareRounds();
         }
 
-        if(game.p1.hasStood == true){
+        if(GameLogic.getInstance().p1.hasStood == true){
             System.out.println("Both players have stood.");
-            game.compareScores(game.p1.score, game.p2.score);
+            GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
         } else{
             playerOneTurnIndicator.setFill(Color.GREEN);
-            game.turnTracker(2);
+            GameLogic.getInstance().turnTracker(2);
         }
         // idea: make player 2's buttons/actions disabled upon stand
     }
 
     @FXML
     public void playerOneEndTurn(){
-        if(game.checkForBust(game.p1.score) == true){
+        if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
-            game.p2.roundsWon++;
-            game.p2.wonRound = true;
-            game.endOfRound = true;
-            game.compareRounds();
+            GameLogic.getInstance().p2.roundsWon++;
+            GameLogic.getInstance().p2.wonRound = true;
+            GameLogic.getInstance().endOfRound = true;
+            GameLogic.getInstance().compareRounds();
         }
 
-       if(game.p2.hasStood == true) {
+       if(GameLogic.getInstance().p2.hasStood == true) {
 
-           game.turnTracker(2);
+           GameLogic.getInstance().turnTracker(2);
            playerOneTurnIndicator.setFill(Color.GREEN);
            // some sort of 'continue play' loop would be good here
        } else{
-           game.turnTracker(1);
+           GameLogic.getInstance().turnTracker(1);
            playerOneTurnIndicator.setFill(Color.RED);
            playerTwoTurnIndicator.setFill(Color.GREEN);
            // some kind of gameplay loop would be good here
@@ -348,6 +349,23 @@ private GameLogic game;
        // playerTwoTurnLight();
        // timer();
 
+    }
+
+    /**
+     * This kind of method is pretty typical in UI based programs, every time an action is taken this method should run
+     * any methods that update UI, such as when player scores change, or other specific examples we haven't run across
+     * yet.
+     */
+    public void updateUI(){
+       updatePlayerScoresUI();
+    }
+
+    /**
+     * Every time an action is taken we can run this method in order to update each player's score UI.
+     */
+    private void updatePlayerScoresUI(){
+       playerOneScoreTextStatic.setText(Integer.toString(GameLogic.getInstance().p1.score));
+       playerTwoScoreTextStatic.setText(Integer.toString(GameLogic.getInstance().p2.score));
     }
 
 //    public void playerOneTurnLight(){
@@ -376,21 +394,21 @@ private GameLogic game;
 
     @FXML
     public void playerTwoEndTurn(){
-        if(game.checkForBust(game.p2.score) == true){
+        if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p2.score) == true){
             System.out.println("Player 2 has gone bust! Player 1 wins the round!");
-            game.p1.roundsWon++;
-            game.p1.wonRound = true;
-            game.endOfRound = true;
-            game.compareRounds();
+            GameLogic.getInstance().p1.roundsWon++;
+            GameLogic.getInstance().p1.wonRound = true;
+            GameLogic.getInstance().endOfRound = true;
+            GameLogic.getInstance().compareRounds();
         }
 
-        if(game.p1.hasStood == true) {
-            game.turnTracker(1);
+        if(GameLogic.getInstance().p1.hasStood == true) {
+            GameLogic.getInstance().turnTracker(1);
             playerTwoTurnIndicator.setFill(Color.GREEN);
             // some sort of 'continue play' loop would be good here
         } else{
 
-            game.turnTracker(2);
+            GameLogic.getInstance().turnTracker(2);
             playerTwoTurnIndicator.setFill(Color.RED);
             playerOneTurnIndicator.setFill(Color.GREEN);
             // some kind of gameplay loop would be good here

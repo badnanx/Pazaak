@@ -1,7 +1,14 @@
 package com.team3.cs210finalprojectteam3;
 
-
+/**
+ * This will be a Singleton class that can be used to track player data and the logic behind the scenes
+ *
+ * Call on this by typing GameLogic.getInstance().whateverVariableIsInGameLogic, or
+ * GameLogic.getInstance().anyMethodWithinGameLogic()
+ */
 public class GameLogic {
+    // Static variable of GameLogic that acts like a global variable in a way
+    private static GameLogic game = null;
 
     private final int BUST_LIMIT = 20;
     private final int WIN_LIMIT = 3;
@@ -13,6 +20,11 @@ public class GameLogic {
 
 
    // constructor method, creates new game
+
+    /**
+     * The constructor method works the same in a Singleton, we just have to access it differently, and in a way
+     * that we only ever instantiate a single GameLogic object while the program is running
+     */
     public GameLogic()
     {
         // fresh game
@@ -24,6 +36,18 @@ public class GameLogic {
         // creating player objects
         p1 = new Player();
         p2 = new Player();
+    }
+
+    /**
+     * Here is where we get our GameLogic singleton object, and we either create a new one if one doesn't exist,
+     * or use the current one. Two may never exist.
+     * @return
+     */
+    public static GameLogic getInstance(){
+        if(game == null){
+            game = new GameLogic();
+        }
+        return game;
     }
 
     // tracks whose turn it is;

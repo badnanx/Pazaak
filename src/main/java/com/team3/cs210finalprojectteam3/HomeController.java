@@ -69,7 +69,8 @@ public class HomeController extends SceneController {
         p2TextThreeStatic.setText(p2TextThree.getText());
         p2TextFourStatic.setText(p2TextFour.getText());
 
-
+        // just a placeholder to test functionality of score UI updating
+        updateUI();
     }
 
 }
