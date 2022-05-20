@@ -36,7 +36,7 @@ public class GameLogic {
         System.out.println("DEBUG: Starting new game with player 1 goes first.");
         //SceneController.playerOneTurnIndicator.setFill(Color.GREEN);
         endOfRound = false;
-        gameOver = false;
+        gameOver = false; // redundant?
 
         // creating player objects
         p1 = new Player();
@@ -55,7 +55,12 @@ public class GameLogic {
         return game;
     }
 
-    // tracks whose turn it is;
+
+
+    /**
+     * Tracks whose turn it is.
+     * @param currentPlayer
+     */
     public void turnTracker(int currentPlayer)
     {
         if(currentPlayer == 1)
@@ -70,15 +75,23 @@ public class GameLogic {
         }
     }
 
-    // checks for bust
+    /**
+     * Checks for bust
+     * @param score the player's score
+     * @return returns true or false
+     */
     public boolean checkForBust(int score)
     {
         return score > BUST_LIMIT;
     }
 
 
-
-
+    /**
+     * Compares player scores to see who won the round.
+     * Note: compareRounds() is embedded in compareScores(int, int).
+     * @param p1Score player 1's score
+     * @param p2Score player 2's score
+     */
     public void compareScores(int p1Score, int p2Score)
     {
         System.out.println("Round over. Comparing scores...");
@@ -107,18 +120,23 @@ public class GameLogic {
             endOfRound = true;
             // insert some fxn that resets scores and flags
         }
-        compareRounds();
+        didP1orP2WinGame();
     }
 
-    public void compareRounds(){
+    /**
+     * Checks if player has won the game.
+     */
+    public void didP1orP2WinGame(){
         if(p1.roundsWon == WIN_LIMIT){
-            System.out.println("Player One wins the game!");
-            gameOver = true;
+            System.out.println("Player 1 wins the game!");
+            p1.wonGame = true;
+            gameOver = true; // redundant?
             // popup window indicating victor?
             // insert some fxn that starts a new game?
         } else if(p2.roundsWon == WIN_LIMIT){
-            System.out.println("Player Two wins the game!");
-            gameOver = true;
+            System.out.println("Player 2 wins the game!");
+            p2.wonGame = true;
+            gameOver = true; // redundant?
             // popup indicating victor?
             // insert some fxn that starts a new game?
         }

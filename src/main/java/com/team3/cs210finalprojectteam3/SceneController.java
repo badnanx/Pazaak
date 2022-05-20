@@ -342,7 +342,6 @@ public class SceneController implements Initializable{
     }
 
 
-
     private TextField gameTimer;
     private TextField timerUpdate;
 
@@ -364,16 +363,21 @@ public class SceneController implements Initializable{
 
     }
 
+    // code for game mechanics starts here
 
     @FXML public void p1ForfeitGame(){
         System.out.println("Player 1 forfeits the game.");
+        GameLogic.getInstance().p2.wonGame = true;
         GameLogic.getInstance().gameOver = true;
+
 
     }
 
     @FXML public void p2ForfeitGame(){
         System.out.println("Player 2 forfeits the game.");
+        GameLogic.getInstance().p1.wonGame = true;
         GameLogic.getInstance().gameOver = true;
+
     }
 
     @FXML
@@ -386,7 +390,7 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().compareRounds();
+            GameLogic.getInstance().didP1orP2WinGame();
         }
 
         if(GameLogic.getInstance().p2.hasStood == true){
@@ -411,7 +415,7 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().compareRounds();
+            GameLogic.getInstance().didP1orP2WinGame();
         }
 
         if(GameLogic.getInstance().p1.hasStood == true){
@@ -431,7 +435,7 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().compareRounds();
+            GameLogic.getInstance().didP1orP2WinGame();
         }
 
        if(GameLogic.getInstance().p2.hasStood == true) {
@@ -475,7 +479,7 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().compareRounds();
+            GameLogic.getInstance().didP1orP2WinGame();
         }
 
         if(GameLogic.getInstance().p1.hasStood == true) {
