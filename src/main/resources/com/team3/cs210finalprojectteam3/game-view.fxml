@@ -37,7 +37,7 @@
                   <StackPane fx:id="p1HandCardTwo" onMouseClicked="#passInfoToP1Field" prefHeight="72.0" prefWidth="60.0" style="-fx-background-color: #d0d2d3;" GridPane.columnIndex="1">
                      <children>
                         <Rectangle fx:id="p1RectTwo" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                        <Text fx:id="p1TextTwo" onMouseClicked="#passInfoToP1Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text fx:id="p1TextTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </StackPane>
                   <StackPane fx:id="p1HandCardThree" onMouseClicked="#passInfoToP1Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;" GridPane.columnIndex="2">
