@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -21,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team3.cs210finalprojectteam3.SceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team3.cs210finalprojectteam3.SceneController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -50,14 +44,14 @@
                   <StackPane id="P1Card1" fx:id="p1HandCardOne" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                      <children>
                         <Rectangle fx:id="p1RectOne" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                        <Text fx:id="p1TextOne" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text fx:id="p1TextOne" onMouseClicked="#passInfoToP1Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children></StackPane>
                   <StackPane id="P1Card2" fx:id="p1HandCardThree" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;" GridPane.columnIndex="2">
                      <children>
                         <StackPane id="P1Card1" fx:id="p1HandCardOne2" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
                               <Rectangle fx:id="p1RectThree" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                              <Text fx:id="p1TextThree" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="p1TextThree" onMouseClicked="#passInfoToP1Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
                      </children></StackPane>
@@ -66,7 +60,7 @@
                         <StackPane id="P1Card1" fx:id="p1HandCardOne1" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
                               <Rectangle fx:id="p1RectTwo" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                              <Text fx:id="p1TextTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="p1TextTwo" onMouseClicked="#passInfoToP1Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
                      </children></StackPane>
@@ -75,7 +69,7 @@
                         <StackPane id="P1Card1" fx:id="p1HandCardOne21" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
                               <Rectangle fx:id="p1RectFour" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                              <Text fx:id="p1TextFour" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="p1TextFour" onMouseClicked="#passInfoToP1Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
                      </children></StackPane>
@@ -86,20 +80,56 @@
                   <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                </font>
             </Label>
-            <Rectangle fx:id="topRight" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectOne" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectTwo" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectThree" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectFour" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectFive" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectSix" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectSeven" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="24.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectEight" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="75.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p1FieldCardRectNine" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="126.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Label layoutX="62.0" layoutY="238.0" prefHeight="17.0" prefWidth="90.0" text="Player 1 Hand" />
             <Button layoutX="26.0" layoutY="362.0" mnemonicParsing="false" onAction="#playerOneEndTurn" text="End" />
             <Button layoutX="73.0" layoutY="361.0" mnemonicParsing="false" onAction="#p1Stand" text="Stand" />
             <Button layoutX="133.0" layoutY="361.0" mnemonicParsing="false" onAction="#p1ForfeitGame" text="Forfeit" />
             <Circle fx:id="playerOneTurnIndicator" fill="#ff232e" layoutX="145.0" layoutY="26.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fx:id="p1FieldCardTextOne" layoutX="32.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text fx:id="p1FieldCardTextTwo" layoutX="84.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text fx:id="p1FieldCardTextThree" layoutX="134.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text fx:id="p1FieldCardTextFour" layoutX="32.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text fx:id="p1FieldCardTextFive" layoutX="83.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text fx:id="p1FieldCardTextSix" layoutX="134.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text fx:id="p1FieldCardTextSeven" layoutX="32.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text fx:id="p1FieldCardTextEight" layoutX="83.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text fx:id="p1FieldCardTextNine" layoutX="134.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" " textAlignment="CENTER" wrappingWidth="29.666015625">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
          </children>
       </AnchorPane>
    </left>
@@ -112,15 +142,15 @@
                   <Font name="Apple SD Gothic Neo Regular" size="18.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectOne" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectTwo" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectThree" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectFour" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectFive" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectSix" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectSeven" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="22.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectEight" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="73.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+            <Rectangle fx:id="p2FieldCardRectNine" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="57.0" layoutX="124.0" layoutY="180.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
             <Label layoutX="62.0" layoutY="238.0" text="Player 2 Hand" />
             <Button layoutX="24.0" layoutY="361.0" mnemonicParsing="false" onAction="#playerTwoEndTurn" text="End" />
             <Button layoutX="71.0" layoutY="360.0" mnemonicParsing="false" onAction="#p2Stand" text="Stand" />
@@ -146,7 +176,7 @@
                   <StackPane id="P1Card1" fx:id="p1HandCardOne1" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                      <children>
                         <Rectangle fx:id="p2RectOne" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                        <Text fx:id="p2TextOne" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text fx:id="p2TextOne" onMouseClicked="#passInfoToP2Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </StackPane>
                   <StackPane id="P1Card2" fx:id="p1HandCardThree1" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;" GridPane.columnIndex="2">
@@ -154,7 +184,7 @@
                         <StackPane id="P1Card1" fx:id="p1HandCardOne21" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
                               <Rectangle fx:id="p2RectThree" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                              <Text fx:id="p2TextThree" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="p2TextThree" onMouseClicked="#passInfoToP2Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
                      </children>
@@ -164,7 +194,7 @@
                         <StackPane id="P1Card1" fx:id="p1HandCardOne11" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
                               <Rectangle fx:id="p2RectTwo" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                              <Text fx:id="p2TextTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="p2TextTwo" onMouseClicked="#passInfoToP2Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
                      </children>
@@ -174,7 +204,7 @@
                         <StackPane id="P1Card1" fx:id="p1HandCardOne211" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #d0d2d3;">
                            <children>
                               <Rectangle fx:id="p2RectFour" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                              <Text fx:id="p2TextFour" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="p2TextFour" onMouseClicked="#passInfoToP2Field" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </StackPane>
                      </children>
@@ -190,6 +220,51 @@
                   <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
+            <Text fx:id="p2FieldCardTextOne" layoutX="29.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2FieldCardTextTwo" layoutX="81.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2FieldCardTextThree" layoutX="132.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2FieldCardTextFour" layoutX="29.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2FieldCardTextFive" layoutX="81.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2FieldCardTextSix" layoutX="132.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2FieldCardTextSeven" layoutX="29.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2FieldCardTextEight" layoutX="81.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2FieldCardTextNine" layoutX="132.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </right>

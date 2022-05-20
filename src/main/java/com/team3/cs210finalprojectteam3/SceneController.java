@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -22,6 +23,12 @@ import java.net.URL;
 import java.util.*;
 
 public class SceneController implements Initializable{
+
+    public static int p1Count = 0;
+    public static int p2Count = 0;
+
+
+
     // removed GameLogic initializer because it is a Singleton and doesn't get initialized
 
     public Hand p1Hand = new Hand();
@@ -32,70 +39,158 @@ public class SceneController implements Initializable{
     /**
      * Hand panes
      */
-    @FXML
-    private StackPane p1HandCardOne;
-    @FXML
-    public StackPane p1HandCardTwo;
-    @FXML
-    private StackPane p1HandCardThree;
-    @FXML
-    private StackPane p1HandCardFour;
-    @FXML
-    private StackPane p2HandCardOne;
-    @FXML
-    private StackPane p2HandCardTwo;
-    @FXML
-    private StackPane p2HandCardThree;
-    @FXML
-    private StackPane p2HandCardFour;
+    @FXML private StackPane p1HandCardOne;
+    @FXML public StackPane p1HandCardTwo;
+    @FXML private StackPane p1HandCardThree;
+    @FXML private StackPane p1HandCardFour;
+    @FXML private StackPane p2HandCardOne;
+    @FXML private StackPane p2HandCardTwo;
+    @FXML private StackPane p2HandCardThree;
+    @FXML private StackPane p2HandCardFour;
+//--------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------
+    public List<Rectangle> p1FieldCardRects;
+    public List<Text> p1FieldCardTexts;
+
+    public List<Rectangle> p2FieldCardRects;
+    public List<Text> p2FieldCardTexts;
+
+
+
+//-----------------------------------------------------------------
+    @FXML public Rectangle p2FieldCardRectOne;
+    @FXML public Rectangle p2FieldCardRectTwo;
+    @FXML public Rectangle p2FieldCardRectThree;
+    @FXML public Rectangle p2FieldCardRectFour;
+    @FXML public Rectangle p2FieldCardRectFive;
+    @FXML public Rectangle p2FieldCardRectSix;
+    @FXML public Rectangle p2FieldCardRectSeven;
+    @FXML public Rectangle p2FieldCardRectEight;
+    @FXML public Rectangle p2FieldCardRectNine;
+
+    public static Rectangle p2FieldCardRectOneStatic;
+    public static Rectangle p2FieldCardRectTwoStatic;
+    public static Rectangle p2FieldCardRectThreeStatic;
+    public static Rectangle p2FieldCardRectFourStatic;
+    public static Rectangle p2FieldCardRectFiveStatic;
+    public static Rectangle p2FieldCardRectSixStatic;
+    public static Rectangle p2FieldCardRectSevenStatic;
+    public static Rectangle p2FieldCardRectEightStatic;
+    public static Rectangle p2FieldCardRectNineStatic;
+
+//--------------------------------------------------------------------------
+    @FXML public Text p2FieldCardTextOne;
+    @FXML public Text p2FieldCardTextTwo;
+    @FXML public Text p2FieldCardTextThree;
+    @FXML public Text p2FieldCardTextFour;
+    @FXML public Text p2FieldCardTextFive;
+    @FXML public Text p2FieldCardTextSix;
+    @FXML public Text p2FieldCardTextSeven;
+    @FXML public Text p2FieldCardTextEight;
+    @FXML public Text p2FieldCardTextNine;
+
+
+    public static Text p2FieldCardOneTextStatic;
+    public static Text p2FieldCardTwoTextStatic;
+    public static Text p2FieldCardThreeTextStatic;
+    public static Text p2FieldCardFourTextStatic;
+    public static Text p2FieldCardFiveTextStatic;
+    public static Text p2FieldCardSixTextStatic;
+    public static Text p2FieldCardSevenTextStatic;
+    public static Text p2FieldCardEightTextStatic;
+    public static Text p2FieldCardNineTextStatic;
+
+
+//--------------------------------------------------------
+
+    @FXML public Rectangle p1FieldCardRectOne;
+    @FXML public Rectangle p1FieldCardRectTwo;
+    @FXML public Rectangle p1FieldCardRectThree;
+    @FXML public Rectangle p1FieldCardRectFour;
+    @FXML public Rectangle p1FieldCardRectFive;
+    @FXML public Rectangle p1FieldCardRectSix;
+    @FXML public Rectangle p1FieldCardRectSeven;
+    @FXML public Rectangle p1FieldCardRectEight;
+    @FXML public Rectangle p1FieldCardRectNine;
+
+    public static Rectangle p1FieldCardRectOneStatic;
+    public static Rectangle p1FieldCardRectTwoStatic;
+    public static Rectangle p1FieldCardRectThreeStatic;
+    public static Rectangle p1FieldCardRectFourStatic;
+    public static Rectangle p1FieldCardRectFiveStatic;
+    public static Rectangle p1FieldCardRectSixStatic;
+    public static Rectangle p1FieldCardRectSevenStatic;
+    public static Rectangle p1FieldCardRectEightStatic;
+    public static Rectangle p1FieldCardRectNineStatic;
+
+//--------------------------------------------------------------------------
+    @FXML public Text p1FieldCardTextOne;
+    @FXML public Text p1FieldCardTextTwo;
+    @FXML public Text p1FieldCardTextThree;
+    @FXML public Text p1FieldCardTextFour;
+    @FXML public Text p1FieldCardTextFive;
+    @FXML public Text p1FieldCardTextSix;
+    @FXML public Text p1FieldCardTextSeven;
+    @FXML public Text p1FieldCardTextEight;
+    @FXML public Text p1FieldCardTextNine;
+
+
+    public static Text p1FieldCardOneTextStatic;
+    public static Text p1FieldCardTwoTextStatic;
+    public static Text p1FieldCardThreeTextStatic;
+    public static Text p1FieldCardFourTextStatic;
+    public static Text p1FieldCardFiveTextStatic;
+    public static Text p1FieldCardSixTextStatic;
+    public static Text p1FieldCardSevenTextStatic;
+    public static Text p1FieldCardEightTextStatic;
+    public static Text p1FieldCardNineTextStatic;
+
+
+    //--------------------------------------------------------------------------
+
+
     /**
      * Hand Rectangles
      */
 
 //----------------------------------------------------------
 
+    @FXML public Rectangle p1RectOne;
+    @FXML public Rectangle p1RectTwo;
+    @FXML public Rectangle p1RectThree;
+    @FXML public Rectangle p1RectFour;
+
+    @FXML public Rectangle p2RectOne;
+    @FXML public Rectangle p2RectTwo;
+    @FXML public Rectangle p2RectThree;
+    @FXML public Rectangle p2RectFour;
+
     public static Rectangle p1RectOneStatic;
-
     public static Rectangle p1RectTwoStatic;
-
     public static Rectangle p1RectThreeStatic;
-
     public static Rectangle p1RectFourStatic;
-
     public static Rectangle p2RectOneStatic;
-
     public static Rectangle p2RectTwoStatic;
-
     public static Rectangle p2RectThreeStatic;
-
     public static Rectangle p2RectFourStatic;
 
-
-   //...
-
-
-    @FXML
-    public Rectangle p1RectOne;
-    @FXML
-    public Rectangle p1RectTwo;
-    @FXML
-    public Rectangle p1RectThree;
-    @FXML
-    public Rectangle p1RectFour;
-    @FXML
-    public Rectangle p2RectOne;
-    @FXML
-    public Rectangle p2RectTwo;
-    @FXML
-    public Rectangle p2RectThree;
-    @FXML
-    public Rectangle p2RectFour;
 
 //----------------------------------------------------------
 
     /**
      * Hand Text
      */
+
+    @FXML public Text p1TextOne;
+    @FXML public Text p1TextTwo;
+    @FXML public Text p1TextThree;
+    @FXML public Text p1TextFour;
+    @FXML public Text p2TextOne;
+    @FXML public Text p2TextTwo;
+    @FXML public Text p2TextThree;
+    @FXML public Text p2TextFour;
+
     public static Text p1TextOneStatic;
     public static Text p2TextOneStatic;
     public static Text p1TextTwoStatic;
@@ -104,30 +199,14 @@ public class SceneController implements Initializable{
     public static Text p2TextThreeStatic;
     public static Text p1TextFourStatic;
     public static Text p2TextFourStatic;
-    @FXML
-    public Text p1TextOne;
-    @FXML
-    public Text p1TextTwo;
-    @FXML
-    public Text p1TextThree;
-    @FXML
-    public Text p1TextFour;
-    @FXML
-    public Text p2TextOne;
-    @FXML
-    public Text p2TextTwo;
-    @FXML
-    public Text p2TextThree;
-    @FXML
-    public Text p2TextFour;
+//----------------------------------------------------------
+
 
     /**
      * Player Score UI Setup
      */
-    @FXML
-    private Text playerOneScoreText;
-    @FXML
-    private Text playerTwoScoreText;
+    @FXML private Text playerOneScoreText;
+    @FXML private Text playerTwoScoreText;
     public static Text playerOneScoreTextStatic;
     public static Text playerTwoScoreTextStatic;
 
@@ -149,6 +228,64 @@ public class SceneController implements Initializable{
         initialize();
     }
     public void initialize(){
+
+
+        //p1Field---------------------------------------------------------------
+        p1FieldCardRects = new ArrayList<Rectangle>(9);
+        p1FieldCardTexts = new ArrayList<Text>(9);
+
+
+
+        p1FieldCardRects.add(p1FieldCardRectOne);
+        p1FieldCardRects.add(p1FieldCardRectTwo);
+        p1FieldCardRects.add(p1FieldCardRectThree);
+        p1FieldCardRects.add(p1FieldCardRectFour);
+        p1FieldCardRects.add(p1FieldCardRectFive);
+        p1FieldCardRects.add(p1FieldCardRectSix);
+        p1FieldCardRects.add(p1FieldCardRectSeven);
+        p1FieldCardRects.add(p1FieldCardRectEight);
+        p1FieldCardRects.add(p1FieldCardRectNine);
+
+        p1FieldCardTexts.add(p1FieldCardTextOne);
+        p1FieldCardTexts.add(p1FieldCardTextTwo);
+        p1FieldCardTexts.add(p1FieldCardTextThree);
+        p1FieldCardTexts.add(p1FieldCardTextFour);
+        p1FieldCardTexts.add(p1FieldCardTextFive);
+        p1FieldCardTexts.add(p1FieldCardTextSix);
+        p1FieldCardTexts.add(p1FieldCardTextSeven);
+        p1FieldCardTexts.add(p1FieldCardTextEight);
+        p1FieldCardTexts.add(p1FieldCardTextNine);
+
+        //p2Field---------------------------------------------------------------
+
+        p2FieldCardRects = new ArrayList<Rectangle>(9);
+        p2FieldCardTexts = new ArrayList<Text>(9);
+
+
+
+        p2FieldCardRects.add(p2FieldCardRectOne);
+        p2FieldCardRects.add(p2FieldCardRectTwo);
+        p2FieldCardRects.add(p2FieldCardRectThree);
+        p2FieldCardRects.add(p2FieldCardRectFour);
+        p2FieldCardRects.add(p2FieldCardRectFive);
+        p2FieldCardRects.add(p2FieldCardRectSix);
+        p2FieldCardRects.add(p2FieldCardRectSeven);
+        p2FieldCardRects.add(p2FieldCardRectEight);
+        p2FieldCardRects.add(p2FieldCardRectNine);
+
+        p2FieldCardTexts.add(p2FieldCardTextOne);
+        p2FieldCardTexts.add(p2FieldCardTextTwo);
+        p2FieldCardTexts.add(p2FieldCardTextThree);
+        p2FieldCardTexts.add(p2FieldCardTextFour);
+        p2FieldCardTexts.add(p2FieldCardTextFive);
+        p2FieldCardTexts.add(p2FieldCardTextSix);
+        p2FieldCardTexts.add(p2FieldCardTextSeven);
+        p2FieldCardTexts.add(p2FieldCardTextEight);
+        p2FieldCardTexts.add(p2FieldCardTextNine);
+
+
+
+        //----------------------------------------------------------------------
         //GameLogic is a Singleton and doesn't get initialized until it is used for the first time
 
         // We have to create static references to these texts in order to make them appear properly at runtime
@@ -176,46 +313,45 @@ public class SceneController implements Initializable{
         playerOneScoreTextStatic = playerOneScoreText;
         playerTwoScoreTextStatic = playerTwoScoreText;
 
+        // Field Card Text
+
+        p1FieldCardOneTextStatic = p1FieldCardTextOne;
+        p1FieldCardTwoTextStatic = p1FieldCardTextTwo;
+        p1FieldCardThreeTextStatic = p1FieldCardTextThree;
+        p1FieldCardFourTextStatic = p1FieldCardTextFour;
+        p1FieldCardFiveTextStatic = p1FieldCardTextFive;
+        p1FieldCardSixTextStatic = p1FieldCardTextSix;
+        p1FieldCardSevenTextStatic = p1FieldCardTextSeven;
+        p1FieldCardEightTextStatic = p1FieldCardTextEight;
+        p1FieldCardNineTextStatic =  p1FieldCardTextNine;
+
+        // Field Card Rectangle
+
+        p1FieldCardRectOneStatic = p1FieldCardRectOne;
+        p1FieldCardRectTwoStatic = p1FieldCardRectTwo;
+        p1FieldCardRectThreeStatic = p1FieldCardRectThree;
+        p1FieldCardRectFourStatic = p1FieldCardRectFour;
+        p1FieldCardRectFiveStatic = p1FieldCardRectFive;
+        p1FieldCardRectSixStatic = p1FieldCardRectSix;
+        p1FieldCardRectSevenStatic = p1FieldCardRectSeven;
+        p1FieldCardRectEightStatic = p1FieldCardRectEight;
+        p1FieldCardRectNineStatic = p1FieldCardRectNine;
+
+
+
     }
 
 
-    /**
-     * Using Texts instead of textfields for the score so they can't be changed by the player
-     */
-    //@FXML
-    //private TextField playerOneScore;
-
-    //@FXML
-    //private TextField playerTwoScore;
 
     private TextField gameTimer;
     private TextField timerUpdate;
 
     @FXML
     private Label visualTimer;
+    @FXML private Button playerOneEndButton;
+    @FXML private Circle playerTwoTurnIndicator;
+    @FXML private Circle playerOneTurnIndicator;
 
-    @FXML
-    private Button playerOneEndButton;
-
-    @FXML
-    private Circle playerTwoTurnIndicator;
-
-    @FXML
-    private Circle playerOneTurnIndicator;
-
-
-    @FXML
-    private Rectangle topRight;
-
-
-    /**
-     * This method was for testing purposes
-     */
-    /*
-   @FXML
-    public void cardColorChange(){
-        topRight.setFill(Color.YELLOW);
-    }*/
 
 
     public void SwitchtoWelcomeScene(ActionEvent actionEvent) throws IOException {
@@ -228,40 +364,6 @@ public class SceneController implements Initializable{
 
     }
 
-//    public void timer(){
-//        Timer timer = new Timer();
-//        visualTimer = new Label();
-//
-//        timer.scheduleAtFixedRate(new TimerTask() {
-//            int i = 10;
-//
-//            @Override
-//            public void run() {
-//                visualTimer.setText(String.valueOf(i));
-//                i--;
-//
-//                if(i < 0){
-//                    timer.cancel();
-//                    //timerUpdate.setText("Next Player");
-//                    System.out.println("10!");
-//                }
-//
-//            }
-//
-//        }, 1000, 1000);
-//    }
-
-    /**
-     * This method for testing purposes only
-     */
-    /*
-    @FXML
-    public void buttonTest(){
-        System.out.println("worked");
-
-        playerOneScore.setText("3");
-        playerTwoScore.setText("20");
-    }*/
 
     @FXML public void p1ForfeitGame(){
         System.out.println("Player 1 forfeits the game.");
@@ -346,9 +448,6 @@ public class SceneController implements Initializable{
        }
 
 
-       // playerTwoTurnLight();
-       // timer();
-
     }
 
     /**
@@ -368,29 +467,6 @@ public class SceneController implements Initializable{
        playerTwoScoreTextStatic.setText(Integer.toString(GameLogic.getInstance().p2.score));
     }
 
-//    public void playerOneTurnLight(){
-//        playerOneTurnIndicator.setFill(Color.GREEN);
-//
-//        Timer lightTimer = new Timer();
-//        lightTimer.scheduleAtFixedRate(new TimerTask() {
-//            int i = 10;
-//
-//            @Override
-//            public void run() {
-//                i--;
-//
-//                if(i < 0){
-//                    lightTimer.cancel();
-//                    playerOneTurnIndicator.setFill(Color.RED);
-//
-//                }
-//
-//            }
-//
-//        }, 1000, 1000);
-//
-//
-//    }
 
     @FXML
     public void playerTwoEndTurn(){
@@ -416,39 +492,7 @@ public class SceneController implements Initializable{
         }
 
 
-
-        // playerOneTurnLight();
-        // timer();
-
     }
-
-//    public void playerTwoTurnLight(){
-//        playerTwoTurnIndicator.setFill(Color.GREEN);
-//
-//       Timer lightTimer = new Timer();
-//        lightTimer.scheduleAtFixedRate(new TimerTask() {
-//            int i = 10;
-//
-//            @Override
-//            public void run() {
-//                i--;
-//
-//                if(i < 0){
-//                    lightTimer.cancel();
-//                    playerTwoTurnIndicator.setFill(Color.RED);
-//
-//                }
-//
-//            }
-//
-//        }, 1000, 1000);
-//
-//
-//    }
-
-
-
-
 
 
     /**
@@ -464,8 +508,6 @@ public class SceneController implements Initializable{
 
     public void handCardColorChange(){
 
-
-
         int a = Integer.parseInt(p1TextOne.getText());
         int b = Integer.parseInt(p1TextTwo.getText());
         int c = Integer.parseInt(p1TextThree.getText());
@@ -474,12 +516,6 @@ public class SceneController implements Initializable{
         int f = Integer.parseInt(p2TextTwo.getText());
         int g = Integer.parseInt(p2TextThree.getText());
         int h = Integer.parseInt(p2TextFour.getText());
-
-
-       // List<Integer> val = Arrays.asList(a,b,c,d,e,f,g,h);
-       // System.out.println(val);
-
-
 
 
         //A--------------------------------------------
@@ -587,17 +623,53 @@ public class SceneController implements Initializable{
 
 
 
+
     }
 
+    //PlayingField field1 = new PlayingField();
+
+    public void passInfoToP1Field(MouseEvent event){
 
 
+        String textValue = ((Text)event.getSource()).getText();
+        String buttonClicked = ((Text)event.getSource()).getId();
+
+        p1FieldCardTexts.get(p1Count).setText(textValue);
 
 
+        if(buttonClicked.equals("p1TextOne")){
+            p1FieldCardRects.get(p1Count).setFill(p1RectOne.getFill());
+        } else if(buttonClicked.equals("p1TextTwo")){
+            p1FieldCardRects.get(p1Count).setFill(p1RectTwo.getFill());
+        } else if (buttonClicked.equals("p1TextThree")){
+            p1FieldCardRects.get(p1Count).setFill(p1RectThree.getFill());
+        }else if (buttonClicked.equals("p1TextFour")){
+            p1FieldCardRects.get(p1Count).setFill(p1RectFour.getFill());
+        }
+        p1Count++;
+
+    }
+    public void passInfoToP2Field(MouseEvent event){
 
 
+        String textValue = ((Text)event.getSource()).getText();
+        String buttonClicked = ((Text)event.getSource()).getId();
+
+        p2FieldCardTexts.get(p2Count).setText(textValue);
 
 
+        if(buttonClicked.equals("p2TextOne")){
+            p2FieldCardRects.get(p2Count).setFill(p2RectOne.getFill());
+        } else if(buttonClicked.equals("p2TextTwo")){
+            p2FieldCardRects.get(p2Count).setFill(p2RectTwo.getFill());
+        } else if (buttonClicked.equals("p2TextThree")){
+            p2FieldCardRects.get(p2Count).setFill(p2RectThree.getFill());
+        }else if (buttonClicked.equals("p2TextFour")){
+            p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
+        }
+        p2Count++;
 
+    }
 
 
 
