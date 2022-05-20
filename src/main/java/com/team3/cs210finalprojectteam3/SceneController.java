@@ -467,6 +467,7 @@ public class SceneController implements Initializable{
      * Every time an action is taken we can run this method in order to update each player's score UI.
      */
     private void updatePlayerScoresUI(){
+
        playerOneScoreTextStatic.setText(Integer.toString(GameLogic.getInstance().p1.score));
        playerTwoScoreTextStatic.setText(Integer.toString(GameLogic.getInstance().p2.score));
     }
@@ -625,15 +626,16 @@ public class SceneController implements Initializable{
 
         }
 
-
-
-
     }
 
     //PlayingField field1 = new PlayingField();
 
     public void passInfoToP1Field(MouseEvent event){
 
+        if(p1Count >= 9){
+            // Game end code ++playerwins
+            return;
+        }
         String buttonClicked = ((StackPane)event.getSource()).getId();
         System.out.println("DEBUG: Clicked " + buttonClicked);
 
