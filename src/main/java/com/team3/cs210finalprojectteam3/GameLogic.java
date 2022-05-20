@@ -1,5 +1,9 @@
 package com.team3.cs210finalprojectteam3;
 
+//import javafx.scene.paint.Color;
+
+//import static com.team3.cs210finalprojectteam3.SceneController.playerOneTurnIndicator;
+
 /**
  * This will be a Singleton class that can be used to track player data and the logic behind the scenes
  *
@@ -30,6 +34,7 @@ public class GameLogic {
         // fresh game
         whoseTurnIsIt = 1; // starting with player 1; 2 means player 2
         System.out.println("DEBUG: Starting new game with player 1 goes first.");
+        //SceneController.playerOneTurnIndicator.setFill(Color.GREEN);
         endOfRound = false;
         gameOver = false;
 

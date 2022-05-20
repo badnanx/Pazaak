@@ -72,7 +72,7 @@
             <Button layoutX="26.0" layoutY="362.0" mnemonicParsing="false" onAction="#playerOneEndTurn" text="End" />
             <Button layoutX="73.0" layoutY="361.0" mnemonicParsing="false" onAction="#p1Stand" text="Stand" />
             <Button layoutX="133.0" layoutY="361.0" mnemonicParsing="false" onAction="#p1ForfeitGame" text="Forfeit" />
-            <Circle fx:id="playerOneTurnIndicator" fill="#ff232e" layoutX="145.0" layoutY="26.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="playerOneTurnIndicator" fill="GREEN" layoutX="145.0" layoutY="26.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
             <Text fx:id="p1FieldCardTextOne" layoutX="32.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0">
                <font>
                   <Font size="18.0" />

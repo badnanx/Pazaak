@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -46,6 +47,7 @@ public class HomeController extends SceneController {
     }
 
     private void CreateGameEnvironment(){
+       // playerOneTurnIndicator.setFill(Color.GREEN);
 
         p1HandCards = p1Hand.hand;
         p2HandCards = p2Hand.hand;
