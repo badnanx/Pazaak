@@ -39,14 +39,14 @@ public class SceneController implements Initializable{
     /**
      * Hand panes
      */
-    @FXML private StackPane p1HandCardOne;
+    @FXML public StackPane p1HandCardOne;
     @FXML public StackPane p1HandCardTwo;
-    @FXML private StackPane p1HandCardThree;
-    @FXML private StackPane p1HandCardFour;
-    @FXML private StackPane p2HandCardOne;
-    @FXML private StackPane p2HandCardTwo;
-    @FXML private StackPane p2HandCardThree;
-    @FXML private StackPane p2HandCardFour;
+    @FXML public StackPane p1HandCardThree;
+    @FXML public StackPane p1HandCardFour;
+    @FXML public StackPane p2HandCardOne;
+    @FXML public StackPane p2HandCardTwo;
+    @FXML public StackPane p2HandCardThree;
+    @FXML public StackPane p2HandCardFour;
 //--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
@@ -630,44 +630,86 @@ public class SceneController implements Initializable{
 
     public void passInfoToP1Field(MouseEvent event){
 
+        String buttonClicked = ((StackPane)event.getSource()).getId();
+        System.out.println("DEBUG: Clicked " + buttonClicked);
 
-        String textValue = ((Text)event.getSource()).getText();
-        String buttonClicked = ((Text)event.getSource()).getId();
-
-        p1FieldCardTexts.get(p1Count).setText(textValue);
-
-
-        if(buttonClicked.equals("p1TextOne")){
+        if(buttonClicked.equals("p1HandCardOne")){
             p1FieldCardRects.get(p1Count).setFill(p1RectOne.getFill());
-        } else if(buttonClicked.equals("p1TextTwo")){
+            p1FieldCardTexts.get(p1Count).setText(p1TextOne.getText());
+
+        } else if(buttonClicked.equals("p1HandCardTwo")){
             p1FieldCardRects.get(p1Count).setFill(p1RectTwo.getFill());
-        } else if (buttonClicked.equals("p1TextThree")){
+            p1FieldCardTexts.get(p1Count).setText(p1TextTwo.getText());
+
+        } else if (buttonClicked.equals("p1HandCardThree")){
             p1FieldCardRects.get(p1Count).setFill(p1RectThree.getFill());
-        }else if (buttonClicked.equals("p1TextFour")){
+            p1FieldCardTexts.get(p1Count).setText(p1TextThree.getText());
+
+        }else if (buttonClicked.equals("p1HandCardFour")){
             p1FieldCardRects.get(p1Count).setFill(p1RectFour.getFill());
+            p1FieldCardTexts.get(p1Count).setText(p1TextFour.getText());
         }
         p1Count++;
+
+
+//        String textValue = ((Text)event.getSource()).getText();
+//        String buttonClicked = ((Text)event.getSource()).getId();
+//
+//        p1FieldCardTexts.get(p1Count).setText(textValue);
+//
+//
+//        if(buttonClicked.equals("p1TextOne")){
+//            p1FieldCardRects.get(p1Count).setFill(p1RectOne.getFill());
+//        } else if(buttonClicked.equals("p1TextTwo")){
+//            p1FieldCardRects.get(p1Count).setFill(p1RectTwo.getFill());
+//        } else if (buttonClicked.equals("p1TextThree")){
+//            p1FieldCardRects.get(p1Count).setFill(p1RectThree.getFill());
+//        }else if (buttonClicked.equals("p1TextFour")){
+//            p1FieldCardRects.get(p1Count).setFill(p1RectFour.getFill());
+//        }
+//        p1Count++;
 
     }
     public void passInfoToP2Field(MouseEvent event){
 
+        String buttonClicked = ((StackPane)event.getSource()).getId();
+        System.out.println("DEBUG: Clicked " + buttonClicked);
 
-        String textValue = ((Text)event.getSource()).getText();
-        String buttonClicked = ((Text)event.getSource()).getId();
-
-        p2FieldCardTexts.get(p2Count).setText(textValue);
-
-
-        if(buttonClicked.equals("p2TextOne")){
+        if(buttonClicked.equals("p2HandCardOne")){
             p2FieldCardRects.get(p2Count).setFill(p2RectOne.getFill());
-        } else if(buttonClicked.equals("p2TextTwo")){
+            p2FieldCardTexts.get(p2Count).setText(p2TextOne.getText());
+
+        } else if(buttonClicked.equals("p2HandCardTwo")){
             p2FieldCardRects.get(p2Count).setFill(p2RectTwo.getFill());
-        } else if (buttonClicked.equals("p2TextThree")){
+            p2FieldCardTexts.get(p2Count).setText(p2TextTwo.getText());
+
+        } else if (buttonClicked.equals("p2HandCardThree")){
             p2FieldCardRects.get(p2Count).setFill(p2RectThree.getFill());
-        }else if (buttonClicked.equals("p2TextFour")){
+            p2FieldCardTexts.get(p2Count).setText(p2TextThree.getText());
+
+        }else if (buttonClicked.equals("p2HandCardFour")){
             p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
+            p2FieldCardTexts.get(p2Count).setText(p2TextFour.getText());
         }
         p2Count++;
+
+
+//        String textValue = ((Text)event.getSource()).getText();
+//        String buttonClicked = ((Text)event.getSource()).getId();
+//
+//        p2FieldCardTexts.get(p2Count).setText(textValue);
+//
+//
+//        if(buttonClicked.equals("p2TextOne")){
+//            p2FieldCardRects.get(p2Count).setFill(p2RectOne.getFill());
+//        } else if(buttonClicked.equals("p2TextTwo")){
+//            p2FieldCardRects.get(p2Count).setFill(p2RectTwo.getFill());
+//        } else if (buttonClicked.equals("p2TextThree")){
+//            p2FieldCardRects.get(p2Count).setFill(p2RectThree.getFill());
+//        }else if (buttonClicked.equals("p2TextFour")){
+//            p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
+//        }
+//        p2Count++;
 
     }
 
