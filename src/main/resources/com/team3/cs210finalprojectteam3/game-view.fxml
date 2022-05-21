@@ -105,7 +105,7 @@
                <font>
                   <Font size="18.0" />
                </font></Text>
-            <Text fx:id="p1FieldCardTextNine" layoutX="134.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" " textAlignment="CENTER" wrappingWidth="29.666015625">
+            <Text fx:id="p1FieldCardTextNine" layoutX="134.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="29.666015625">
                <font>
                   <Font size="18.0" />
                </font></Text>
