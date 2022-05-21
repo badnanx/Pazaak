@@ -28,5 +28,16 @@ public class PazaakTests {
         System.out.println("DEBUG: checkForBust result: " + result);
         assertFalse(result);
     }
+
+    /**
+     * Tests if checkForBust(int) method correctly returns false if player score is negative.
+     * @author Adnan Al Joubi
+     */
+    @Test
+    void noBustNegativeScore(){
+        boolean result = GameLogic.getInstance().checkForBust(-4);
+        System.out.println("DEBUG: checkForBust result: " + result);
+        assertFalse(result);
+    }
 }
 
