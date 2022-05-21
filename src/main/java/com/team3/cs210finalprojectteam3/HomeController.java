@@ -47,7 +47,6 @@ public class HomeController extends SceneController {
     }
 
     private void CreateGameEnvironment(){
-       // playerOneTurnIndicator.setFill(Color.GREEN);
 
         p1HandCards = p1Hand.hand;
         p2HandCards = p2Hand.hand;

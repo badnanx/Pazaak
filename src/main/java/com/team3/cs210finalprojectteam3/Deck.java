@@ -34,14 +34,14 @@ public class Deck {
      * Someone please review! Thank you.
      * @return
      */
-    public Card generateRandomDrawCard() {
-        Random rand = new Random(); //instance of random class
-        final int upperbound = 10;
-        //generate random values from 1-10
-        int int_random = rand.nextInt(upperbound) + 1;
-        Card card = new Card(int_random);
-        card.SetText(Integer.toString(int_random));
-        return card;
-    }
+//    public Card generateRandomDeckCard() {
+//        Random rand = new Random(); //instance of random class
+//        final int upperbound = 10;
+//        //generate random values from 1-10
+//        int int_random = rand.nextInt(upperbound) + 1;
+//        Card card = new Card(int_random);
+//        card.SetText(Integer.toString(int_random));
+//        return card;
+//    }
 
 }

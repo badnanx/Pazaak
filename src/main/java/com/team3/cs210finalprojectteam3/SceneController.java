@@ -50,6 +50,8 @@ public class SceneController implements Initializable{
 //--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
+
+    // playing field lists are here
     public List<Rectangle> p1FieldCardRects;
     public List<Text> p1FieldCardTexts;
 
@@ -59,6 +61,8 @@ public class SceneController implements Initializable{
 
 
 //-----------------------------------------------------------------
+
+   // playing field 2 Rectangles are here
     @FXML public Rectangle p2FieldCardRectOne;
     @FXML public Rectangle p2FieldCardRectTwo;
     @FXML public Rectangle p2FieldCardRectThree;
@@ -80,6 +84,7 @@ public class SceneController implements Initializable{
     public static Rectangle p2FieldCardRectNineStatic;
 
 //--------------------------------------------------------------------------
+    // playing 2 field texts are here
     @FXML public Text p2FieldCardTextOne;
     @FXML public Text p2FieldCardTextTwo;
     @FXML public Text p2FieldCardTextThree;
@@ -103,7 +108,7 @@ public class SceneController implements Initializable{
 
 
 //--------------------------------------------------------
-
+    // playing field 1 Rectangles are here
     @FXML public Rectangle p1FieldCardRectOne;
     @FXML public Rectangle p1FieldCardRectTwo;
     @FXML public Rectangle p1FieldCardRectThree;
@@ -125,6 +130,7 @@ public class SceneController implements Initializable{
     public static Rectangle p1FieldCardRectNineStatic;
 
 //--------------------------------------------------------------------------
+    // playing field 1 Texts are here
     @FXML public Text p1FieldCardTextOne;
     @FXML public Text p1FieldCardTextTwo;
     @FXML public Text p1FieldCardTextThree;
@@ -231,6 +237,8 @@ public class SceneController implements Initializable{
 
 
         //p1Field---------------------------------------------------------------
+
+        // playing field 1 array lists are here
         p1FieldCardRects = new ArrayList<Rectangle>(9);
         p1FieldCardTexts = new ArrayList<Text>(9);
 
@@ -365,6 +373,28 @@ public class SceneController implements Initializable{
 
     // code for game mechanics starts here
 
+    /**
+     * This checks for the full field win condition.
+     *  I made it here rather than refactoring p1Count and p2Count to
+     *   be in GameLogic.
+     *    This violates MVC.
+     */
+    public void checkForFullField(){
+        if(GameLogic.getInstance().p1.score <= 20 && p1Count == 9){
+            System.out.println("Player 1 has a full house. Player 1 wins the round!");
+            GameLogic.getInstance().p1.roundsWon++;
+            GameLogic.getInstance().p1.wonRound = true;
+            GameLogic.getInstance().endOfRound = true;
+            GameLogic.getInstance().didP1orP2WinGame();
+        } else if (GameLogic.getInstance().p2.score <= 20 && p2Count == 9){
+            System.out.println("Player 2 has a full house. Player 2 wins the round!");
+            GameLogic.getInstance().p2.roundsWon++;
+            GameLogic.getInstance().p2.wonRound = true;
+            GameLogic.getInstance().endOfRound = true;
+            GameLogic.getInstance().didP1orP2WinGame();
+        }
+    }
+
     @FXML public void p1ForfeitGame(){
         System.out.println("Player 1 forfeits the game.");
         GameLogic.getInstance().p2.wonGame = true;
@@ -391,7 +421,7 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
-        }
+        } else { checkForFullField(); }
 
         if(GameLogic.getInstance().p2.hasStood == true){
             System.out.println("Both players have stood.");
@@ -416,7 +446,7 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
-        }
+        }else { checkForFullField(); }
 
         if(GameLogic.getInstance().p1.hasStood == true){
             System.out.println("Both players have stood.");
@@ -436,20 +466,64 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
-        }
+            // have some fxn that starts new round
+        }else { checkForFullField(); }
 
        if(GameLogic.getInstance().p2.hasStood == true) {
 
-           GameLogic.getInstance().turnTracker(2);
+           GameLogic.getInstance().turnTracker(2); // used this just to print whose turn
            playerOneTurnIndicator.setFill(Color.GREEN);
-           // some sort of 'continue play' loop would be good here
+
+           p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
+           p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE); // consider light blue
+           p1Count++;
+           // some sort of 'continue play' loop may be good here
        } else{
            GameLogic.getInstance().turnTracker(1);
            playerOneTurnIndicator.setFill(Color.RED);
            playerTwoTurnIndicator.setFill(Color.GREEN);
-           // some kind of gameplay loop would be good here
-           // idea: player one's buttons should be disabled if it's not their turn
+
+           p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
+           p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
+           p2Count++;
+           // some kind of gameplay loop may be good here
+           // idea: player one's buttons should be disabled if it's not their turn --
+           // implement last so we can DEBUG easily
        }
+
+
+    }
+
+    @FXML
+    public void playerTwoEndTurn(){
+        if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p2.score) == true){
+            System.out.println("Player 2 has gone bust! Player 1 wins the round!");
+            GameLogic.getInstance().p1.roundsWon++;
+            GameLogic.getInstance().p1.wonRound = true;
+            GameLogic.getInstance().endOfRound = true;
+            GameLogic.getInstance().didP1orP2WinGame();
+        }else { checkForFullField(); }
+
+        if(GameLogic.getInstance().p1.hasStood == true) {
+            GameLogic.getInstance().turnTracker(1);
+            playerTwoTurnIndicator.setFill(Color.GREEN);
+            // playing deck card to field at start of turn
+            p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
+            p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
+            p2Count++;
+            // some sort of 'continue play' loop may be good here
+        } else{
+
+            GameLogic.getInstance().turnTracker(2);
+            playerTwoTurnIndicator.setFill(Color.RED);
+            playerOneTurnIndicator.setFill(Color.GREEN);
+
+            p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
+            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE); // consider light blue
+            p1Count++;
+            // some kind of gameplay loop would be good here
+            // idea: player one's buttons should be disabled if it's not their turn
+        }
 
 
     }
@@ -473,31 +547,7 @@ public class SceneController implements Initializable{
     }
 
 
-    @FXML
-    public void playerTwoEndTurn(){
-        if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p2.score) == true){
-            System.out.println("Player 2 has gone bust! Player 1 wins the round!");
-            GameLogic.getInstance().p1.roundsWon++;
-            GameLogic.getInstance().p1.wonRound = true;
-            GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().didP1orP2WinGame();
-        }
 
-        if(GameLogic.getInstance().p1.hasStood == true) {
-            GameLogic.getInstance().turnTracker(1);
-            playerTwoTurnIndicator.setFill(Color.GREEN);
-            // some sort of 'continue play' loop would be good here
-        } else{
-
-            GameLogic.getInstance().turnTracker(2);
-            playerTwoTurnIndicator.setFill(Color.RED);
-            playerOneTurnIndicator.setFill(Color.GREEN);
-            // some kind of gameplay loop would be good here
-            // idea: player one's buttons should be disabled if it's not their turn
-        }
-
-
-    }
 
 
     /**
@@ -630,6 +680,7 @@ public class SceneController implements Initializable{
 
     //PlayingField field1 = new PlayingField();
 
+
     public void passInfoToP1Field(MouseEvent event){
 
         if(p1Count >= 9){
@@ -642,18 +693,23 @@ public class SceneController implements Initializable{
         if(buttonClicked.equals("p1HandCardOne")){
             p1FieldCardRects.get(p1Count).setFill(p1RectOne.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextOne.getText());
+            checkForFullField();
+            // add something that disables and clears played hand card
 
         } else if(buttonClicked.equals("p1HandCardTwo")){
             p1FieldCardRects.get(p1Count).setFill(p1RectTwo.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextTwo.getText());
+            checkForFullField();
 
         } else if (buttonClicked.equals("p1HandCardThree")){
             p1FieldCardRects.get(p1Count).setFill(p1RectThree.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextThree.getText());
+            checkForFullField();
 
         }else if (buttonClicked.equals("p1HandCardFour")){
             p1FieldCardRects.get(p1Count).setFill(p1RectFour.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextFour.getText());
+            checkForFullField();
         }
         p1Count++;
 
@@ -684,18 +740,22 @@ public class SceneController implements Initializable{
         if(buttonClicked.equals("p2HandCardOne")){
             p2FieldCardRects.get(p2Count).setFill(p2RectOne.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextOne.getText());
+            checkForFullField();
 
         } else if(buttonClicked.equals("p2HandCardTwo")){
             p2FieldCardRects.get(p2Count).setFill(p2RectTwo.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextTwo.getText());
+            checkForFullField();
 
         } else if (buttonClicked.equals("p2HandCardThree")){
             p2FieldCardRects.get(p2Count).setFill(p2RectThree.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextThree.getText());
+            checkForFullField();
 
         }else if (buttonClicked.equals("p2HandCardFour")){
             p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextFour.getText());
+            checkForFullField();
         }
         p2Count++;
 

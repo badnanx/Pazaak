@@ -4,6 +4,10 @@ package com.team3.cs210finalprojectteam3;
 
 //import static com.team3.cs210finalprojectteam3.SceneController.playerOneTurnIndicator;
 
+import javafx.scene.paint.Color;
+
+import java.util.Random;
+
 /**
  * This will be a Singleton class that can be used to track player data and the logic behind the scenes
  *
@@ -141,6 +145,32 @@ public class GameLogic {
             // insert some fxn that starts a new game?
         }
     }
+
+    public void checkForFullField(){
+
+    }
+    /**
+     * Generate a new Card with random values [1-10] and return the card to be played to field.
+     * Should be able to use this method to randomly generate the cards
+     * to be played to the appropriate playing field at the start of a player's turn.
+     *
+     * Someone please review! Thank you.
+     * @return
+     */
+    public Card generateRandomDeckCard() {
+        Random rand = new Random(); //instance of random class
+        final int upperbound = 10;
+        //generate random values from 1-10
+        int int_random = rand.nextInt(upperbound) + 1;
+        Card card = new Card(int_random);
+        card.SetText(Integer.toString(int_random));
+        card.rectangle.setFill(Color.BLUE);
+        return card;
+    }
+
+//    public void addToP1Field(){
+//        p1FieldCardRects.get(p1Count).setText(generateRandomDeckCard().getText());
+//    }
 
 
 // make into singleton?
