@@ -737,6 +737,7 @@ public class SceneController implements Initializable{
            p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
            p1Count++;
+           enableP1Clicks();
 
            // updating score behind the scenes since this player's field has changed.
            GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
@@ -783,6 +784,7 @@ public class SceneController implements Initializable{
             p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
             p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
             p2Count++;
+            enableP2Clicks();
             checkForFullField();
             // some sort of 'continue play' loop may be good here
 
@@ -961,6 +963,25 @@ public class SceneController implements Initializable{
 
     //PlayingField field1 = new PlayingField();
 
+    /**
+     * Disables player 1's hand cards from being clicked (played).
+     */
+    public void disableP1HandClicks(){
+        p1HandCardOne.setDisable(true);
+        p1HandCardTwo.setDisable(true);
+        p1HandCardThree.setDisable(true);
+        p1HandCardFour.setDisable(true);
+    }
+
+    /**
+     * Enables player 1's hand cards to be clicked (played).
+     */
+    public void enableP1HandClicks(){
+        p1HandCardOne.setDisable(false);
+        p1HandCardTwo.setDisable(false);
+        p1HandCardThree.setDisable(false);
+        p1HandCardFour.setDisable(false);
+    }
 
     public void passInfoToP1Field(MouseEvent event){
 
@@ -971,10 +992,11 @@ public class SceneController implements Initializable{
         String buttonClicked = ((StackPane)event.getSource()).getId();
         System.out.println("DEBUG: Clicked " + buttonClicked);
 
+
         if(buttonClicked.equals("p1HandCardOne")){
             p1FieldCardRects.get(p1Count).setFill(p1RectOne.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextOne.getText());
-            checkForFullField();
+
 
             // example code for one possible way to update score:
             // playerOneScoreText.setText(String.valueOf(GameLogic.getInstance().p1.score += Integer.parseInt(p1TextOne.getText())));
@@ -985,18 +1007,19 @@ public class SceneController implements Initializable{
         } else if(buttonClicked.equals("p1HandCardTwo")){
             p1FieldCardRects.get(p1Count).setFill(p1RectTwo.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextTwo.getText());
-            checkForFullField();
+
 
         } else if (buttonClicked.equals("p1HandCardThree")){
             p1FieldCardRects.get(p1Count).setFill(p1RectThree.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextThree.getText());
-            checkForFullField();
+
 
         }else if (buttonClicked.equals("p1HandCardFour")){
             p1FieldCardRects.get(p1Count).setFill(p1RectFour.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextFour.getText());
-            checkForFullField();
+
         }
+        disableP1HandClicks();
         p1Count++;
         checkForFullField();
 
@@ -1025,6 +1048,28 @@ public class SceneController implements Initializable{
 //        p1Count++;
 
     }
+
+    /**
+     * Disables player 2's hand cards from being clicked (played).
+     */
+    public void disableP2HandClicks(){
+        p2HandCardOne.setDisable(true);
+        p2HandCardTwo.setDisable(true);
+        p2HandCardThree.setDisable(true);
+        p2HandCardFour.setDisable(true);
+    }
+
+    /**
+     * Enables player 2's hand cards to be clicked (played).
+     */
+    public void enableP2HandClicks(){
+        p2HandCardOne.setDisable(false);
+        p2HandCardTwo.setDisable(false);
+        p2HandCardThree.setDisable(false);
+        p2HandCardFour.setDisable(false);
+    }
+
+
     public void passInfoToP2Field(MouseEvent event){
 
         String buttonClicked = ((StackPane)event.getSource()).getId();
@@ -1046,6 +1091,7 @@ public class SceneController implements Initializable{
             p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextFour.getText());
         }
+        disableP2HandClicks();
         p2Count++;
         checkForFullField();
         // updating score behind the scenes since this player's field has changed.
