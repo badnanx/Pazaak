@@ -479,7 +479,7 @@ public class SceneController implements Initializable{
            playerOneTurnIndicator.setFill(Color.GREEN);
 
            p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
-           p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE); // consider light blue
+           p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
            p1Count++;
            // some sort of 'continue play' loop may be good here
        } else{
@@ -700,6 +700,11 @@ public class SceneController implements Initializable{
             p1FieldCardRects.get(p1Count).setFill(p1RectOne.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextOne.getText());
             checkForFullField();
+
+            // example code for one possible way to update score:
+            // playerOneScoreText.setText(String.valueOf(GameLogic.getInstance().p1.score += Integer.parseInt(p1TextOne.getText())));
+            // However, it's probably better to just sum List/ArrayList and add to score
+
             // add something that disables and clears played hand card
 
         } else if(buttonClicked.equals("p1HandCardTwo")){

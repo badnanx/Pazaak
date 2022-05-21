@@ -31,7 +31,6 @@ public class Deck {
      * Should be able to use this method to randomly generate the cards
      * to be played to the appropriate playing field at the start of a player's turn.
      *
-     * Someone please review! Thank you.
      * @return
      */
 //    public Card generateRandomDeckCard() {

@@ -154,7 +154,7 @@ public class GameLogic {
      * Should be able to use this method to randomly generate the cards
      * to be played to the appropriate playing field at the start of a player's turn.
      *
-     * Someone please review! Thank you.
+     *
      * @return
      */
     public Card generateRandomDeckCard() {
@@ -164,7 +164,9 @@ public class GameLogic {
         int int_random = rand.nextInt(upperbound) + 1;
         Card card = new Card(int_random);
         card.SetText(Integer.toString(int_random));
-        card.rectangle.setFill(Color.BLUE);
+
+
+        //card.rectangle.setFill(Color.BLUE);
         return card;
     }
 
