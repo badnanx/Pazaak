@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PazaakTests {
 
     /**
-     * Tests if checkForBust(int) method correclty returns true if player score is over 20.
+     * Tests if checkForBust(int) method correctly returns true if player score is over 20.
      * @author Adnan Al Joubi
      */
     @Test
     void playerBusted(){
 
         boolean result = GameLogic.getInstance().checkForBust(21);
-        System.out.println("DEBUG: checkForBUst result: " + result);
+        System.out.println("DEBUG: checkForBust result: " + result);
         assertTrue(result);
 
     }
@@ -25,7 +25,7 @@ public class PazaakTests {
     @Test
     void noBust(){
         boolean result = GameLogic.getInstance().checkForBust(20);
-        System.out.println("DEBUG: checkForBUst result: " + result);
+        System.out.println("DEBUG: checkForBust result: " + result);
         assertFalse(result);
     }
 }
