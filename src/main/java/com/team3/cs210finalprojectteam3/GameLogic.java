@@ -172,9 +172,7 @@ public class GameLogic {
         }
     }
 
-    public void checkForFullField(){
 
-    }
     /**
      * Generate a new Card with random values [1-10] and return the card to be played to field.
      * Should be able to use this method to randomly generate the cards

@@ -367,6 +367,8 @@ public class SceneController implements Initializable{
         p1FieldCardTexts.add(p1FieldCardTextEight);
         p1FieldCardTexts.add(p1FieldCardTextNine);
 
+
+
         //p2Field---------------------------------------------------------------
 
         p2FieldCardRects = new ArrayList<Rectangle>(9);
@@ -393,12 +395,14 @@ public class SceneController implements Initializable{
         p2FieldCardTexts.add(p2FieldCardTextEight);
         p2FieldCardTexts.add(p2FieldCardTextNine);
 
+
+
     }
 
     public void resetBetweenRounds(){
         newUIEnvironment();
         playerOneTurnIndicator.setFill(Color.GREEN);
-        playerTwoTurnIndicator.setFill(Color.GREEN);
+        playerTwoTurnIndicator.setFill(Color.RED);
         for(Rectangle rect : p1FieldCardRects){
             rect.setFill(Color.LIGHTGRAY);
         }
@@ -412,6 +416,11 @@ public class SceneController implements Initializable{
             text.setText("");
         }
         GameLogic.getInstance().roundReset();
+
+        disableP1Clicks();
+        disableP2Clicks();
+        startRoundBtn.setDisable(false);
+
         updateUI();
     }
 
@@ -422,7 +431,7 @@ public class SceneController implements Initializable{
             newHand();
             newUIEnvironment();
             playerOneTurnIndicator.setFill(Color.GREEN);
-            playerTwoTurnIndicator.setFill(Color.GREEN);
+            playerTwoTurnIndicator.setFill(Color.RED);
             p1TextOne = p1HandCards.get(0).text;
             p1TextTwo = p1HandCards.get(1).text;
             p1TextThree = p1HandCards.get(2).text;
@@ -456,6 +465,8 @@ public class SceneController implements Initializable{
             for(Text text : p2FieldCardTexts){
                 text.setText("");
             }
+
+
 
 
         /*Platform.runLater(new Runnable() {
@@ -536,6 +547,69 @@ public class SceneController implements Initializable{
 
     }
 
+    @FXML Button p1EndBtn;
+    @FXML Button p1StandBtn;
+
+    public void disableP1Clicks(){
+        p1HandCardOne.setDisable(true);
+        p1HandCardTwo.setDisable(true);
+        p1HandCardThree.setDisable(true);
+        p1HandCardFour.setDisable(true);
+
+        p1EndBtn.setDisable(true);
+        p1StandBtn.setDisable(true);
+    }
+
+    public void enableP1Clicks(){
+        p1HandCardOne.setDisable(false);
+        p1HandCardTwo.setDisable(false);
+        p1HandCardThree.setDisable(false);
+        p1HandCardFour.setDisable(false);
+
+        p1EndBtn.setDisable(false);
+        p1StandBtn.setDisable(false);
+    }
+
+    @FXML Button p2EndBtn;
+    @FXML Button p2StandBtn;
+
+    public void disableP2Clicks(){
+        p2HandCardOne.setDisable(true);
+        p2HandCardTwo.setDisable(true);
+        p2HandCardThree.setDisable(true);
+        p2HandCardFour.setDisable(true);
+
+        p2EndBtn.setDisable(true);
+        p2StandBtn.setDisable(true);
+    }
+
+    public void enableP2Clicks(){
+        p2HandCardOne.setDisable(false);
+        p2HandCardTwo.setDisable(false);
+        p2HandCardThree.setDisable(false);
+        p2HandCardFour.setDisable(false);
+
+        p2EndBtn.setDisable(false);
+        p2StandBtn.setDisable(false);
+    }
+
+    @FXML Button startRoundBtn;
+
+    @FXML public void startRoundBtnAction(){
+        // player 1 always goes first
+        enableP1Clicks();
+        disableP2Clicks();
+
+        p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
+        p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
+        p1Count++;
+        GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
+
+        startRoundBtn.setDisable(true);
+        updateUI();
+
+    }
+
 
 
     @FXML public void p1ForfeitGame(){
@@ -558,6 +632,11 @@ public class SceneController implements Initializable{
 
     @FXML
     public void p1Stand(){
+        disableP1Clicks();
+        if(GameLogic.getInstance().p2.hasStood==false) {
+            enableP2Clicks();
+        }
+
         GameLogic.getInstance().p1.hasStood = true;
         playerOneTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 1 has stood.");
@@ -569,6 +648,7 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().didP1orP2WinGame();
             GameLogic.getInstance().roundReset();
             resetBetweenRounds();
+            return;
         } else { checkForFullField(); }
 
         if(GameLogic.getInstance().p2.hasStood == true){
@@ -578,17 +658,26 @@ public class SceneController implements Initializable{
             resetBetweenRounds();
         } else{
             playerTwoTurnIndicator.setFill(Color.GREEN);
+            p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
+            p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
+            p2Count++;
+            // insert draw card for p2
             GameLogic.getInstance().turnTracker(1);
+            GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
+            updateUI();
         }
-        // idea: make player 1's buttons/actions disabled upon stand
-        // this is a good idea, look for a way to implement it, I believe that buttons have a function or something
-        // that can disable the functionality temporarily
+
 
 
     }
 
     @FXML
     public void p2Stand(){
+        disableP2Clicks();
+        if(GameLogic.getInstance().p1.hasStood==false) {
+            enableP1Clicks();
+        }
+
         GameLogic.getInstance().p2.hasStood = true;
         playerTwoTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 2 has stood.");
@@ -597,9 +686,11 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
+           // disableP1Clicks();
             GameLogic.getInstance().didP1orP2WinGame();
             GameLogic.getInstance().roundReset();
             resetBetweenRounds();
+            return;
         }else { checkForFullField(); }
 
         if(GameLogic.getInstance().p1.hasStood == true){
@@ -609,31 +700,43 @@ public class SceneController implements Initializable{
             resetBetweenRounds();
         } else{
             playerOneTurnIndicator.setFill(Color.GREEN);
+            p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
+            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
+            p1Count++;
             GameLogic.getInstance().turnTracker(2);
+            GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
+            updateUI();
         }
-        // idea: make player 2's buttons/actions disabled upon stand
+
     }
 
     @FXML
     public void playerOneEndTurn(){
+        if(GameLogic.getInstance().p2.hasStood==false){
+            disableP1Clicks();
+            enableP2Clicks();
+        }
+
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
+            GameLogic.getInstance().roundReset();
+            resetBetweenRounds();
+            return;
             // have some fxn that starts new round
         }else { checkForFullField(); }
 
        if(GameLogic.getInstance().p2.hasStood == true) {
 
            GameLogic.getInstance().turnTracker(2); // used this just to print whose turn
-           playerOneTurnIndicator.setFill(Color.GREEN);
+          // playerOneTurnIndicator.setFill(Color.GREEN);
 
            p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
            p1Count++;
-           // some sort of 'continue play' loop may be good here
 
            // updating score behind the scenes since this player's field has changed.
            GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
@@ -646,9 +749,6 @@ public class SceneController implements Initializable{
            p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
            p2Count++;
            checkForFullField();
-           // some kind of gameplay loop may be good here
-           // idea: player one's buttons should be disabled if it's not their turn --
-           // implement last so we can DEBUG easily
 
            // updating score behind the scenes since this player's field has changed.
            GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
@@ -660,17 +760,25 @@ public class SceneController implements Initializable{
 
     @FXML
     public void playerTwoEndTurn(){
+        if(GameLogic.getInstance().p1.hasStood==false){
+            disableP2Clicks();
+            enableP1Clicks();
+        }
+
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p2.score) == true){
             System.out.println("Player 2 has gone bust! Player 1 wins the round!");
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
+            GameLogic.getInstance().roundReset();
+            resetBetweenRounds();
+            return;
         }else { checkForFullField(); }
 
         if(GameLogic.getInstance().p1.hasStood == true) {
             GameLogic.getInstance().turnTracker(1);
-            playerTwoTurnIndicator.setFill(Color.GREEN);
+            //playerTwoTurnIndicator.setFill(Color.GREEN);
             // playing deck card to field at start of turn
             p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
             p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
