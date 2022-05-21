@@ -394,6 +394,8 @@ public class SceneController implements Initializable{
     public void ResetGameEnvironment(){
 
             newUIEnvironment();
+            playerOneTurnIndicator.setFill(Color.GREEN);
+            playerTwoTurnIndicator.setFill(Color.GREEN);
             p1TextOne = p1HandCards.get(0).text;
             p1TextTwo = p1HandCards.get(1).text;
             p1TextThree = p1HandCards.get(2).text;
@@ -538,11 +540,15 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
+            GameLogic.getInstance().roundReset();
+            ResetGameEnvironment();
         } else { checkForFullField(); }
 
         if(GameLogic.getInstance().p2.hasStood == true){
             System.out.println("Both players have stood.");
             GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
+            GameLogic.getInstance().roundReset();
+            ResetGameEnvironment();
         } else{
             playerTwoTurnIndicator.setFill(Color.GREEN);
             GameLogic.getInstance().turnTracker(1);
@@ -550,6 +556,8 @@ public class SceneController implements Initializable{
         // idea: make player 1's buttons/actions disabled upon stand
         // this is a good idea, look for a way to implement it, I believe that buttons have a function or something
         // that can disable the functionality temporarily
+
+
     }
 
     @FXML
@@ -563,11 +571,15 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
+            GameLogic.getInstance().roundReset();
+            ResetGameEnvironment();
         }else { checkForFullField(); }
 
         if(GameLogic.getInstance().p1.hasStood == true){
             System.out.println("Both players have stood.");
             GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
+            GameLogic.getInstance().roundReset();
+            ResetGameEnvironment();
         } else{
             playerOneTurnIndicator.setFill(Color.GREEN);
             GameLogic.getInstance().turnTracker(2);

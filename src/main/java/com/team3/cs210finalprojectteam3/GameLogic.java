@@ -201,6 +201,13 @@ public class GameLogic {
      */
     public void roundReset(){
         gameOver = false;
+        whoseTurnIsIt = 1;
+        p1.score = 0;
+        p2.score = 0;
+        p1.hasStood = false;
+        p2.hasStood = false;
+        p1.hasEndedTurn = false;
+        p2.hasEndedTurn = false;
     }
 
     public void winReset(){
