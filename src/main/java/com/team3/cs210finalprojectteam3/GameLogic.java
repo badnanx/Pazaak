@@ -4,8 +4,12 @@ package com.team3.cs210finalprojectteam3;
 
 //import static com.team3.cs210finalprojectteam3.SceneController.playerOneTurnIndicator;
 
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -89,6 +93,28 @@ public class GameLogic {
         return score > BUST_LIMIT;
     }
 
+    /**
+     * Calculate score based on a list of texts sent in and parsed, which is then assigned to the appropriate player
+     * taking advantage of knowing that 1 is player one and 2 is player two
+     * @param fieldCards Text list
+     * @param whoseTurnIsIt integer
+     */
+    public void calculateScores(List<Text> fieldCards, int whoseTurnIsIt){
+        int sum = 0;
+        for(Text text : fieldCards){
+            if(text.getText().equals("")){
+                break;
+            }
+            sum += Integer.parseInt(text.getText());
+        }
+        System.out.println("DEBUG: whoseTurnIsIt =" +whoseTurnIsIt);
+        if(whoseTurnIsIt == 1){
+            p1.score = sum;
+        }
+        else{
+            p2.score = sum;
+        }
+    }
 
     /**
      * Compares player scores to see who won the round.
@@ -168,6 +194,17 @@ public class GameLogic {
 
         //card.rectangle.setFill(Color.BLUE);
         return card;
+    }
+
+    /**
+     * This method will reset certain player stats that should be reset at round end, as well as adjusting the field
+     */
+    public void roundReset(){
+        gameOver = false;
+    }
+
+    public void winReset(){
+
     }
 
 //    public void addToP1Field(){

@@ -1,5 +1,6 @@
 package com.team3.cs210finalprojectteam3;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,15 +25,15 @@ import java.util.*;
 
 public class SceneController implements Initializable{
 
-    public static int p1Count = 0;
-    public static int p2Count = 0;
+    public static int p1Count;
+    public static int p2Count;
 
 
     // removed GameLogic initializer because it is a Singleton and doesn't get initialized
 
-    public Hand p1Hand = new Hand();
-    public Hand p2Hand = new Hand();
-    public Stage mStage;
+    public Hand p1Hand;
+    public Hand p2Hand;
+    public static Stage mStage;
     public Scene mScene;
     public Parent mRoot;
     /**
@@ -222,6 +223,10 @@ public class SceneController implements Initializable{
 
     public List<Card> p2HandCards;
 
+    public void SetStage(Stage stage){
+        mStage = stage;
+    }
+
 
     /**
      * Special method that allows for things to happen at the very start of the application
@@ -232,65 +237,14 @@ public class SceneController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initialize();
     }
+
+    /**
+     * Going to take advantage of this method in order to reset the field between rounds and wins, but it also
+     * starts the game for the first time and initializes all of the field and hand elements used in the game
+     */
     public void initialize(){
 
-
-        //p1Field---------------------------------------------------------------
-
-        // playing field 1 array lists are here
-        p1FieldCardRects = new ArrayList<Rectangle>(9);
-        p1FieldCardTexts = new ArrayList<Text>(9);
-
-
-
-        p1FieldCardRects.add(p1FieldCardRectOne);
-        p1FieldCardRects.add(p1FieldCardRectTwo);
-        p1FieldCardRects.add(p1FieldCardRectThree);
-        p1FieldCardRects.add(p1FieldCardRectFour);
-        p1FieldCardRects.add(p1FieldCardRectFive);
-        p1FieldCardRects.add(p1FieldCardRectSix);
-        p1FieldCardRects.add(p1FieldCardRectSeven);
-        p1FieldCardRects.add(p1FieldCardRectEight);
-        p1FieldCardRects.add(p1FieldCardRectNine);
-
-        p1FieldCardTexts.add(p1FieldCardTextOne);
-        p1FieldCardTexts.add(p1FieldCardTextTwo);
-        p1FieldCardTexts.add(p1FieldCardTextThree);
-        p1FieldCardTexts.add(p1FieldCardTextFour);
-        p1FieldCardTexts.add(p1FieldCardTextFive);
-        p1FieldCardTexts.add(p1FieldCardTextSix);
-        p1FieldCardTexts.add(p1FieldCardTextSeven);
-        p1FieldCardTexts.add(p1FieldCardTextEight);
-        p1FieldCardTexts.add(p1FieldCardTextNine);
-
-        //p2Field---------------------------------------------------------------
-
-        p2FieldCardRects = new ArrayList<Rectangle>(9);
-        p2FieldCardTexts = new ArrayList<Text>(9);
-
-
-
-        p2FieldCardRects.add(p2FieldCardRectOne);
-        p2FieldCardRects.add(p2FieldCardRectTwo);
-        p2FieldCardRects.add(p2FieldCardRectThree);
-        p2FieldCardRects.add(p2FieldCardRectFour);
-        p2FieldCardRects.add(p2FieldCardRectFive);
-        p2FieldCardRects.add(p2FieldCardRectSix);
-        p2FieldCardRects.add(p2FieldCardRectSeven);
-        p2FieldCardRects.add(p2FieldCardRectEight);
-        p2FieldCardRects.add(p2FieldCardRectNine);
-
-        p2FieldCardTexts.add(p2FieldCardTextOne);
-        p2FieldCardTexts.add(p2FieldCardTextTwo);
-        p2FieldCardTexts.add(p2FieldCardTextThree);
-        p2FieldCardTexts.add(p2FieldCardTextFour);
-        p2FieldCardTexts.add(p2FieldCardTextFive);
-        p2FieldCardTexts.add(p2FieldCardTextSix);
-        p2FieldCardTexts.add(p2FieldCardTextSeven);
-        p2FieldCardTexts.add(p2FieldCardTextEight);
-        p2FieldCardTexts.add(p2FieldCardTextNine);
-
-
+        newUIEnvironment();
 
         //----------------------------------------------------------------------
         //GameLogic is a Singleton and doesn't get initialized until it is used for the first time
@@ -345,7 +299,6 @@ public class SceneController implements Initializable{
         p1FieldCardRectNineStatic = p1FieldCardRectNine;
 
 
-
     }
 
 
@@ -358,7 +311,162 @@ public class SceneController implements Initializable{
     @FXML private Circle playerTwoTurnIndicator;
     @FXML private Circle playerOneTurnIndicator;
 
+    /**
+     * When we create a new game, or reset the game, we need to separate this bit of code from the initialize method
+     * because the initialize method attempts to reinitialize static variables which doesn't work and won't refresh
+     * UI elements properly
+     *
+     * Using this we can reset the game and have new Hand texts appear properly.
+     */
+    public void newUIEnvironment(){
+        // moved these here so we can reset them when needed
+        p1Hand = new Hand();
+        p2Hand = new Hand();
 
+        p1HandCards = new ArrayList<>();
+        p2HandCards = new ArrayList<>();
+        p1HandCards = p1Hand.hand;
+        p2HandCards = p2Hand.hand;
+        //p1Field---------------------------------------------------------------
+
+        // playing field 1 array lists are here
+        p1FieldCardRects = new ArrayList<Rectangle>(9);
+        p1FieldCardTexts = new ArrayList<Text>(9);
+
+
+
+        p1Count = 0;
+        p2Count = 0;
+        GameLogic.getInstance().p1.score = 0;
+        GameLogic.getInstance().p2.score = 0;
+
+        p1FieldCardRects.add(p1FieldCardRectOne);
+        p1FieldCardRects.add(p1FieldCardRectTwo);
+        p1FieldCardRects.add(p1FieldCardRectThree);
+        p1FieldCardRects.add(p1FieldCardRectFour);
+        p1FieldCardRects.add(p1FieldCardRectFive);
+        p1FieldCardRects.add(p1FieldCardRectSix);
+        p1FieldCardRects.add(p1FieldCardRectSeven);
+        p1FieldCardRects.add(p1FieldCardRectEight);
+        p1FieldCardRects.add(p1FieldCardRectNine);
+
+        p1FieldCardTexts.add(p1FieldCardTextOne);
+        p1FieldCardTexts.add(p1FieldCardTextTwo);
+        p1FieldCardTexts.add(p1FieldCardTextThree);
+        p1FieldCardTexts.add(p1FieldCardTextFour);
+        p1FieldCardTexts.add(p1FieldCardTextFive);
+        p1FieldCardTexts.add(p1FieldCardTextSix);
+        p1FieldCardTexts.add(p1FieldCardTextSeven);
+        p1FieldCardTexts.add(p1FieldCardTextEight);
+        p1FieldCardTexts.add(p1FieldCardTextNine);
+
+        //p2Field---------------------------------------------------------------
+
+        p2FieldCardRects = new ArrayList<Rectangle>(9);
+        p2FieldCardTexts = new ArrayList<Text>(9);
+
+
+        p2FieldCardRects.add(p2FieldCardRectOne);
+        p2FieldCardRects.add(p2FieldCardRectTwo);
+        p2FieldCardRects.add(p2FieldCardRectThree);
+        p2FieldCardRects.add(p2FieldCardRectFour);
+        p2FieldCardRects.add(p2FieldCardRectFive);
+        p2FieldCardRects.add(p2FieldCardRectSix);
+        p2FieldCardRects.add(p2FieldCardRectSeven);
+        p2FieldCardRects.add(p2FieldCardRectEight);
+        p2FieldCardRects.add(p2FieldCardRectNine);
+
+        p2FieldCardTexts.add(p2FieldCardTextOne);
+        p2FieldCardTexts.add(p2FieldCardTextTwo);
+        p2FieldCardTexts.add(p2FieldCardTextThree);
+        p2FieldCardTexts.add(p2FieldCardTextFour);
+        p2FieldCardTexts.add(p2FieldCardTextFive);
+        p2FieldCardTexts.add(p2FieldCardTextSix);
+        p2FieldCardTexts.add(p2FieldCardTextSeven);
+        p2FieldCardTexts.add(p2FieldCardTextEight);
+        p2FieldCardTexts.add(p2FieldCardTextNine);
+
+    }
+
+    /**
+     * Use this when we want a blank slate/fresh game, this will reset the field and renew each player's hands
+     */
+    public void ResetGameEnvironment(){
+
+            newUIEnvironment();
+            p1TextOne = p1HandCards.get(0).text;
+            p1TextTwo = p1HandCards.get(1).text;
+            p1TextThree = p1HandCards.get(2).text;
+            p1TextFour = p1HandCards.get(3).text;
+            p2TextOne = p2HandCards.get(0).text;
+            p2TextTwo = p2HandCards.get(1).text;
+            p2TextThree = p2HandCards.get(2).text;
+            p2TextFour = p2HandCards.get(3).text;
+
+
+            p1TextOneStatic.setText(p1HandCards.get(0).text.getText());
+            p1TextTwoStatic.setText(p1TextTwo.getText());
+            p1TextThreeStatic.setText(p1TextThree.getText());
+            p1TextFourStatic.setText(p1TextFour.getText());
+            p2TextOneStatic.setText(p2TextOne.getText());
+            p2TextTwoStatic.setText(p2TextTwo.getText());
+            p2TextThreeStatic.setText(p2TextThree.getText());
+            p2TextFourStatic.setText(p2TextFour.getText());
+            System.out.println(p1TextOneStatic.getText() + "first card value");
+            // this method has to run here or else is won't update colors with the actual values
+            handCardColorChange();
+            for(Rectangle rect : p1FieldCardRects){
+                rect.setFill(Color.LIGHTGRAY);
+            }
+            for(Text text : p1FieldCardTexts){
+                text.setText("");
+            }
+            for(Rectangle rect : p2FieldCardRects){
+                rect.setFill(Color.LIGHTGRAY);
+            }
+            for(Text text : p2FieldCardTexts){
+                text.setText("");
+            }
+
+
+        /*Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+
+                p1TextOne = p1HandCards.get(0).text;
+                //System.out.println(p1TextOne.getText());
+                p1TextTwo = p1HandCards.get(1).text;
+                p1TextThree = p1HandCards.get(2).text;
+                p1TextFour = p1HandCards.get(3).text;
+                p2TextOne = p2HandCards.get(0).text;
+                p2TextTwo = p2HandCards.get(1).text;
+                p2TextThree = p2HandCards.get(2).text;
+                p2TextFour = p2HandCards.get(3).text;
+
+
+                p1TextOneStatic.setText(p1TextOne.getText());
+                p1TextTwoStatic.setText(p1TextTwo.getText());
+                p1TextThreeStatic.setText(p1TextThree.getText());
+                p1TextFourStatic.setText(p1TextFour.getText());
+                p2TextOneStatic.setText(p2TextOne.getText());
+                p2TextTwoStatic.setText(p2TextTwo.getText());
+                p2TextThreeStatic.setText(p2TextThree.getText());
+                p2TextFourStatic.setText(p2TextFour.getText());
+                System.out.println(p1TextOneStatic.getText() + "first card value");
+                // this method has to run here or else is won't update colors with the actual values
+                handCardColorChange();
+            }
+        });*/
+
+        // just a placeholder to test functionality of score UI updating
+        updateUI();
+
+
+
+
+
+
+    }
 
     public void SwitchtoWelcomeScene(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("welcome-view.fxml"));
@@ -396,21 +504,27 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
         }
+
     }
+
+
 
     @FXML public void p1ForfeitGame(){
         System.out.println("Player 1 forfeits the game.");
         GameLogic.getInstance().p2.wonGame = true;
         GameLogic.getInstance().gameOver = true;
 
-
+        // testing resetting game
+        ResetGameEnvironment();
+        GameLogic.getInstance().roundReset();
     }
 
     @FXML public void p2ForfeitGame(){
         System.out.println("Player 2 forfeits the game.");
         GameLogic.getInstance().p1.wonGame = true;
         GameLogic.getInstance().gameOver = true;
-
+        ResetGameEnvironment();
+        GameLogic.getInstance().roundReset();
     }
 
     @FXML
@@ -481,6 +595,9 @@ public class SceneController implements Initializable{
            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
            p1Count++;
            // some sort of 'continue play' loop may be good here
+
+           // updating score behind the scenes since this player's field has changed.
+           GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
        } else{
            GameLogic.getInstance().turnTracker(1);
            playerOneTurnIndicator.setFill(Color.RED);
@@ -493,9 +610,13 @@ public class SceneController implements Initializable{
            // some kind of gameplay loop may be good here
            // idea: player one's buttons should be disabled if it's not their turn --
            // implement last so we can DEBUG easily
+
+           // updating score behind the scenes since this player's field has changed.
+           GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
        }
-
-
+        // Here I will add the logic to update the UI, since the playing field is guaranteed to have
+        // changed by this point.
+        updateUI();
     }
 
     @FXML
@@ -517,6 +638,9 @@ public class SceneController implements Initializable{
             p2Count++;
             checkForFullField();
             // some sort of 'continue play' loop may be good here
+
+            // updating score behind the scenes since this player's field has changed.
+            GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
         } else{
 
             GameLogic.getInstance().turnTracker(2);
@@ -528,8 +652,13 @@ public class SceneController implements Initializable{
             p1Count++;
             // some kind of gameplay loop would be good here
             // idea: player one's buttons should be disabled if it's not their turn
-        }
 
+            // updating score behind the scenes since this player's field has changed.
+            GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
+        }
+        // Here I will add the logic to update the UI, since the playing field is guaranteed to have
+        // changed by this point.
+        updateUI();
 
     }
 
@@ -724,6 +853,12 @@ public class SceneController implements Initializable{
         p1Count++;
         checkForFullField();
 
+        // updating score behind the scenes since this player's field has changed.
+        GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
+
+        // Here I will add the logic to update the UI, since the playing field is guaranteed to have
+        // changed by this point.
+        updateUI();
 
 //        String textValue = ((Text)event.getSource()).getText();
 //        String buttonClicked = ((Text)event.getSource()).getId();
@@ -766,7 +901,12 @@ public class SceneController implements Initializable{
         }
         p2Count++;
         checkForFullField();
+        // updating score behind the scenes since this player's field has changed.
+        GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
 
+        // Here I will add the logic to update the UI, since the playing field is guaranteed to have
+        // changed by this point.
+        updateUI();
 
 //        String textValue = ((Text)event.getSource()).getText();
 //        String buttonClicked = ((Text)event.getSource()).getId();

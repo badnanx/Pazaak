@@ -34,19 +34,18 @@ public class HomeController extends SceneController {
         Parent root = FXMLLoader.load(getClass().getResource("game-view.fxml"));
 
         mStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+
         mScene = new Scene(root);
 
         mStage.setScene(mScene);
-        CreateGameEnvironment();
+        CreateNewGameEnvironment();
         handCardColorChange();
+
         mStage.show();
-
-
-
 
     }
 
-    private void CreateGameEnvironment(){
+    private void CreateNewGameEnvironment(){
 
         p1HandCards = p1Hand.hand;
         p2HandCards = p2Hand.hand;
