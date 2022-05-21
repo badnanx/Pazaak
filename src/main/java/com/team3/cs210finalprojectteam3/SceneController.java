@@ -380,6 +380,8 @@ public class SceneController implements Initializable{
      *    This violates MVC.
      */
     public void checkForFullField(){
+        System.out.println("DEBUG: p1Count = " + p1Count);
+        System.out.println("DEBUG: p2Count = " + p2Count);
         if(GameLogic.getInstance().p1.score <= 20 && p1Count == 9){
             System.out.println("Player 1 has a full house. Player 1 wins the round!");
             GameLogic.getInstance().p1.roundsWon++;
@@ -387,6 +389,8 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
         } else if (GameLogic.getInstance().p2.score <= 20 && p2Count == 9){
+            System.out.println("DEBUG: p1Count = " + p1Count);
+            System.out.println("DEBUG: p2Count = " + p2Count);
             System.out.println("Player 2 has a full house. Player 2 wins the round!");
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
@@ -486,6 +490,7 @@ public class SceneController implements Initializable{
            p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
            p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
            p2Count++;
+           checkForFullField();
            // some kind of gameplay loop may be good here
            // idea: player one's buttons should be disabled if it's not their turn --
            // implement last so we can DEBUG easily
@@ -511,6 +516,7 @@ public class SceneController implements Initializable{
             p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
             p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
             p2Count++;
+            checkForFullField();
             // some sort of 'continue play' loop may be good here
         } else{
 
@@ -712,6 +718,7 @@ public class SceneController implements Initializable{
             checkForFullField();
         }
         p1Count++;
+        checkForFullField();
 
 
 //        String textValue = ((Text)event.getSource()).getText();
@@ -740,24 +747,21 @@ public class SceneController implements Initializable{
         if(buttonClicked.equals("p2HandCardOne")){
             p2FieldCardRects.get(p2Count).setFill(p2RectOne.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextOne.getText());
-            checkForFullField();
 
         } else if(buttonClicked.equals("p2HandCardTwo")){
             p2FieldCardRects.get(p2Count).setFill(p2RectTwo.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextTwo.getText());
-            checkForFullField();
 
         } else if (buttonClicked.equals("p2HandCardThree")){
             p2FieldCardRects.get(p2Count).setFill(p2RectThree.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextThree.getText());
-            checkForFullField();
 
         }else if (buttonClicked.equals("p2HandCardFour")){
             p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextFour.getText());
-            checkForFullField();
         }
         p2Count++;
+        checkForFullField();
 
 
 //        String textValue = ((Text)event.getSource()).getText();
