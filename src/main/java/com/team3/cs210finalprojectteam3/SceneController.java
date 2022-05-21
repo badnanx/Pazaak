@@ -28,7 +28,6 @@ public class SceneController implements Initializable{
     public static int p2Count = 0;
 
 
-
     // removed GameLogic initializer because it is a Singleton and doesn't get initialized
 
     public Hand p1Hand = new Hand();
