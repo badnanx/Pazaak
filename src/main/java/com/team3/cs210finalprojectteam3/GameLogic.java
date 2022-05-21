@@ -67,6 +67,11 @@ public class GameLogic {
 
     /**
      * Tracks whose turn it is.
+     *
+     * In retrospect, with some modifications this could have been
+     * more fully utilized and integrated into the program.
+     * Nonetheless, purpose is served.
+     *
      * @param currentPlayer
      */
     public void turnTracker(int currentPlayer)
@@ -102,7 +107,7 @@ public class GameLogic {
     public void calculateScores(List<Text> fieldCards, int whoseTurnIsIt){
         int sum = 0;
         for(Text text : fieldCards){
-            if(text.getText().equals("")){
+            if(text.getText().equals("") || text.getText().equals(" ")){
                 break;
             }
             sum += Integer.parseInt(text.getText());
@@ -110,9 +115,11 @@ public class GameLogic {
         System.out.println("DEBUG: whoseTurnIsIt =" +whoseTurnIsIt);
         if(whoseTurnIsIt == 1){
             p1.score = sum;
+            System.out.println("DEBUG: Player 1 score = " + p1.score);
         }
         else{
             p2.score = sum;
+            System.out.println("DEBUG: Player 2 score = " + p2.score);
         }
     }
 
@@ -129,6 +136,8 @@ public class GameLogic {
         if(p1Score == p2Score)
         {
             System.out.println("Round is a draw.");
+            System.out.println("DEBUG: Player 1 has won " + p1.roundsWon + " rounds.");
+            System.out.println("DEBUG: Player 2 has won " + p2.roundsWon + " rounds.");
             // suggestion: popup indicating draw
             endOfRound = true; // necessary? why not stay in game loop?
             // insert some fxn that resets scores and flags
@@ -140,6 +149,8 @@ public class GameLogic {
             // suggestion: popup indicating p1 win
             p1.wonRound = true;
             endOfRound = true;
+            System.out.println("DEBUG: Player 1 has won " + p1.roundsWon + " rounds.");
+            System.out.println("DEBUG: Player 2 has won " + p2.roundsWon + " rounds.");
             // insert some fxn that resets scores and flags
         }
         else {
@@ -148,6 +159,8 @@ public class GameLogic {
             // suggestion: popup indicating p2 win
             p2.wonRound = true;
             endOfRound = true;
+            System.out.println("DEBUG: Player 1 has won " + p1.roundsWon + " rounds.");
+            System.out.println("DEBUG: Player 2 has won " + p2.roundsWon + " rounds.");
             // insert some fxn that resets scores and flags
         }
         didP1orP2WinGame();
@@ -161,12 +174,18 @@ public class GameLogic {
             System.out.println("Player 1 wins the game!");
             p1.wonGame = true;
             gameOver = true; // redundant?
+            p1.gamesWon++;
+            System.out.println("DEBUG: Player 1 has won " + p1.gamesWon + " games.");
+            System.out.println("DEBUG: Player 2 has won " + p2.gamesWon + " games.");
             // popup window indicating victor?
             // insert some fxn that starts a new game?
         } else if(p2.roundsWon == WIN_LIMIT){
             System.out.println("Player 2 wins the game!");
             p2.wonGame = true;
             gameOver = true; // redundant?
+            p2.gamesWon++;
+            System.out.println("DEBUG: Player 1 has won " + p1.gamesWon + " games.");
+            System.out.println("DEBUG: Player 2 has won " + p2.gamesWon + " games.");
             // popup indicating victor?
             // insert some fxn that starts a new game?
         }

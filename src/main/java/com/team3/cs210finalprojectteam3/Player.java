@@ -5,6 +5,7 @@ public class Player {
 
     public int score;
     public int roundsWon;
+    public int gamesWon;
 
     public boolean hasStood;
     public boolean hasEndedTurn;

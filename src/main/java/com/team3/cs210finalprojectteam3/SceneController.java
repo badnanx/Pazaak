@@ -535,6 +535,10 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
+
+            GameLogic.getInstance().roundReset();
+            resetBetweenRounds();
+            GameLogic.getInstance().didP1orP2WinGame();
         } else if (GameLogic.getInstance().p2.score <= 20 && p2Count == 9){
             System.out.println("DEBUG: p1Count = " + p1Count);
             System.out.println("DEBUG: p2Count = " + p2Count);
@@ -542,6 +546,10 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
+            GameLogic.getInstance().didP1orP2WinGame();
+
+            GameLogic.getInstance().roundReset();
+            resetBetweenRounds();
             GameLogic.getInstance().didP1orP2WinGame();
         }
 
@@ -989,37 +997,75 @@ public class SceneController implements Initializable{
             // Game end code ++playerwins
             return;
         }
+
         String buttonClicked = ((StackPane)event.getSource()).getId();
         System.out.println("DEBUG: Clicked " + buttonClicked);
 
 
         if(buttonClicked.equals("p1HandCardOne")){
+
+            // Stops player from playing a spent/empty card.
+            if(p1TextOne.getText() == "0") {
+                System.out.println("Empty card slot. Do something else.");
+                return;
+            }
+
             p1FieldCardRects.get(p1Count).setFill(p1RectOne.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextOne.getText());
 
+            // UI changes (GRAY, "0") signal to player and program the card is spent/empty
+            p1RectOne.setFill(Color.GRAY);
+            p1TextOne.setText("0");
 
-            // example code for one possible way to update score:
-            // playerOneScoreText.setText(String.valueOf(GameLogic.getInstance().p1.score += Integer.parseInt(p1TextOne.getText())));
-            // However, it's probably better to just sum List/ArrayList and add to score
-
-            // add something that disables and clears played hand card
 
         } else if(buttonClicked.equals("p1HandCardTwo")){
+
+            // Stops player from playing a spent/empty card.
+            if(p1TextTwo.getText() == "0") {
+                System.out.println("Empty card slot. Do something else.");
+                return;
+            }
+
             p1FieldCardRects.get(p1Count).setFill(p1RectTwo.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextTwo.getText());
 
+            // UI changes (GRAY, "0") signal to player and program the card is spent/empty
+            p1RectTwo.setFill(Color.GRAY);
+            p1TextTwo.setText("0");
+
 
         } else if (buttonClicked.equals("p1HandCardThree")){
+            // Stops player from playing a spent/empty card.
+            if(p1TextThree.getText() == "0") {
+                System.out.println("Empty card slot. Do something else.");
+                return;
+            }
+
             p1FieldCardRects.get(p1Count).setFill(p1RectThree.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextThree.getText());
 
+            // UI changes (GRAY, "0") signal to player and program the card is spent/empty
+            p1RectThree.setFill(Color.GRAY);
+            p1TextThree.setText("0");
+
 
         }else if (buttonClicked.equals("p1HandCardFour")){
+
+            // Stops player from playing a spent/empty card.
+            if(p1TextFour.getText() == "0") {
+                System.out.println("Empty card slot. Do something else.");
+                return;
+            }
+
             p1FieldCardRects.get(p1Count).setFill(p1RectFour.getFill());
             p1FieldCardTexts.get(p1Count).setText(p1TextFour.getText());
 
+            // UI changes (GRAY, "0") signal to player and program the card is spent/empty
+            p1RectFour.setFill(Color.GRAY);
+            p1TextFour.setText("0");
+
         }
-        disableP1HandClicks();
+        disableP1HandClicks(); // stops player from playing more than one hand card per turn
         p1Count++;
         checkForFullField();
 
@@ -1076,22 +1122,55 @@ public class SceneController implements Initializable{
         System.out.println("DEBUG: Clicked " + buttonClicked);
 
         if(buttonClicked.equals("p2HandCardOne")){
+            // stops spent/empty card from being played
+            if(p2TextOne.getText() == "0") {
+                System.out.println("Empty card slot. Do something else.");
+                return;
+            }
             p2FieldCardRects.get(p2Count).setFill(p2RectOne.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextOne.getText());
+            // UI changes (GRAY, "0") signal to player and program the card is spent/empty
+            p2RectOne.setFill(Color.GRAY);
+            p2TextOne.setText("0");
 
         } else if(buttonClicked.equals("p2HandCardTwo")){
+
+            // stops spent/empty card from being played
+            if(p2TextTwo.getText() == "0") {
+                System.out.println("Empty card slot. Do something else.");
+                return;
+            }
             p2FieldCardRects.get(p2Count).setFill(p2RectTwo.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextTwo.getText());
+            // UI changes (GRAY, "0") signal to player and program the card is spent/empty
+            p2RectTwo.setFill(Color.GRAY);
+            p2TextTwo.setText("0");
 
         } else if (buttonClicked.equals("p2HandCardThree")){
+            // stops spent/empty card from being played
+            if(p2TextThree.getText() == "0") {
+                System.out.println("Empty card slot. Do something else.");
+                return;
+            }
             p2FieldCardRects.get(p2Count).setFill(p2RectThree.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextThree.getText());
+            // UI changes (GRAY, "0") signal to player and program the card is spent/empty
+            p2RectThree.setFill(Color.GRAY);
+            p2TextThree.setText("0");
 
         }else if (buttonClicked.equals("p2HandCardFour")){
+            // stops spent/empty card from being played
+            if(p2TextFour.getText() == "0") {
+                System.out.println("Empty card slot. Do something else.");
+                return;
+            }
             p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
             p2FieldCardTexts.get(p2Count).setText(p2TextFour.getText());
+            // UI changes (GRAY, "0") signal to player and program the card is spent/empty
+            p2RectFour.setFill(Color.GRAY);
+            p2TextFour.setText("0");
         }
-        disableP2HandClicks();
+        disableP2HandClicks(); // stops player from playing more than one hand card per turn
         p2Count++;
         checkForFullField();
         // updating score behind the scenes since this player's field has changed.
