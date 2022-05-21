@@ -243,7 +243,7 @@ public class SceneController implements Initializable{
      * starts the game for the first time and initializes all of the field and hand elements used in the game
      */
     public void initialize(){
-
+        newHand();
         newUIEnvironment();
 
         //----------------------------------------------------------------------
@@ -312,13 +312,9 @@ public class SceneController implements Initializable{
     @FXML private Circle playerOneTurnIndicator;
 
     /**
-     * When we create a new game, or reset the game, we need to separate this bit of code from the initialize method
-     * because the initialize method attempts to reinitialize static variables which doesn't work and won't refresh
-     * UI elements properly
-     *
-     * Using this we can reset the game and have new Hand texts appear properly.
+     * Used in creating a new game, as only when a new game (not round) starts will we have a need for a new hand
      */
-    public void newUIEnvironment(){
+    public void newHand(){
         // moved these here so we can reset them when needed
         p1Hand = new Hand();
         p2Hand = new Hand();
@@ -327,6 +323,17 @@ public class SceneController implements Initializable{
         p2HandCards = new ArrayList<>();
         p1HandCards = p1Hand.hand;
         p2HandCards = p2Hand.hand;
+    }
+
+    /**
+     * When we create a new game, or reset the game, we need to separate this bit of code from the initialize method
+     * because the initialize method attempts to reinitialize static variables which doesn't work and won't refresh
+     * UI elements properly
+     *
+     * Using this we can reset the game and have new Hand texts appear properly.
+     */
+    public void newUIEnvironment(){
+
         //p1Field---------------------------------------------------------------
 
         // playing field 1 array lists are here
@@ -388,11 +395,31 @@ public class SceneController implements Initializable{
 
     }
 
+    public void resetBetweenRounds(){
+        newUIEnvironment();
+        playerOneTurnIndicator.setFill(Color.GREEN);
+        playerTwoTurnIndicator.setFill(Color.GREEN);
+        for(Rectangle rect : p1FieldCardRects){
+            rect.setFill(Color.LIGHTGRAY);
+        }
+        for(Text text : p1FieldCardTexts){
+            text.setText("");
+        }
+        for(Rectangle rect : p2FieldCardRects){
+            rect.setFill(Color.LIGHTGRAY);
+        }
+        for(Text text : p2FieldCardTexts){
+            text.setText("");
+        }
+        GameLogic.getInstance().roundReset();
+        updateUI();
+    }
+
     /**
      * Use this when we want a blank slate/fresh game, this will reset the field and renew each player's hands
      */
     public void ResetGameEnvironment(){
-
+            newHand();
             newUIEnvironment();
             playerOneTurnIndicator.setFill(Color.GREEN);
             playerTwoTurnIndicator.setFill(Color.GREEN);
@@ -541,14 +568,14 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
             GameLogic.getInstance().roundReset();
-            ResetGameEnvironment();
+            resetBetweenRounds();
         } else { checkForFullField(); }
 
         if(GameLogic.getInstance().p2.hasStood == true){
             System.out.println("Both players have stood.");
             GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
             GameLogic.getInstance().roundReset();
-            ResetGameEnvironment();
+            resetBetweenRounds();
         } else{
             playerTwoTurnIndicator.setFill(Color.GREEN);
             GameLogic.getInstance().turnTracker(1);
@@ -572,14 +599,14 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().endOfRound = true;
             GameLogic.getInstance().didP1orP2WinGame();
             GameLogic.getInstance().roundReset();
-            ResetGameEnvironment();
+            resetBetweenRounds();
         }else { checkForFullField(); }
 
         if(GameLogic.getInstance().p1.hasStood == true){
             System.out.println("Both players have stood.");
             GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
             GameLogic.getInstance().roundReset();
-            ResetGameEnvironment();
+            resetBetweenRounds();
         } else{
             playerOneTurnIndicator.setFill(Color.GREEN);
             GameLogic.getInstance().turnTracker(2);
