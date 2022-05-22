@@ -136,8 +136,8 @@ public class GameLogic {
         if(p1Score == p2Score)
         {
             System.out.println("Round is a draw.");
-            System.out.println("DEBUG: Player 1 has won " + p1.roundsWon + " rounds.");
-            System.out.println("DEBUG: Player 2 has won " + p2.roundsWon + " rounds.");
+            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
+            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
             // suggestion: popup indicating draw
             endOfRound = true; // necessary? why not stay in game loop?
             // insert some fxn that resets scores and flags

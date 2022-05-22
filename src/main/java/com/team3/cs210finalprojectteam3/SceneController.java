@@ -625,6 +625,9 @@ public class SceneController implements Initializable{
         GameLogic.getInstance().p2.wonGame = true;
         GameLogic.getInstance().gameOver = true;
 
+        System.out.println("DEBUG: Player 1 has won " + GameLogic.getInstance().p1.gamesWon + " games.");
+        System.out.println("DEBUG: Player 2 has won " + GameLogic.getInstance().p2.gamesWon + " games.");
+
         // testing resetting game
         ResetGameEnvironment();
         GameLogic.getInstance().roundReset();
@@ -634,6 +637,10 @@ public class SceneController implements Initializable{
         System.out.println("Player 2 forfeits the game.");
         GameLogic.getInstance().p1.wonGame = true;
         GameLogic.getInstance().gameOver = true;
+
+        System.out.println("DEBUG: Player 1 has won " + GameLogic.getInstance().p1.gamesWon + " games.");
+        System.out.println("DEBUG: Player 2 has won " + GameLogic.getInstance().p2.gamesWon + " games.");
+
         ResetGameEnvironment();
         GameLogic.getInstance().roundReset();
     }
