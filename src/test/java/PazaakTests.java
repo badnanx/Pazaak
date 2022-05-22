@@ -11,6 +11,8 @@ public class PazaakTests {
 
     /**
      * Tests if checkForBust(int) method correctly returns true if player score is over 20.
+     * INPUTS: int 21, or any int value over 20.
+     * EXPECTED OUTPUT: true.
      * @author Adnan Al Joubi
      */
     @Test
@@ -24,6 +26,8 @@ public class PazaakTests {
 
     /**
      * Tests if checkForBust(int) method correctly returns false if player score is at 20.
+     * INPUTS: int 20
+     * EXPECTED OUTPUT: false
      * @author Adnan Al Joubi
      */
     @Test
@@ -35,6 +39,8 @@ public class PazaakTests {
 
     /**
      * Tests if checkForBust(int) method correctly returns false if player score is under 20.
+     * INPUTS: int 19, or any integer value under 20.
+     * EXPECTED OUTPUT: false
      * @author Adnan Al Joubi
      */
     @Test
@@ -45,7 +51,22 @@ public class PazaakTests {
     }
 
     /**
+     * Tests if checkForBust(int) method correctly returns false if player score is at 0.
+     * INPUTS: int 0
+     * EXPECTED OUTPUT: false
+     * @author Adnan Al Joubi
+     */
+    @Test
+    void noBustAtZero(){
+        boolean result = GameLogic.getInstance().checkForBust(0);
+        System.out.println("DEBUG: checkForBust result: " + result);
+        assertFalse(result);
+    }
+
+    /**
      * Tests if checkForBust(int) method correctly returns false if player score is negative.
+     * INPUTS: int -4, or any integer value below 0
+     * EXPECTED OUTPUT: false
      * @author Adnan Al Joubi
      */
     @Test
