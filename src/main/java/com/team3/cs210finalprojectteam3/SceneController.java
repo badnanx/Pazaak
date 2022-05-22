@@ -648,14 +648,25 @@ public class SceneController implements Initializable{
         GameLogic.getInstance().p1.hasStood = true;
         playerOneTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 1 has stood.");
+        // bust logic
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
+
+            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
+            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+//            if(GameLogic.getInstance().didP1orP2WinGame()){
+//                ResetGameEnvironment();
+//                return;
+//            }
             if(GameLogic.getInstance().didP1orP2WinGame()){
                 ResetGameEnvironment();
+            }else{
+                resetBetweenRounds();
             }
+            return;
 
         } else { checkForFullField(); }
 
@@ -694,19 +705,22 @@ public class SceneController implements Initializable{
         GameLogic.getInstance().p2.hasStood = true;
         playerTwoTurnIndicator.setFill(Color.YELLOW);
         System.out.println("DEBUG: Player 2 has stood.");
+        // bust logic
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p2.score) == true){
             System.out.println("Player 2 has gone bust! Player 1 wins the round!");
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
+
+            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
+            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
            // disableP1Clicks();
             if(GameLogic.getInstance().didP1orP2WinGame()){
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
             }
-
-            //return;
+            return;
         }else { checkForFullField(); }
 
         if(GameLogic.getInstance().p1.hasStood == true){
@@ -736,17 +750,22 @@ public class SceneController implements Initializable{
             disableP1Clicks();
             enableP2Clicks();
         }
-
+        // bust logic
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
+
+            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
+            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+
             if(GameLogic.getInstance().didP1orP2WinGame()){
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
             }
+            return;
 
             // have some fxn that starts new round
         }else { checkForFullField(); }
@@ -787,12 +806,16 @@ public class SceneController implements Initializable{
             disableP2Clicks();
             enableP1Clicks();
         }
-
+        // bust logic
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p2.score) == true){
             System.out.println("Player 2 has gone bust! Player 1 wins the round!");
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
+
+            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
+            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+
             if(GameLogic.getInstance().didP1orP2WinGame()){
                 ResetGameEnvironment();
             }else{
@@ -1091,24 +1114,6 @@ public class SceneController implements Initializable{
         // Here I will add the logic to update the UI, since the playing field is guaranteed to have
         // changed by this point.
         updateUI();
-
-//        String textValue = ((Text)event.getSource()).getText();
-//        String buttonClicked = ((Text)event.getSource()).getId();
-//
-//        p1FieldCardTexts.get(p1Count).setText(textValue);
-//
-//
-//        if(buttonClicked.equals("p1TextOne")){
-//            p1FieldCardRects.get(p1Count).setFill(p1RectOne.getFill());
-//        } else if(buttonClicked.equals("p1TextTwo")){
-//            p1FieldCardRects.get(p1Count).setFill(p1RectTwo.getFill());
-//        } else if (buttonClicked.equals("p1TextThree")){
-//            p1FieldCardRects.get(p1Count).setFill(p1RectThree.getFill());
-//        }else if (buttonClicked.equals("p1TextFour")){
-//            p1FieldCardRects.get(p1Count).setFill(p1RectFour.getFill());
-//        }
-//        p1Count++;
-
     }
 
     /**
@@ -1196,22 +1201,6 @@ public class SceneController implements Initializable{
         // changed by this point.
         updateUI();
 
-//        String textValue = ((Text)event.getSource()).getText();
-//        String buttonClicked = ((Text)event.getSource()).getId();
-//
-//        p2FieldCardTexts.get(p2Count).setText(textValue);
-//
-//
-//        if(buttonClicked.equals("p2TextOne")){
-//            p2FieldCardRects.get(p2Count).setFill(p2RectOne.getFill());
-//        } else if(buttonClicked.equals("p2TextTwo")){
-//            p2FieldCardRects.get(p2Count).setFill(p2RectTwo.getFill());
-//        } else if (buttonClicked.equals("p2TextThree")){
-//            p2FieldCardRects.get(p2Count).setFill(p2RectThree.getFill());
-//        }else if (buttonClicked.equals("p2TextFour")){
-//            p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
-//        }
-//        p2Count++;
 
     }
 
