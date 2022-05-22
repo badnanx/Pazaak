@@ -536,9 +536,18 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
+
+            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
+            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+//            if(GameLogic.getInstance().didP1orP2WinGame()){
+//                ResetGameEnvironment();
+//            }
             if(GameLogic.getInstance().didP1orP2WinGame()){
                 ResetGameEnvironment();
+            }else{
+                resetBetweenRounds();
             }
+            return;
         } else if (GameLogic.getInstance().p2.score <= 20 && p2Count == 9){
             System.out.println("DEBUG: p1Count = " + p1Count);
             System.out.println("DEBUG: p2Count = " + p2Count);
@@ -546,11 +555,20 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
+
+            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
+            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+//            if(GameLogic.getInstance().didP1orP2WinGame()){
+//                ResetGameEnvironment();
+//            }else{
+//                resetBetweenRounds();
+//            }
             if(GameLogic.getInstance().didP1orP2WinGame()){
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
             }
+            return;
         }
 
     }
@@ -692,6 +710,7 @@ public class SceneController implements Initializable{
             p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
             p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
             p2Count++;
+            checkForFullField();
             // insert draw card for p2
             GameLogic.getInstance().turnTracker(1);
             GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
@@ -744,6 +763,7 @@ public class SceneController implements Initializable{
             p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
             p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
             p1Count++;
+            checkForFullField();
             GameLogic.getInstance().turnTracker(2);
             GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
             updateUI();
@@ -785,6 +805,7 @@ public class SceneController implements Initializable{
            p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
            p1Count++;
+           checkForFullField();
            enableP1Clicks();
 
            // updating score behind the scenes since this player's field has changed.
@@ -853,11 +874,13 @@ public class SceneController implements Initializable{
             p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
             p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE); // consider light blue
             p1Count++;
+
             // some kind of gameplay loop would be good here
             // idea: player one's buttons should be disabled if it's not their turn
 
             // updating score behind the scenes since this player's field has changed.
             GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
+            checkForFullField();
         }
         // Here I will add the logic to update the UI, since the playing field is guaranteed to have
         // changed by this point.
@@ -1200,9 +1223,10 @@ public class SceneController implements Initializable{
         }
         disableP2HandClicks(); // stops player from playing more than one hand card per turn
         p2Count++;
-        checkForFullField();
+
         // updating score behind the scenes since this player's field has changed.
         GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
+        checkForFullField();
 
         // Here I will add the logic to update the UI, since the playing field is guaranteed to have
         // changed by this point.
