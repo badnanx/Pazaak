@@ -466,8 +466,10 @@ public class SceneController implements Initializable{
                 text.setText("");
             }
 
-
-
+        disableP1Clicks();
+        disableP2Clicks();
+        startRoundBtn.setDisable(false);
+        GameLogic.getInstance().winReset();
 
         /*Platform.runLater(new Runnable() {
             @Override
@@ -534,11 +536,9 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().didP1orP2WinGame();
-
-            GameLogic.getInstance().roundReset();
-            resetBetweenRounds();
-            GameLogic.getInstance().didP1orP2WinGame();
+            if(GameLogic.getInstance().didP1orP2WinGame()){
+                ResetGameEnvironment();
+            }
         } else if (GameLogic.getInstance().p2.score <= 20 && p2Count == 9){
             System.out.println("DEBUG: p1Count = " + p1Count);
             System.out.println("DEBUG: p2Count = " + p2Count);
@@ -546,11 +546,11 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().didP1orP2WinGame();
-
-            GameLogic.getInstance().roundReset();
-            resetBetweenRounds();
-            GameLogic.getInstance().didP1orP2WinGame();
+            if(GameLogic.getInstance().didP1orP2WinGame()){
+                ResetGameEnvironment();
+            }else{
+                resetBetweenRounds();
+            }
         }
 
     }
@@ -653,17 +653,22 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().didP1orP2WinGame();
-            GameLogic.getInstance().roundReset();
-            resetBetweenRounds();
-            return;
+            if(GameLogic.getInstance().didP1orP2WinGame()){
+                ResetGameEnvironment();
+            }
+
         } else { checkForFullField(); }
 
         if(GameLogic.getInstance().p2.hasStood == true){
             System.out.println("Both players have stood.");
             GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
-            GameLogic.getInstance().roundReset();
-            resetBetweenRounds();
+            if(GameLogic.getInstance().didP1orP2WinGame()){
+                ResetGameEnvironment();
+            }else{
+
+                resetBetweenRounds();
+            }
+
         } else{
             playerTwoTurnIndicator.setFill(Color.GREEN);
             p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
@@ -695,17 +700,24 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
            // disableP1Clicks();
-            GameLogic.getInstance().didP1orP2WinGame();
-            GameLogic.getInstance().roundReset();
-            resetBetweenRounds();
-            return;
+            if(GameLogic.getInstance().didP1orP2WinGame()){
+                ResetGameEnvironment();
+            }else{
+                resetBetweenRounds();
+            }
+
+            //return;
         }else { checkForFullField(); }
 
         if(GameLogic.getInstance().p1.hasStood == true){
             System.out.println("Both players have stood.");
             GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
-            GameLogic.getInstance().roundReset();
-            resetBetweenRounds();
+            if(GameLogic.getInstance().didP1orP2WinGame()){
+                ResetGameEnvironment();
+            }else{
+
+                resetBetweenRounds();
+            }
         } else{
             playerOneTurnIndicator.setFill(Color.GREEN);
             p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
@@ -730,10 +742,12 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().didP1orP2WinGame();
-            GameLogic.getInstance().roundReset();
-            resetBetweenRounds();
-            return;
+            if(GameLogic.getInstance().didP1orP2WinGame()){
+                ResetGameEnvironment();
+            }else{
+                resetBetweenRounds();
+            }
+
             // have some fxn that starts new round
         }else { checkForFullField(); }
 
@@ -779,9 +793,11 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-            GameLogic.getInstance().didP1orP2WinGame();
-            GameLogic.getInstance().roundReset();
-            resetBetweenRounds();
+            if(GameLogic.getInstance().didP1orP2WinGame()){
+                ResetGameEnvironment();
+            }else{
+                resetBetweenRounds();
+            }
             return;
         }else { checkForFullField(); }
 

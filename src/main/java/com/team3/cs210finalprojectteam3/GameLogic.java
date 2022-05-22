@@ -163,13 +163,15 @@ public class GameLogic {
             System.out.println("DEBUG: Player 2 has won " + p2.roundsWon + " rounds.");
             // insert some fxn that resets scores and flags
         }
+        roundReset();
         didP1orP2WinGame();
     }
 
     /**
      * Checks if player has won the game.
      */
-    public void didP1orP2WinGame(){
+    public boolean didP1orP2WinGame(){
+
         if(p1.roundsWon == WIN_LIMIT){
             System.out.println("Player 1 wins the game!");
             p1.wonGame = true;
@@ -177,6 +179,9 @@ public class GameLogic {
             p1.gamesWon++;
             System.out.println("DEBUG: Player 1 has won " + p1.gamesWon + " games.");
             System.out.println("DEBUG: Player 2 has won " + p2.gamesWon + " games.");
+
+
+            return true;
             // popup window indicating victor?
             // insert some fxn that starts a new game?
         } else if(p2.roundsWon == WIN_LIMIT){
@@ -186,8 +191,14 @@ public class GameLogic {
             p2.gamesWon++;
             System.out.println("DEBUG: Player 1 has won " + p1.gamesWon + " games.");
             System.out.println("DEBUG: Player 2 has won " + p2.gamesWon + " games.");
+
+            return true;
             // popup indicating victor?
             // insert some fxn that starts a new game?
+        }
+        else{
+            //no body won the game yet
+            return false;
         }
     }
 
@@ -227,7 +238,13 @@ public class GameLogic {
         p2.hasEndedTurn = false;
     }
 
+    /**
+     * This method resets everything that should be reset at the beginning of a new game
+     */
     public void winReset(){
+        roundReset();
+        p1.roundsWon = 0;
+        p2.roundsWon = 0;
 
     }
 
