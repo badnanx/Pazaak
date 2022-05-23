@@ -746,7 +746,12 @@ public class SceneController implements Initializable{
                 SetInfoText("Both players have stood. Player 2 Wins the Round!");
             }
             if(GameLogic.getInstance().didP1orP2WinGame()){
-                SetInfoText("Player 2 Has Won The Entire Game!");
+                if(playerWinNumber == 1){
+                    SetInfoText("Player 1 Has Won The Entire Game!");
+                }
+                else{
+                    SetInfoText("Player 2 Has Won The Entire Game!");
+                }
                 ResetGameEnvironment();
             }else{
 
@@ -812,7 +817,12 @@ public class SceneController implements Initializable{
                 SetInfoText("Both players have stood. Player 2 Wins the Round!");
             }
             if(GameLogic.getInstance().didP1orP2WinGame()){
-                SetInfoText("Player 1 Has Won The Entire Game!");
+                if(playerWinNumber == 1){
+                    SetInfoText("Player 1 Has Won The Entire Game!");
+                }
+                else{
+                    SetInfoText("Player 2 Has Won The Entire Game!");
+                }
                 ResetGameEnvironment();
             }else{
 
