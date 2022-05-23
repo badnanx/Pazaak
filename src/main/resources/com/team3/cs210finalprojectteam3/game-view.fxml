@@ -317,6 +317,11 @@
                   <Font name="Impact" size="22.0" />
                </font>
             </Button>
+            <Text fx:id="infoText" layoutX="14.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Pazaak!" textAlignment="CENTER" wrappingWidth="171.203125">
+               <font>
+                  <Font name="Agency FB Bold" size="24.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </center>

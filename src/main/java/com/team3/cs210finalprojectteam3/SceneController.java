@@ -235,6 +235,11 @@ public class SceneController implements Initializable{
 
     public List<Card> p2HandCards;
 
+    //setting up the info text in the game view
+
+    @FXML private Text infoText;
+
+
     public void SetStage(Stage stage){
         mStage = stage;
     }
@@ -530,6 +535,10 @@ public class SceneController implements Initializable{
 
     }
 
+    private void SetInfoText(String text){
+        infoText.setText(text);
+    }
+
     public void SwitchtoWelcomeScene(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("welcome-view.fxml"));
         mStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -553,6 +562,7 @@ public class SceneController implements Initializable{
         System.out.println("DEBUG: p2Count = " + p2Count);
         if(GameLogic.getInstance().p1.score <= 20 && p1Count == 9){
             System.out.println("Player 1 has a full house. Player 1 wins the round!");
+            SetInfoText("Player 1 has a full house. Player 1 wins the round!");
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
@@ -563,6 +573,7 @@ public class SceneController implements Initializable{
 //                ResetGameEnvironment();
 //            }
             if(GameLogic.getInstance().didP1orP2WinGame()){
+                SetInfoText("Player 1 Has Won The Entire Game!");
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
@@ -572,6 +583,7 @@ public class SceneController implements Initializable{
             System.out.println("DEBUG: p1Count = " + p1Count);
             System.out.println("DEBUG: p2Count = " + p2Count);
             System.out.println("Player 2 has a full house. Player 2 wins the round!");
+            SetInfoText("Player 2 has a full house. Player 2 wins the round!");
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
@@ -584,6 +596,7 @@ public class SceneController implements Initializable{
 //                resetBetweenRounds();
 //            }
             if(GameLogic.getInstance().didP1orP2WinGame()){
+                SetInfoText("Player 2 Has Won The Entire Game!");
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
@@ -645,7 +658,7 @@ public class SceneController implements Initializable{
         // player 1 always goes first
         enableP1Clicks();
         disableP2Clicks();
-
+        SetInfoText("Player 1's Turn");
         p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
         p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
         p1Count++;
@@ -660,6 +673,7 @@ public class SceneController implements Initializable{
 
     @FXML public void p1ForfeitGame(){
         System.out.println("Player 1 forfeits the game.");
+        SetInfoText("Whaaa? Player 1 Forfeits the Game!");
         GameLogic.getInstance().p2.wonGame = true;
         GameLogic.getInstance().gameOver = true;
 
@@ -673,6 +687,7 @@ public class SceneController implements Initializable{
 
     @FXML public void p2ForfeitGame(){
         System.out.println("Player 2 forfeits the game.");
+        SetInfoText("OMG? Player 2 Forfeits the Game!");
         GameLogic.getInstance().p1.wonGame = true;
         GameLogic.getInstance().gameOver = true;
 
@@ -685,6 +700,7 @@ public class SceneController implements Initializable{
 
     @FXML
     public void p1Stand(){
+        SetInfoText("Player 1 Has Chosen to Stand.");
         disableP1Clicks();
         if(GameLogic.getInstance().p2.hasStood==false) {
             enableP2Clicks();
@@ -696,6 +712,7 @@ public class SceneController implements Initializable{
         // bust logic
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
+            SetInfoText("Player 1 Busts. Player 2 Wins the Round!");
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
@@ -707,6 +724,7 @@ public class SceneController implements Initializable{
 //                return;
 //            }
             if(GameLogic.getInstance().didP1orP2WinGame()){
+                SetInfoText("Player 2 Has Won The Entire Game!");
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
@@ -717,8 +735,18 @@ public class SceneController implements Initializable{
 
         if(GameLogic.getInstance().p2.hasStood == true){
             System.out.println("Both players have stood.");
-            GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
+            int playerWinNumber = GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
+            if(playerWinNumber == 0){
+                SetInfoText("Both players have stood. The round is a draw!");
+            }
+            else if(playerWinNumber == 1){
+                SetInfoText("Both players have stood. Player 1 Wins the Round!");
+            }
+            else{
+                SetInfoText("Both players have stood. Player 2 Wins the Round!");
+            }
             if(GameLogic.getInstance().didP1orP2WinGame()){
+                SetInfoText("Player 2 Has Won The Entire Game!");
                 ResetGameEnvironment();
             }else{
 
@@ -743,6 +771,7 @@ public class SceneController implements Initializable{
 
     @FXML
     public void p2Stand(){
+        SetInfoText("Player 2 Has Chosen to Stand.");
         disableP2Clicks();
         if(GameLogic.getInstance().p1.hasStood==false) {
             enableP1Clicks();
@@ -762,6 +791,7 @@ public class SceneController implements Initializable{
             System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
            // disableP1Clicks();
             if(GameLogic.getInstance().didP1orP2WinGame()){
+                SetInfoText("Player 1 Has Won The Entire Game!");
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
@@ -771,8 +801,18 @@ public class SceneController implements Initializable{
 
         if(GameLogic.getInstance().p1.hasStood == true){
             System.out.println("Both players have stood.");
-            GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
+            int playerWinNumber = GameLogic.getInstance().compareScores(GameLogic.getInstance().p1.score, GameLogic.getInstance().p2.score);
+            if(playerWinNumber == 0){
+                SetInfoText("Both players have stood. The round is a draw!");
+            }
+            else if(playerWinNumber == 1){
+                SetInfoText("Both players have stood. Player 1 Wins the Round!");
+            }
+            else{
+                SetInfoText("Both players have stood. Player 2 Wins the Round!");
+            }
             if(GameLogic.getInstance().didP1orP2WinGame()){
+                SetInfoText("Player 1 Has Won The Entire Game!");
                 ResetGameEnvironment();
             }else{
 
@@ -800,6 +840,7 @@ public class SceneController implements Initializable{
         // bust logic
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p1.score) == true){
             System.out.println("Player 1 has gone bust! Player 2 wins the round!");
+            SetInfoText("Player 1 Busts. Player 2 Wins!");
             GameLogic.getInstance().p2.roundsWon++;
             GameLogic.getInstance().p2.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
@@ -808,6 +849,7 @@ public class SceneController implements Initializable{
             System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
 
             if(GameLogic.getInstance().didP1orP2WinGame()){
+                SetInfoText("Player 2 Has Won The Entire Game!");
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
@@ -821,7 +863,7 @@ public class SceneController implements Initializable{
 
            GameLogic.getInstance().turnTracker(2); // used this just to print whose turn
           // playerOneTurnIndicator.setFill(Color.GREEN);
-
+            SetInfoText("Player 2 Has Stood. Player 1 Goes Again.");
            p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
            p1Count++;
@@ -834,7 +876,7 @@ public class SceneController implements Initializable{
            GameLogic.getInstance().turnTracker(1);
            playerOneTurnIndicator.setFill(Color.RED);
            playerTwoTurnIndicator.setFill(Color.GREEN);
-
+            SetInfoText("Player 2's Turn.");
            p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
            p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
            p2Count++;
@@ -860,11 +902,12 @@ public class SceneController implements Initializable{
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
-
+            SetInfoText("Player 2 busts. Player 1 Wins!");
             System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
             System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
 
             if(GameLogic.getInstance().didP1orP2WinGame()){
+                SetInfoText("Player 1 Has Won The Entire Game!");
                 ResetGameEnvironment();
             }else{
                 resetBetweenRounds();
@@ -879,6 +922,7 @@ public class SceneController implements Initializable{
             p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
             p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
             p2Count++;
+            SetInfoText("Player 1 Has Stood. Player 2 Goes Again.");
             enableP2Clicks();
             checkForFullField();
             // some sort of 'continue play' loop may be good here
@@ -886,7 +930,7 @@ public class SceneController implements Initializable{
             // updating score behind the scenes since this player's field has changed.
             GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
         } else{
-
+            SetInfoText("Player 1's Turn.");
             GameLogic.getInstance().turnTracker(2);
             playerTwoTurnIndicator.setFill(Color.RED);
             playerOneTurnIndicator.setFill(Color.GREEN);
@@ -1097,6 +1141,7 @@ public class SceneController implements Initializable{
             // Stops player from playing a spent/empty card.
             if(p1TextOne.getText() == "0") {
                 System.out.println("Empty card slot. Do something else.");
+                SetInfoText("Can't play that card.");
                 return;
             }
 
@@ -1113,6 +1158,7 @@ public class SceneController implements Initializable{
             // Stops player from playing a spent/empty card.
             if(p1TextTwo.getText() == "0") {
                 System.out.println("Empty card slot. Do something else.");
+                SetInfoText("Can't play that card.");
                 return;
             }
 
@@ -1128,6 +1174,7 @@ public class SceneController implements Initializable{
             // Stops player from playing a spent/empty card.
             if(p1TextThree.getText() == "0") {
                 System.out.println("Empty card slot. Do something else.");
+                SetInfoText("Can't play that card.");
                 return;
             }
 
@@ -1144,6 +1191,7 @@ public class SceneController implements Initializable{
             // Stops player from playing a spent/empty card.
             if(p1TextFour.getText() == "0") {
                 System.out.println("Empty card slot. Do something else.");
+                SetInfoText("Can't play that card.");
                 return;
             }
 
@@ -1161,7 +1209,7 @@ public class SceneController implements Initializable{
 
         // updating score behind the scenes since this player's field has changed.
         GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
-
+        SetInfoText("Player 1 Played a Hand Card");
         // Here I will add the logic to update the UI, since the playing field is guaranteed to have
         // changed by this point.
         updateUI();
@@ -1197,6 +1245,7 @@ public class SceneController implements Initializable{
             // stops spent/empty card from being played
             if(p2TextOne.getText() == "0") {
                 System.out.println("Empty card slot. Do something else.");
+                SetInfoText("Can't play that card.");
                 return;
             }
             p2FieldCardRects.get(p2Count).setFill(p2RectOne.getFill());
@@ -1210,6 +1259,7 @@ public class SceneController implements Initializable{
             // stops spent/empty card from being played
             if(p2TextTwo.getText() == "0") {
                 System.out.println("Empty card slot. Do something else.");
+                SetInfoText("Can't play that card.");
                 return;
             }
             p2FieldCardRects.get(p2Count).setFill(p2RectTwo.getFill());
@@ -1222,6 +1272,7 @@ public class SceneController implements Initializable{
             // stops spent/empty card from being played
             if(p2TextThree.getText() == "0") {
                 System.out.println("Empty card slot. Do something else.");
+                SetInfoText("Can't play that card.");
                 return;
             }
             p2FieldCardRects.get(p2Count).setFill(p2RectThree.getFill());
@@ -1234,6 +1285,7 @@ public class SceneController implements Initializable{
             // stops spent/empty card from being played
             if(p2TextFour.getText() == "0") {
                 System.out.println("Empty card slot. Do something else.");
+                SetInfoText("Can't play that card.");
                 return;
             }
             p2FieldCardRects.get(p2Count).setFill(p2RectFour.getFill());
@@ -1244,7 +1296,7 @@ public class SceneController implements Initializable{
         }
         disableP2HandClicks(); // stops player from playing more than one hand card per turn
         p2Count++;
-
+        SetInfoText("Player 2 Played a Hand Card");
         // updating score behind the scenes since this player's field has changed.
         GameLogic.getInstance().calculateScores(p2FieldCardTexts,2);
         checkForFullField();

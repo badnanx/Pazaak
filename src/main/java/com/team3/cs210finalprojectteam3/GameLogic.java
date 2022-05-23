@@ -128,8 +128,9 @@ public class GameLogic {
      * Note: compareRounds() is embedded in compareScores(int, int).
      * @param p1Score player 1's score
      * @param p2Score player 2's score
+     * @return return 0 if draw, 1 if player 1 wins, 2 if player 2 wins
      */
-    public void compareScores(int p1Score, int p2Score)
+    public int compareScores(int p1Score, int p2Score)
     {
         System.out.println("Round over. Comparing scores...");
 
@@ -141,6 +142,7 @@ public class GameLogic {
             // suggestion: popup indicating draw
             endOfRound = true; // necessary? why not stay in game loop?
             // insert some fxn that resets scores and flags
+            return 0;
         }
         else if (p1Score > p2Score)
         {
@@ -151,6 +153,7 @@ public class GameLogic {
             endOfRound = true;
             System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
             System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+            return 1;
             // insert some fxn that resets scores and flags
         }
         else {
@@ -161,9 +164,10 @@ public class GameLogic {
             endOfRound = true;
             System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
             System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+            return 2;
             // insert some fxn that resets scores and flags
         }
-        roundReset();
+        //roundReset();
         //didP1orP2WinGame();
     }
 
