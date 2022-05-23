@@ -155,10 +155,22 @@ public class SceneController implements Initializable{
 
     //--------------------------------------------------------------------------
 
+    // Round indicator lights go here
+    @FXML public Rectangle p1FirstRoundWinIndicator;
+    @FXML public Rectangle p1SecondRoundWinIndicator;
+    @FXML public Rectangle p1ThirdRoundWinIndicator;
 
-    /**
-     * Hand Rectangles
-     */
+    @FXML public Rectangle p2FirstRoundWinIndicator;
+    @FXML public Rectangle p2SecondRoundWinIndicator;
+    @FXML public Rectangle p2ThirdRoundWinIndicator;
+
+    @FXML public static Rectangle p1FirstRoundWinIndicatorStatic;
+    @FXML public static Rectangle p1SecondRoundWinIndicatorStatic;
+    @FXML public static Rectangle p1ThirdRoundWinIndicatorStactic;
+
+    @FXML public static Rectangle p2FirstRoundWinIndicatorStatic;
+    @FXML public static Rectangle p2SecondRoundWinIndicatorStatic;
+    @FXML public static Rectangle p2ThirdRoundWinIndicatorStatic;
 
 //----------------------------------------------------------
 
@@ -298,7 +310,15 @@ public class SceneController implements Initializable{
         p1FieldCardRectEightStatic = p1FieldCardRectEight;
         p1FieldCardRectNineStatic = p1FieldCardRectNine;
 
+        // Round indicators
 
+        p1FirstRoundWinIndicatorStatic = p1FirstRoundWinIndicator;
+        p1SecondRoundWinIndicatorStatic = p1SecondRoundWinIndicator;
+        p1ThirdRoundWinIndicatorStactic = p1ThirdRoundWinIndicator;
+
+        p2FirstRoundWinIndicatorStatic = p2FirstRoundWinIndicator;
+        p2SecondRoundWinIndicatorStatic = p2SecondRoundWinIndicator;
+        p2ThirdRoundWinIndicatorStatic = p2ThirdRoundWinIndicator;
     }
 
 
@@ -470,7 +490,7 @@ public class SceneController implements Initializable{
         disableP2Clicks();
         startRoundBtn.setDisable(false);
         GameLogic.getInstance().winReset();
-
+        playerWinIndicatorReset();
         /*Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -894,7 +914,8 @@ public class SceneController implements Initializable{
      * yet.
      */
     public void updateUI(){
-       updatePlayerScoresUI();
+        playerWinIndicator();
+        updatePlayerScoresUI();
     }
 
     /**
@@ -1235,7 +1256,42 @@ public class SceneController implements Initializable{
 
     }
 
+    public void playerWinIndicator(){
 
+        if (GameLogic.getInstance().p1.roundsWon == 1){
+            p1FirstRoundWinIndicator.setFill(Color.SEAGREEN);
+        } else if (GameLogic.getInstance().p1.roundsWon == 2){
+            p1FirstRoundWinIndicator.setFill(Color.SEAGREEN);
+            p1SecondRoundWinIndicator.setFill(Color.SEAGREEN);
+        } else if (GameLogic.getInstance().p1.roundsWon == 3){
+            p1FirstRoundWinIndicator.setFill(Color.SEAGREEN);
+            p1SecondRoundWinIndicator.setFill(Color.SEAGREEN);
+            p1ThirdRoundWinIndicator.setFill(Color.SEAGREEN);
+        }
+
+        if (GameLogic.getInstance().p2.roundsWon == 1){
+            p2FirstRoundWinIndicator.setFill(Color.SEAGREEN);
+        } else if (GameLogic.getInstance().p2.roundsWon == 2){
+            p2FirstRoundWinIndicator.setFill(Color.SEAGREEN);
+            p2SecondRoundWinIndicator.setFill(Color.SEAGREEN);
+        } else if (GameLogic.getInstance().p2.roundsWon == 3){
+            p2FirstRoundWinIndicator.setFill(Color.SEAGREEN);
+            p2SecondRoundWinIndicator.setFill(Color.SEAGREEN);
+            p2ThirdRoundWinIndicator.setFill(Color.SEAGREEN);
+        }
+
+    }
+
+    public void playerWinIndicatorReset(){
+
+        p1FirstRoundWinIndicator.setFill(Color.LIGHTGRAY);
+        p1SecondRoundWinIndicator.setFill(Color.LIGHTGRAY);
+        p1ThirdRoundWinIndicator.setFill(Color.LIGHTGRAY);
+        p2FirstRoundWinIndicator.setFill(Color.LIGHTGRAY);
+        p2SecondRoundWinIndicator.setFill(Color.LIGHTGRAY);
+        p2ThirdRoundWinIndicator.setFill(Color.LIGHTGRAY);
+
+    }
 
 
 

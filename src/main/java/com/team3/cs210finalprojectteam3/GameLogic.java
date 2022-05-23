@@ -164,7 +164,7 @@ public class GameLogic {
             // insert some fxn that resets scores and flags
         }
         roundReset();
-        didP1orP2WinGame();
+        //didP1orP2WinGame();
     }
 
     /**
