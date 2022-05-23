@@ -957,22 +957,22 @@ public class SceneController implements Initializable{
         //A--------------------------------------------
         if(a < 0){
             System.out.println("P1, Card 1: " + a);
-            p1RectOneStatic.setFill(Color.RED);
+            p1RectOneStatic.setFill(Color.INDIANRED);
 
         } else {
             System.out.println("P1, Card 1: " + a);
-            p1RectOneStatic.setFill(Color.GREEN);
+            p1RectOneStatic.setFill(Color.STEELBLUE);
 
         }
 
         //B--------------------------------------------
         if(b < 0){
             System.out.println("P1, Card 2: " + b);
-            p1RectTwoStatic.setFill(Color.RED);
+            p1RectTwoStatic.setFill(Color.INDIANRED);
 
         } else {
             System.out.println("P1, Card 2: " + b);
-            p1RectTwoStatic.setFill(Color.GREEN);
+            p1RectTwoStatic.setFill(Color.STEELBLUE);
 
         }
 
@@ -980,12 +980,12 @@ public class SceneController implements Initializable{
         //C--------------------------------------------
         if(c < 0){
             System.out.println("P1, Card 3: " + c);
-            p1RectThreeStatic.setFill(Color.RED);
+            p1RectThreeStatic.setFill(Color.INDIANRED);
 
 
         } else {
             System.out.println("P1, Card 3: " + c);
-            p1RectThreeStatic.setFill(Color.GREEN);
+            p1RectThreeStatic.setFill(Color.STEELBLUE);
 
         }
 
@@ -995,12 +995,12 @@ public class SceneController implements Initializable{
         //D--------------------------------------------
         if(d < 0){
             System.out.println("P1, Card 4: " + d);
-            p1RectFourStatic.setFill(Color.RED);
+            p1RectFourStatic.setFill(Color.INDIANRED);
 
 
         } else {
             System.out.println("P1, Card 4: " + d);
-            p1RectFourStatic.setFill(Color.GREEN);
+            p1RectFourStatic.setFill(Color.STEELBLUE);
 
 
         }
@@ -1008,12 +1008,12 @@ public class SceneController implements Initializable{
         //E--------------------------------------------
         if(e < 0){
             System.out.println("P2, Card 1: " + e);
-            p2RectOneStatic.setFill(Color.RED);
+            p2RectOneStatic.setFill(Color.INDIANRED);
 
 
         } else {
             System.out.println("P2, Card 1: " + e);
-            p2RectOneStatic.setFill(Color.GREEN);
+            p2RectOneStatic.setFill(Color.STEELBLUE);
 
 
         }
@@ -1021,12 +1021,12 @@ public class SceneController implements Initializable{
         //F--------------------------------------------
         if(f < 0){
             System.out.println("P2, Card 2: " + f);
-            p2RectTwoStatic.setFill(Color.RED);
+            p2RectTwoStatic.setFill(Color.INDIANRED);
 
 
         } else {
             System.out.println("P2, Card 2: " + f);
-            p2RectTwoStatic.setFill(Color.GREEN);
+            p2RectTwoStatic.setFill(Color.STEELBLUE);
 
 
         }
@@ -1034,12 +1034,12 @@ public class SceneController implements Initializable{
         //G--------------------------------------------
         if(g < 0){
             System.out.println("P2, Card 3: " + g);
-            p2RectThreeStatic.setFill(Color.RED);
+            p2RectThreeStatic.setFill(Color.INDIANRED);
 
 
         } else {
             System.out.println("P2, Card 3: " + g);
-            p2RectThreeStatic.setFill(Color.GREEN);
+            p2RectThreeStatic.setFill(Color.STEELBLUE);
 
 
         }
@@ -1047,12 +1047,12 @@ public class SceneController implements Initializable{
         //H--------------------------------------------
         if(h < 0){
             System.out.println("P2, Card 4: " + h);
-            p2RectFourStatic.setFill(Color.RED);
+            p2RectFourStatic.setFill(Color.INDIANRED);
 
 
         } else {
             System.out.println("P2, Card 4: " + h);
-            p2RectFourStatic.setFill(Color.GREEN);
+            p2RectFourStatic.setFill(Color.STEELBLUE);
 
 
         }
