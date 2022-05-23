@@ -1151,7 +1151,7 @@ public class SceneController implements Initializable{
             // UI changes (GRAY, "0") signal to player and program the card is spent/empty
             p1RectOne.setFill(Color.GRAY);
             p1TextOne.setText("0");
-
+            p1TextOneStatic.setText(p1TextOne.getText());
 
         } else if(buttonClicked.equals("p1HandCardTwo")){
 
@@ -1168,7 +1168,7 @@ public class SceneController implements Initializable{
             // UI changes (GRAY, "0") signal to player and program the card is spent/empty
             p1RectTwo.setFill(Color.GRAY);
             p1TextTwo.setText("0");
-
+            p1TextTwoStatic.setText(p1TextTwo.getText());
 
         } else if (buttonClicked.equals("p1HandCardThree")){
             // Stops player from playing a spent/empty card.
@@ -1184,7 +1184,7 @@ public class SceneController implements Initializable{
             // UI changes (GRAY, "0") signal to player and program the card is spent/empty
             p1RectThree.setFill(Color.GRAY);
             p1TextThree.setText("0");
-
+            p1TextThreeStatic.setText(p1TextThree.getText());
 
         }else if (buttonClicked.equals("p1HandCardFour")){
 
@@ -1201,7 +1201,7 @@ public class SceneController implements Initializable{
             // UI changes (GRAY, "0") signal to player and program the card is spent/empty
             p1RectFour.setFill(Color.GRAY);
             p1TextFour.setText("0");
-
+            p1TextFourStatic.setText(p1TextFour.getText());
         }
         disableP1HandClicks(); // stops player from playing more than one hand card per turn
         p1Count++;
@@ -1253,6 +1253,7 @@ public class SceneController implements Initializable{
             // UI changes (GRAY, "0") signal to player and program the card is spent/empty
             p2RectOne.setFill(Color.GRAY);
             p2TextOne.setText("0");
+            p2TextOneStatic.setText(p2TextOne.getText());
 
         } else if(buttonClicked.equals("p2HandCardTwo")){
 
@@ -1267,6 +1268,7 @@ public class SceneController implements Initializable{
             // UI changes (GRAY, "0") signal to player and program the card is spent/empty
             p2RectTwo.setFill(Color.GRAY);
             p2TextTwo.setText("0");
+            p2TextTwoStatic.setText(p2TextTwo.getText());
 
         } else if (buttonClicked.equals("p2HandCardThree")){
             // stops spent/empty card from being played
@@ -1280,6 +1282,7 @@ public class SceneController implements Initializable{
             // UI changes (GRAY, "0") signal to player and program the card is spent/empty
             p2RectThree.setFill(Color.GRAY);
             p2TextThree.setText("0");
+            p2TextThreeStatic.setText(p2TextThree.getText());
 
         }else if (buttonClicked.equals("p2HandCardFour")){
             // stops spent/empty card from being played
@@ -1293,6 +1296,7 @@ public class SceneController implements Initializable{
             // UI changes (GRAY, "0") signal to player and program the card is spent/empty
             p2RectFour.setFill(Color.GRAY);
             p2TextFour.setText("0");
+            p2TextFourStatic.setText(p2TextFour.getText());
         }
         disableP2HandClicks(); // stops player from playing more than one hand card per turn
         p2Count++;
