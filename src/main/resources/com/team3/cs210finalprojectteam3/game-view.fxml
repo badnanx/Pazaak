@@ -36,7 +36,7 @@
                 <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <StackPane fx:id="p1HandCardOne" disable="true" onMouseClicked="#passInfoToP1Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #008080;">
+                  <StackPane fx:id="p1HandCardOne" disable="true" onMouseClicked="#passInfoToP1Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #1ABC9C;">
                      <children>
                         <Rectangle fx:id="p1RectOne" arcHeight="5.0" arcWidth="5.0" fill="INDIANRED" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p1TextOne" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
@@ -44,19 +44,19 @@
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></StackPane>
-                  <StackPane fx:id="p1HandCardTwo" disable="true" onMouseClicked="#passInfoToP1Field" prefHeight="72.0" prefWidth="60.0" style="-fx-background-color: #008080;" GridPane.columnIndex="1">
+                  <StackPane fx:id="p1HandCardTwo" disable="true" onMouseClicked="#passInfoToP1Field" prefHeight="72.0" prefWidth="60.0" style="-fx-background-color: #1ABC9C;" GridPane.columnIndex="1">
                      <children>
                         <Rectangle fx:id="p1RectTwo" arcHeight="5.0" arcWidth="5.0" fill="STEELBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p1TextTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </StackPane>
-                  <StackPane fx:id="p1HandCardThree" disable="true" onMouseClicked="#passInfoToP1Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #008080;" GridPane.columnIndex="2">
+                  <StackPane fx:id="p1HandCardThree" disable="true" onMouseClicked="#passInfoToP1Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #1ABC9C;" GridPane.columnIndex="2">
                      <children>
                         <Rectangle fx:id="p1RectThree" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p1TextThree" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </StackPane>
-                  <StackPane fx:id="p1HandCardFour" disable="true" onMouseClicked="#passInfoToP1Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #008080;" GridPane.columnIndex="3">
+                  <StackPane fx:id="p1HandCardFour" disable="true" onMouseClicked="#passInfoToP1Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #1ABC9C;" GridPane.columnIndex="3">
                      <children>
                         <Rectangle fx:id="p1RectFour" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p1TextFour" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
@@ -153,25 +153,25 @@
             <Circle fx:id="playerTwoTurnIndicator" fill="#ff232e" layoutX="53.0" layoutY="24.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
             <GridPane layoutY="260.0" prefHeight="65.0" prefWidth="200.0">
                <children>
-                  <StackPane fx:id="p2HandCardOne" disable="true" onMouseClicked="#passInfoToP2Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #008080;">
+                  <StackPane fx:id="p2HandCardOne" disable="true" onMouseClicked="#passInfoToP2Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #1ABC9C;">
                      <children>
                         <Rectangle fx:id="p2RectOne" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p2TextOne" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </StackPane>
-                  <StackPane fx:id="p2HandCardTwo" disable="true" onMouseClicked="#passInfoToP2Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #008080;" GridPane.columnIndex="1">
+                  <StackPane fx:id="p2HandCardTwo" disable="true" onMouseClicked="#passInfoToP2Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #1ABC9C;" GridPane.columnIndex="1">
                      <children>
                         <Rectangle fx:id="p2RectTwo" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p2TextTwo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </StackPane>
-                  <StackPane fx:id="p2HandCardThree" disable="true" onMouseClicked="#passInfoToP2Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #008080;" GridPane.columnIndex="2">
+                  <StackPane fx:id="p2HandCardThree" disable="true" onMouseClicked="#passInfoToP2Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #1ABC9C;" GridPane.columnIndex="2">
                      <children>
                         <Rectangle fx:id="p2RectThree" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p2TextThree" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children>
                   </StackPane>
-                  <StackPane fx:id="p2HandCardFour" disable="true" onMouseClicked="#passInfoToP2Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #008080;" GridPane.columnIndex="3">
+                  <StackPane fx:id="p2HandCardFour" disable="true" onMouseClicked="#passInfoToP2Field" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #1ABC9C;" GridPane.columnIndex="3">
                      <children>
                         <Rectangle fx:id="p2RectFour" arcHeight="5.0" arcWidth="5.0" fill="#d0d2d3" height="42.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
                         <Text fx:id="p2TextFour" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
