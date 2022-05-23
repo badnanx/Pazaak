@@ -136,8 +136,8 @@ public class GameLogic {
         if(p1Score == p2Score)
         {
             System.out.println("Round is a draw.");
-            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
-            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+            System.out.println("DEBUG: Player 1 has won " + p1.roundsWon + " rounds.");
+            System.out.println("DEBUG: Player 2 has won " + p2.roundsWon + " rounds.");
             // suggestion: popup indicating draw
             endOfRound = true; // necessary? why not stay in game loop?
             // insert some fxn that resets scores and flags
@@ -149,8 +149,8 @@ public class GameLogic {
             // suggestion: popup indicating p1 win
             p1.wonRound = true;
             endOfRound = true;
-            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
-            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+            System.out.println("DEBUG: Player 1 has won " + p1.roundsWon + " rounds.");
+            System.out.println("DEBUG: Player 2 has won " + p2.roundsWon + " rounds.");
             // insert some fxn that resets scores and flags
         }
         else {
@@ -159,8 +159,8 @@ public class GameLogic {
             // suggestion: popup indicating p2 win
             p2.wonRound = true;
             endOfRound = true;
-            System.out.println("DEBUG: Player 1 rounds won = " + GameLogic.getInstance().p1.roundsWon);
-            System.out.println("DEBUG: Player 2 rounds won = " + GameLogic.getInstance().p2.roundsWon);
+            System.out.println("DEBUG: Player 1 has won " + p1.roundsWon + " rounds.");
+            System.out.println("DEBUG: Player 2 has won " + p2.roundsWon + " rounds.");
             // insert some fxn that resets scores and flags
         }
         roundReset();
@@ -247,4 +247,11 @@ public class GameLogic {
         p2.roundsWon = 0;
 
     }
+
+//    public void addToP1Field(){
+//        p1FieldCardRects.get(p1Count).setText(generateRandomDeckCard().getText());
+//    }
+
+
+// make into singleton?
 }
