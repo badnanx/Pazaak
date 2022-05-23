@@ -660,7 +660,7 @@ public class SceneController implements Initializable{
         disableP2Clicks();
         SetInfoText("Player 1's Turn");
         p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
-        p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
+        p1FieldCardRects.get(p1Count).setFill(Color.SEAGREEN);
         p1Count++;
         GameLogic.getInstance().calculateScores(p1FieldCardTexts,1);
 
@@ -756,7 +756,7 @@ public class SceneController implements Initializable{
         } else{
             playerTwoTurnIndicator.setFill(Color.GREEN);
             p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
-            p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
+            p2FieldCardRects.get(p2Count).setFill(Color.SEAGREEN); // consider light blue
             p2Count++;
             checkForFullField();
             // insert draw card for p2
@@ -821,7 +821,7 @@ public class SceneController implements Initializable{
         } else{
             playerOneTurnIndicator.setFill(Color.GREEN);
             p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
-            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
+            p1FieldCardRects.get(p1Count).setFill(Color.SEAGREEN);
             p1Count++;
             checkForFullField();
             GameLogic.getInstance().turnTracker(2);
@@ -865,7 +865,7 @@ public class SceneController implements Initializable{
           // playerOneTurnIndicator.setFill(Color.GREEN);
             SetInfoText("Player 2 Has Stood. Player 1 Goes Again.");
            p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
-           p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE);
+           p1FieldCardRects.get(p1Count).setFill(Color.SEAGREEN);
            p1Count++;
            checkForFullField();
            enableP1Clicks();
@@ -878,7 +878,7 @@ public class SceneController implements Initializable{
            playerTwoTurnIndicator.setFill(Color.GREEN);
             SetInfoText("Player 2's Turn.");
            p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
-           p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
+           p2FieldCardRects.get(p2Count).setFill(Color.SEAGREEN); // consider light blue
            p2Count++;
            checkForFullField();
 
@@ -920,7 +920,7 @@ public class SceneController implements Initializable{
             //playerTwoTurnIndicator.setFill(Color.GREEN);
             // playing deck card to field at start of turn
             p2FieldCardTexts.get(p2Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
-            p2FieldCardRects.get(p2Count).setFill(Color.LIGHTBLUE); // consider light blue
+            p2FieldCardRects.get(p2Count).setFill(Color.SEAGREEN); // consider light blue
             p2Count++;
             SetInfoText("Player 1 Has Stood. Player 2 Goes Again.");
             enableP2Clicks();
@@ -936,7 +936,7 @@ public class SceneController implements Initializable{
             playerOneTurnIndicator.setFill(Color.GREEN);
 
             p1FieldCardTexts.get(p1Count).setText(GameLogic.getInstance().generateRandomDeckCard().GetValueAsString());
-            p1FieldCardRects.get(p1Count).setFill(Color.LIGHTBLUE); // consider light blue
+            p1FieldCardRects.get(p1Count).setFill(Color.SEAGREEN); // consider light blue
             p1Count++;
 
             // some kind of gameplay loop would be good here
