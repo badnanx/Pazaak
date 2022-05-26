@@ -109,5 +109,44 @@ public class PazaakTests {
         System.out.println("DEBUG: Two Lists of cards created from the same hand are equal: "+result);
         assertTrue(handOneList.equals(handTwoList));
     }
+
+
+    /**
+     * This Test checks to see if the compareScore() method is working properly.
+     * For this particular test, playerOneWin() is checking the scores of both player1 and
+     * player2. Player one should win, because it is closest to 21
+     *
+     * assertTrue() confirms at least 1 of the players won
+     *
+     * @author Prince Maduekwe
+     **/
+
+    @Test
+    void playerOneWin(){
+        int comp = GameLogic.getInstance().compareScores(21,15);
+        System.out.println("Player one wins " + comp);
+        assertTrue(comp == 1);
+
+    }
+
+    /**
+     * This Test checks to see if the compareScore() method is working properly.
+     * For this particular test, it is checking the scores of both player1 and
+     * player2. The result of the test should be TIE, due to both player having
+     * similar scores
+     *
+     * assertFalse() confirms the not 1 (neither player1 nor player2) won
+     *
+     * @author Prince Maduekwe
+     **/
+
+    @Test
+    void playersTie(){
+        int comp = GameLogic.getInstance().compareScores(17,17);
+        System.out.println("Player Two wins " + comp);
+        assertFalse(comp == 1);
+    }
+
+
 }
 

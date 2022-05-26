@@ -10,8 +10,8 @@ public class Player {
     public boolean hasStood;
     public boolean hasEndedTurn;
     public boolean wonRound;
-    public boolean wonGame; // necessary?
-    public boolean busted; // needed?
+    public boolean wonGame;
+    public boolean busted;
     public boolean playedHandCard;
 
     public Player()
@@ -26,5 +26,5 @@ public class Player {
         playedHandCard = false;
     }
 
-    // need getters/setters
+
 }
