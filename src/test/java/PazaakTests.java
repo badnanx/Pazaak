@@ -122,11 +122,9 @@ public class PazaakTests {
 
     @Test
     void playerOneWin(){
-        int comp = GameLogic.getInstance().compareScores(21,15);
-        System.out.println("Player one wins " + comp);
-        boolean didOnePlayerWin = comp == 1;
-        assertTrue(didOnePlayerWin);
-
+        boolean result = GameLogic.getInstance().compareScores(21,15) == 1;
+        System.out.println("Player one wins " + result);
+        assertTrue(result);
     }
 
     /**
@@ -135,18 +133,23 @@ public class PazaakTests {
      * player2. The result of the test should be TIE, due to both player having
      * similar scores
      *
-     * Boolean statement confirms the not 1 (neither player1 nor player2) won
+     * Boolean statement confirms there are 0 wins
      *
      * @author Prince Maduekwe
      **/
 
     @Test
     void playersTie(){
-        int comp = GameLogic.getInstance().compareScores(17,17);
-        System.out.println("Players Tie " + comp);
-        boolean didOnePlayerWin = comp == 1;
-        assertFalse(didOnePlayerWin);
+        boolean result = GameLogic.getInstance().compareScores(17,17) == 0;
+        System.out.println("Players Tie " + result);
+        assertTrue(result);
     }
+
+
+
+
+
+
 
 
 
