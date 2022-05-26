@@ -83,14 +83,14 @@ public class PazaakTests {
      * @author Kory Stennett
      */
     @Test
-    void noSameHand(){
+    void notSameHand(){
         Hand hand = new Hand();
         List<Card> handOneList = hand.hand;
         hand = new Hand();
         List<Card> handTwoList = hand.hand;
         boolean result = handOneList.equals(handTwoList);
         System.out.println("DEBUG: Two Lists of cards created from the same hand randomized twice are equal: "+result);
-        assertFalse(handOneList.equals(handTwoList));
+        assertFalse(result);
     }
 
     /**
@@ -107,7 +107,7 @@ public class PazaakTests {
         List<Card> handTwoList = hand.hand;
         boolean result = handOneList.equals(handTwoList);
         System.out.println("DEBUG: Two Lists of cards created from the same hand are equal: "+result);
-        assertTrue(handOneList.equals(handTwoList));
+        assertTrue(result);
     }
 
 
