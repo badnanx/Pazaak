@@ -110,13 +110,12 @@ public class PazaakTests {
         assertTrue(result);
     }
 
-
     /**
      * This Test checks to see if the compareScore() method is working properly.
      * For this particular test, playerOneWin() is checking the scores of both player1 and
      * player2. Player one should win, because it is closest to 21
      *
-     * assertTrue() confirms at least 1 of the players won
+     * Boolean statement confirms at least 1 of the players won
      *
      * @author Prince Maduekwe
      **/
@@ -125,7 +124,8 @@ public class PazaakTests {
     void playerOneWin(){
         int comp = GameLogic.getInstance().compareScores(21,15);
         System.out.println("Player one wins " + comp);
-        assertTrue(comp == 1);
+        boolean didOnePlayerWin = comp == 1;
+        assertTrue(didOnePlayerWin);
 
     }
 
@@ -135,7 +135,7 @@ public class PazaakTests {
      * player2. The result of the test should be TIE, due to both player having
      * similar scores
      *
-     * assertFalse() confirms the not 1 (neither player1 nor player2) won
+     * Boolean statement confirms the not 1 (neither player1 nor player2) won
      *
      * @author Prince Maduekwe
      **/
@@ -144,8 +144,12 @@ public class PazaakTests {
     void playersTie(){
         int comp = GameLogic.getInstance().compareScores(17,17);
         System.out.println("Players Tie " + comp);
-        assertFalse(comp == 1);
+        boolean didOnePlayerWin = comp == 1;
+        assertFalse(didOnePlayerWin);
     }
+
+
+
 
 
 }
