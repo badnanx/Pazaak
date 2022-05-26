@@ -111,38 +111,51 @@ public class PazaakTests {
     }
 
     /**
-     * This Test checks to see if the compareScore() method is working properly.
-     * For this particular test, playerOneWin() is checking the scores of both player1 and
-     * player2. Player one should win, because it is closest to 21
-     *
-     * Boolean statement confirms at least 1 of the players won
+     * The method playerOneWins() confirms that player one won the game.
+     * It first compares score and assigned the number 1 if playerOne wins
+     * assertEquals() expects the number 1 and checks result to confirm the winner.
      *
      * @author Prince Maduekwe
      **/
-
     @Test
-    void playerOneWin(){
-        boolean result = GameLogic.getInstance().compareScores(21,15) == 1;
-        System.out.println("Player one wins " + result);
-        assertTrue(result);
+    void playerOneWins(){
+        int result = GameLogic.getInstance().compareScores(20,17);
+        System.out.println("DEBUG: Check if player one won " + result);
+        assertEquals(1,result);
     }
 
     /**
-     * This Test checks to see if the compareScore() method is working properly.
-     * For this particular test, it is checking the scores of both player1 and
-     * player2. The result of the test should be TIE, due to both player having
-     * similar scores
-     *
-     * Boolean statement confirms there are 0 wins
+     * The method playerTwoWins() confirms that player two won the game.
+     * It first compares score and assigns the number 2 if playerTwo wins.
+     * assertEquals() expects the number 2 and checks result to confirm the winner.
      *
      * @author Prince Maduekwe
      **/
+    @Test
+    void playersTwoWins(){
 
+        int result = GameLogic.getInstance().compareScores(12,20);
+        System.out.println("DEBUG: Check if player two won " + result);
+        assertEquals(2,result);
+
+    }
+
+
+
+    /**
+     * The method playersTie() confirms that both player are tie.
+     * It first compares score and assigned the 0 if the game ends in a tie.
+     * assertEquals() expects the number 0 and checks result to confirm the results of the game.
+     *
+     * @author Prince Maduekwe
+     **/
     @Test
     void playersTie(){
-        boolean result = GameLogic.getInstance().compareScores(17,17) == 0;
-        System.out.println("Players Tie " + result);
-        assertTrue(result);
+
+        int result = GameLogic.getInstance().compareScores(17,17);
+        System.out.println("DEBUG: Check if both players tie " + result);
+        assertEquals(0,result);
+
     }
 
 
