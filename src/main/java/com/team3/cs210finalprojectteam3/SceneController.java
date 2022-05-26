@@ -788,6 +788,7 @@ public class SceneController implements Initializable{
         // bust logic
         if(GameLogic.getInstance().checkForBust(GameLogic.getInstance().p2.score) == true){
             System.out.println("Player 2 has gone bust! Player 1 wins the round!");
+            SetInfoText("Player 2 Busts. Player 1 Wins the Round!");
             GameLogic.getInstance().p1.roundsWon++;
             GameLogic.getInstance().p1.wonRound = true;
             GameLogic.getInstance().endOfRound = true;
