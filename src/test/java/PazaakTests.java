@@ -143,7 +143,7 @@ public class PazaakTests {
     @Test
     void playersTie(){
         int comp = GameLogic.getInstance().compareScores(17,17);
-        System.out.println("Player Two wins " + comp);
+        System.out.println("Players Tie " + comp);
         assertFalse(comp == 1);
     }
 
